@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,8 +15,50 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pP7-zf-4W9">
+                                <rect key="frame" x="93" y="81" width="389" height="372"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grey Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hAW-Oa-Zvh">
+                                        <rect key="frame" x="0.0" y="0.0" width="389" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="Wrb-f1-OGw"/>
+                                            <constraint firstAttribute="height" constant="200" id="rGh-CZ-51G"/>
+                                            <constraint firstAttribute="width" constant="389" id="wb7-RS-EoA"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Wrb-f1-OGw"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Program Flow - Main Screen" translatesAutoresizingMaskIntoConstraints="NO" id="ucg-vl-3Wn">
+                                        <rect key="frame" x="45" y="200" width="300" height="146"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="sy3-xT-DVD"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tech And Learning for the Early Years" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPB-uy-NmN">
+                                        <rect key="frame" x="20" y="346" width="350" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="outBckground.png" translatesAutoresizingMaskIntoConstraints="NO" id="hTA-NK-mEx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hTA-NK-mEx" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="4gM-y5-CRW"/>
+                            <constraint firstItem="hTA-NK-mEx" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="aaE-Ps-PFa"/>
+                            <constraint firstItem="pP7-zf-4W9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="eo6-zh-Vno"/>
+                            <constraint firstAttribute="trailing" secondItem="hTA-NK-mEx" secondAttribute="trailing" id="j9N-KJ-eSE"/>
+                            <constraint firstItem="pP7-zf-4W9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kka-v5-Fcd"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="hTA-NK-mEx" secondAttribute="bottom" id="pxN-rb-DeZ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +66,9 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Grey Logo" width="918" height="332"/>
+        <image name="Program Flow - Main Screen" width="415" height="146"/>
+        <image name="outBckground.png" width="2048" height="886"/>
+    </resources>
 </document>
