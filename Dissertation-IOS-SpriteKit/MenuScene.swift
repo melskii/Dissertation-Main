@@ -14,6 +14,7 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
     var user: UserProfile!
     var menu: SKSpriteNode!
     var labelPosition: CGFloat!
+    var audio: Bool = false
    
     /*
         This function is called when the view appears
@@ -54,42 +55,63 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         let y = _height - (menu.size.height * 0.5)
         menu.position = CGPoint(x: x, y: y)
         
-        // Home Button
-        let home = SKSpriteNode(imageNamed: "home.png")
-        var aspect = home.size.width/home.size.height
-        home.size = CGSize (width: 43 * aspect, height: 43)
         
-        var pos = (-(menu.size.width/2)) + (home.size.width/2) + 5
-        
-        home.position = CGPoint(x: pos, y: 0)
-        home.name = "home"
         
         // Tales Logo
         let logo = SKSpriteNode(imageNamed: "Grey Logo.png")
-        aspect = logo.size.width/logo.size.height
+        var aspect = logo.size.width/logo.size.height
         
         logo.alpha = 0.95 //change transparency
         logo.size = CGSize (width: 53 * aspect, height: 53)
         
-        pos += ((logo.size.width/2)) + (home.size.width/2)  + 5 //menu 0,0 is the center, pos is logo center, plus padding
+        var pos = (-(menu.size.width/2)) + (logo.size.width/2) + 5
         
         logo.zPosition = 1
         logo.position = CGPoint (x: pos, y: 0)
+        
+        // Audio Button
+        var sound = SKSpriteNode(imageNamed: "audio.png")
+        
+        if audio == false {
+            sound = SKSpriteNode(imageNamed: "mute.png")
+        }
+        
+        aspect = sound.size.width/sound.size.height
+        sound.size = CGSize (width: 33 * aspect, height: 33)
+        
+//        pos = ((menu.size.width/2)) - (sound.size.width/2) - 5
+        pos += (logo.size.width/2) + (sound.size.width/2) + 10
+        
+        sound.position = CGPoint(x: pos, y:0)
+        sound.name = "sound"
+        
+        
+        // Home Button
+        let home = SKSpriteNode(imageNamed: "home.png")
+        aspect = home.size.width/home.size.height
+        home.size = CGSize (width: 43 * aspect, height: 43)
+        
+//        pos -=  (home.size.width/2 + sound.size.width/2) + 5
+        pos = ((menu.size.width/2)) - (home.size.width/2) - 5
+        
+        home.position = CGPoint(x: pos, y: 0)
+        home.name = "home"
         
         // Login & User Button
         let login = SKSpriteNode(imageNamed: "user.png")
         aspect = login.size.width/login.size.height
         login.size = CGSize (width: 43 * aspect, height: 43)
         
-        pos = ((menu.size.width/2)) - (login.size.width/2) - 5
+        pos -=  (login.size.width/2 + home.size.width/2) + 5
         labelPosition = pos - (login.size.width/2) - 10
         
         login.position = CGPoint (x: pos, y: 0)
         login.name = "login"
         
         // Add as children to menu
-        menu.addChild(home)
         menu.addChild(logo)
+        menu.addChild(home)
+        menu.addChild(sound)
         menu.addChild(login)
 
         return menu
@@ -132,8 +154,19 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
     func menuNodeForTouch(touchLocation: CGPoint, node: SKNode) {
         
         if node.name == "home" {
+        
+            
+            var texture = [SKTexture]()
+            
+            texture.append(SKTexture(imageNamed: "home_pressed.png"))
+            texture.append(SKTexture(imageNamed: "home.png"))
+            
+            let animation = SKAction.animateWithTextures(texture, timePerFrame: 0.2)
+            node.runAction(animation)
             
             if self.name != "HomeScene" {
+                
+                
                 
                 
                 let transition = SKTransition.crossFadeWithDuration(0.5)
