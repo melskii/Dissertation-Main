@@ -14,7 +14,7 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
     var user: UserProfile!
     var menu: SKSpriteNode!
     var labelPosition: CGFloat!
-    var audio: Bool = false
+    var audio: Bool = true
    
     /*
         This function is called when the view appears
@@ -165,17 +165,8 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
             node.runAction(animation)
             
             if self.name != "HomeScene" {
-                
-                
-                
-                
-                let transition = SKTransition.crossFadeWithDuration(0.5)
-                let nextScene = HomeScene(size: scene!.size)
-                nextScene.scaleMode = .AspectFill
-                
-                scene?.view?.presentScene(nextScene, transition: transition)
-                nextScene.setParticipant(user)
-                
+         
+                setNextScene(HomeScene(size: scene!.size))
                 
             }
             
@@ -193,6 +184,48 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
             
             
         }
+        
+        else if (node.name == "sound") {
+            
+            var texture = [SKTexture]()
+            
+            if audio == true {
+                
+                texture.append(SKTexture(imageNamed: "mute.png"))
+                audio = false
+                
+            }
+            
+            else {
+                texture.append(SKTexture(imageNamed: "audio.png"))
+                audio = true
+            }
+            
+            let animation = SKAction.animateWithTextures(texture, timePerFrame: 0.2)
+            node.runAction(animation)
+            
+        }
+        
+        
+    }
+    
+    func setSound (audio: Bool)
+    {
+        self.audio = audio
+    }
+    
+    func setNextScene (nextScene: MenuScene) {
+        
+        
+        let transition = SKTransition.crossFadeWithDuration(0.5)
+        nextScene.scaleMode = .AspectFill
+        nextScene.setSound(audio)
+        
+        
+        scene?.view?.presentScene(nextScene, transition: transition)
+        nextScene.setParticipant(user)
+       
+       
         
         
     }
