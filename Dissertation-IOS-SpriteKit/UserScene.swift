@@ -17,10 +17,30 @@ class UserScene: MenuScene {
         
         self.name = "UserScene"
         
+        print("userscene")
+        
         addChild(setupUserScreen())
-              
         
         
+        
+    }
+    
+    override func setLoginButton() -> SKSpriteNode {
+        let login = super.setLoginButton()
+        
+        login.texture = SKTexture(imageNamed: "user_disabled.png")
+        login.userInteractionEnabled = false
+        
+        return login
+    }
+    
+    override func setHomeButton() -> SKSpriteNode {
+        let home = super.setHomeButton()
+        
+        home.texture = SKTexture(imageNamed: "home_disabled.png")
+        home.userInteractionEnabled = false
+        
+        return home
     }
     
     /*

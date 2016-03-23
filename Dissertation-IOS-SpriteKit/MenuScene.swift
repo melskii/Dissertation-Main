@@ -26,7 +26,6 @@ protocol GameSceneDelegate {
 class MenuScene: SKScene, SKPhysicsContactDelegate {
     
     var _width, _height: CGFloat!
-    var user: String?
     var menu: SKSpriteNode!
     var labelPosition: CGFloat!
     var audio: Bool = true
@@ -62,7 +61,7 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         //set the height to the height - menu bar
         _height = _height - menuSprite.size.height
         
-        setParticipant()
+//        setParticipant()
         
         addChild(menuSprite)
   
@@ -113,25 +112,19 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         
         
         // Home Button
-        let home = SKSpriteNode(imageNamed: "home.png")
-        aspect = home.size.width/home.size.height
-        home.size = CGSize (width: 43 * aspect, height: 43)
-
-        pos = ((menu.size.width/2)) - (home.size.width/2) - 5
+        let home = setHomeButton()
         
+        pos = ((menu.size.width/2)) - (home.size.width/2) - 5
         home.position = CGPoint(x: pos, y: 0)
-        home.name = "home"
         
         // Login & User Button
-        let login = SKSpriteNode(imageNamed: "user.png")
-        aspect = login.size.width/login.size.height
-        login.size = CGSize (width: 43 * aspect, height: 43)
-        
+        let login = setLoginButton()
         pos -=  (login.size.width/2 + home.size.width/2) + 5
         labelPosition = pos - (login.size.width/2) - 10
         
         login.position = CGPoint (x: pos, y: 0)
-        login.name = "login"
+        
+        
         
         // Add as children to menu
         menu.addChild(logo)
@@ -143,6 +136,32 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func setHomeButton () -> SKSpriteNode {
+        
+        let home = SKSpriteNode(imageNamed: "home.png")
+        let aspect = home.size.width/home.size.height
+        home.size = CGSize (width: 43 * aspect, height: 43)
+    
+        home.name = "home"
+        
+        return home
+        
+    }
+    
+    func setLoginButton () -> SKSpriteNode {
+        
+        let login = SKSpriteNode(imageNamed: "user.png")
+        let aspect = login.size.width/login.size.height
+        login.size = CGSize (width: 43 * aspect, height: 43)
+        
+        
+        login.name = "login"
+        
+        return login
+        
+    }
+    
+    
     /*
         Updates the user information and is stored in the menu for all templates to use.
     */
@@ -150,7 +169,9 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         
         print (self.gameSceneDelegate)
         
-        user = self.gameSceneDelegate!.getParticipantName()
+       
+        
+        let user = self.gameSceneDelegate!.getParticipantName()
         
         //return login button if getParticipantName returns nil
         if (user != nil)
@@ -180,8 +201,9 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
     */
     func menuNodeForTouch(touchLocation: CGPoint, node: SKNode) {
         
-        if node.name == "home" {
+        if (node.name == "home" && self.name != "UserScene") {
         
+  
             
             var texture = [SKTexture]()
             
@@ -199,9 +221,10 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
                 
             }
             
+            
         }
         
-        else if (node.name == "login") {
+        else if (node.name == "login" && self.name != "UserScene") {
             
             var texture = [SKTexture]()
             

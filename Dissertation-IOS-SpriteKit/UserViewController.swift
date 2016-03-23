@@ -1,5 +1,5 @@
 //
-//  GameViewController.swift
+//  UserViewController.swift
 //  Dissertation-IOS-SpriteKit
 //
 //  Created by Mel Schatynski on 21/02/2016.
@@ -9,40 +9,68 @@
 import UIKit
 import SpriteKit
 
+protocol UserDelegate {
+    
+    func setUserDetals ()
+    
+}
+
 class UserViewController: UIViewController {
     
     var scene: UserScene!
-    var user: UserProfile!
-    //    var scene: HomeScene!
+    var userDelegate: UserDelegate?
+    var gameSceneDelegate: GameSceneDelegate?
+    
+    @IBOutlet weak var skview: SKView!
+
+    override func loadView() {
+        
+        super.loadView()
+        
+        self.view = SKView(frame: self.view.frame)//[[SKView alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
+    }
+  
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+
         
+        self.view.backgroundColor = UIColor.redColor()
         
+        skview = view as! SKView
+        skview.multipleTouchEnabled = false
         
-        
-        let skView = view as! SKView
-        skView.multipleTouchEnabled = false
-        
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        skview.showsFPS = true
+        skview.showsNodeCount = true
         //skView.showsPhysics = true
-        skView.showsDrawCount = true
+        skview.showsDrawCount = true
         /* Sprite Kit applies additional optimizations to improve rendering performance */
-        skView.ignoresSiblingOrder = false
-        
-        
-        //initialise userprofile
-        user = UserProfile(participant: 0)
+        skview.ignoresSiblingOrder = false
         
         //initialise first Scene
-        scene = UserScene(size: skView.bounds.size)
-          scene.scaleMode = .AspectFill
+        scene = UserScene(size: skview.bounds.size)
+        scene.scaleMode = .AspectFill
         
         //present the scene
-        skView.presentScene(scene)
+        scene.gameSceneDelegate = self.gameSceneDelegate
+        skview.presentScene(scene)
         
+        
+    }
+    
+    func setupLogin () {
+        
+        
+        
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //Update the users details at this point
+        self.userDelegate?.setUserDetals()
         
     }
     

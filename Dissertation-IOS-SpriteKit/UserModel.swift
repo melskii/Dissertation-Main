@@ -9,13 +9,13 @@
 import Foundation
 
 
-public class UserProfile {
+public class UserModel {
 
     
     var participant: Int!
     var name: String?
 
-    public init(participant: Int) {
+    public init(participant: Int = 0) {
         
         self.participant = participant
         

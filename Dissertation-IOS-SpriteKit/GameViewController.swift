@@ -9,10 +9,10 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, GameSceneDelegate {
+class GameViewController: UIViewController, GameSceneDelegate, UserDelegate {
     
     var scene: LevelScene!
-    var user: UserProfile!
+    var user: UserModel!
     var audio: Bool = true
     
     @IBOutlet weak var skview: SKView!
@@ -22,23 +22,18 @@ class GameViewController: UIViewController, GameSceneDelegate {
         super.viewDidLoad()
         
         
-        
+        print("hello\(view)")
         
         skview = view as! SKView
-        skview.multipleTouchEnabled = false
-        
-        skview.showsFPS = true
-        skview.showsNodeCount = true
-        skview.showsPhysics = true
-        skview.showsDrawCount = true
+        setupDebugTools()
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skview.ignoresSiblingOrder = false
+        skview.multipleTouchEnabled = false
 
         
         //initialise userprofile
-        user = UserProfile(participant: 0)
-
+        user = UserModel()
         //initialise first Scene
         scene = LevelScene(size: skview.bounds.size)
         scene.scaleMode = .AspectFill
@@ -51,6 +46,51 @@ class GameViewController: UIViewController, GameSceneDelegate {
 
     }
     
+    /* 
+        Set up to be able to see what is happening on screen. Remove in final product
+    */
+    func setupDebugTools () {
+        
+        
+        
+        skview.showsFPS = true
+        skview.showsNodeCount = true
+        skview.showsPhysics = true
+        skview.showsDrawCount = true
+        
+    }
+    
+    /*
+        Login into the System
+    */
+    func loadUserPage() {
+      
+        
+        let userViewController =  UserViewController()
+     
+        
+        userViewController.userDelegate = self
+        userViewController.gameSceneDelegate = self
+        
+        presentViewController(userViewController, animated: false, completion: nil)
+        
+        
+    }
+    
+    /*
+        UserDelegate methods
+    */
+    
+    func setUserDetals() {
+        
+    }
+
+    
+    /*
+        GameSceneDelegate methods
+   
+        Scene Transistions 
+    */
     func homeScene() {
         
         let nextScene = HomeScene(size: skview.bounds.size)
@@ -60,31 +100,36 @@ class GameViewController: UIViewController, GameSceneDelegate {
         
         
         skview.presentScene(nextScene, transition: transition)
-
+        
         
         print("initialise home")
-
+        
     }
     
     func userScene() {
-        
-        let nextScene = UserScene(size: skview.bounds.size)
-        nextScene.gameSceneDelegate = self
-        
-        let transition = SKTransition.crossFadeWithDuration(0.5)
-    
-        
-        skview.presentScene(nextScene, transition: transition)
-
-    
-        print("initialise")
-
+        loadUserPage()
     }
     
-    /*
-        The following two classes determine if audio feedback is required or not.
-        This is then passed to each scene.
+//    func userScene() {
+//        
+//        let nextScene = UserScene(size: skview.bounds.size)
+//        nextScene.gameSceneDelegate = self
+//        
+//        let transition = SKTransition.crossFadeWithDuration(0.5)
+//        
+//        
+//        skview.presentScene(nextScene, transition: transition)
+//        
+//        
+//        print("initialise")
+//        
+//    }
+    
+    /* 
+        Variables within the Scenes
     */
+    
+    //To be used for the audio feedback
     func setAudioFeedback (audio: Bool)
     {
         self.audio = audio
@@ -96,19 +141,16 @@ class GameViewController: UIViewController, GameSceneDelegate {
         return audio
     }
     
+    //User information
     func getParticipantName () -> String? {
         
         return user.getParticipantName()
         
     }
     
-    
-    
-    func loadUserPage() {
-        print("loaded user page")
-    }
-
-
+    /*
+        Change default IOS preferences 
+    */
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -116,4 +158,6 @@ class GameViewController: UIViewController, GameSceneDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
 }
