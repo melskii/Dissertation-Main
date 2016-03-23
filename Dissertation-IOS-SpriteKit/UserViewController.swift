@@ -43,14 +43,6 @@ class UserViewController: UIViewController {
         //present the scene
         skView.presentScene(scene)
         
-        scene.setParticipant(user)
-        
-        
-        
-        
-        
-        
-        
         
     }
     

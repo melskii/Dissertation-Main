@@ -9,14 +9,13 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, MenuSceneDelegate {
+class GameViewController: UIViewController, GameSceneDelegate {
     
     var scene: LevelScene!
     var user: UserProfile!
     var audio: Bool = true
     
     @IBOutlet weak var skview: SKView!
-//    var scene: HomeScene!
 
     override func viewDidLoad() {
         
@@ -30,8 +29,9 @@ class GameViewController: UIViewController, MenuSceneDelegate {
         
         skview.showsFPS = true
         skview.showsNodeCount = true
-        //skView.showsPhysics = true
+        skview.showsPhysics = true
         skview.showsDrawCount = true
+        
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skview.ignoresSiblingOrder = false
 
@@ -41,25 +41,20 @@ class GameViewController: UIViewController, MenuSceneDelegate {
 
         //initialise first Scene
         scene = LevelScene(size: skview.bounds.size)
-//        scene = HomeScene(size: skView.bounds.size)
         scene.scaleMode = .AspectFill
+        
+        scene.gameSceneDelegate = self
         
         //present the scene
         skview.presentScene(scene)
-        
-        scene.setParticipant(user)
-        
-        scene.menuSceneDelegate = self
-        
-        
-        
+
 
     }
     
     func homeScene() {
         
         let nextScene = HomeScene(size: skview.bounds.size)
-        nextScene.menuSceneDelegate = self
+        nextScene.gameSceneDelegate = self
         
         let transition = SKTransition.crossFadeWithDuration(0.5)
         
@@ -74,7 +69,7 @@ class GameViewController: UIViewController, MenuSceneDelegate {
     func userScene() {
         
         let nextScene = UserScene(size: skview.bounds.size)
-        nextScene.menuSceneDelegate = self
+        nextScene.gameSceneDelegate = self
         
         let transition = SKTransition.crossFadeWithDuration(0.5)
     
@@ -97,7 +92,14 @@ class GameViewController: UIViewController, MenuSceneDelegate {
     
     func getAudioFeedback () -> Bool {
         
+        
         return audio
+    }
+    
+    func getParticipantName () -> String? {
+        
+        return user.getParticipantName()
+        
     }
     
     

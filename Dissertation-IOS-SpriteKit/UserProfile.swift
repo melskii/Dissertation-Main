@@ -13,7 +13,7 @@ public class UserProfile {
 
     
     var participant: Int!
-    var name: String
+    var name: String?
 
     public init(participant: Int) {
         

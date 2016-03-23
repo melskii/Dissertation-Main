@@ -15,43 +15,38 @@ protocol GameSceneDelegate {
     
     func userScene()
     
-    func setAudioFeedback()
+    func setAudioFeedback (audio: Bool)
     
-    func getAudioFeedback()
+    func getAudioFeedback() -> Bool
+    
+    func getParticipantName () -> String?
     
 }
 
 class MenuScene: SKScene, SKPhysicsContactDelegate {
     
     var _width, _height: CGFloat!
-    var user: UserProfile!
+    var user: String?
     var menu: SKSpriteNode!
     var labelPosition: CGFloat!
     var audio: Bool = true
     
     var gameSceneDelegate: GameSceneDelegate?
    
+  
     
-    init?(coder aDecoder: NSCoder, audio: Bool?) {
-        
-        super.init(coder: aDecoder)
-        
-        audio = gameSceneDelegate?.getAudioFeedback()
-        
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
-        
-        
-
-    }
     /*
         This function is called when the view appears
     */
     override func didMoveToView(view: SKView) {
         
+     
+        // get the Audio from GameViewController.
+        let audio = gameSceneDelegate?.getAudioFeedback()
+        
+        if audio != nil {
+            self.audio = audio!
+        }
         
         view.showsPhysics = true
         physicsWorld.contactDelegate = self
@@ -66,6 +61,8 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         
         //set the height to the height - menu bar
         _height = _height - menuSprite.size.height
+        
+        setParticipant()
         
         addChild(menuSprite)
   
@@ -149,14 +146,16 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
     /*
         Updates the user information and is stored in the menu for all templates to use.
     */
-    func setParticipant(participant: UserProfile) {
+    func setParticipant() {
         
-        user = participant
+        print (self.gameSceneDelegate)
+        
+        user = self.gameSceneDelegate!.getParticipantName()
         
         //return login button if getParticipantName returns nil
-        if (user.getParticipantName() != nil)
+        if (user != nil)
         {
-            let label = SKLabelNode(text: "Hello \(user.getParticipantName()!)!")
+            let label = SKLabelNode(text: "Hello \(user!)!")
             
             label.fontColor = UIColor.blackColor()
             label.horizontalAlignmentMode = .Right
@@ -229,12 +228,14 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
                 
                 texture.append(SKTexture(imageNamed: "mute.png"))
                 audio = false
+                self.gameSceneDelegate?.setAudioFeedback(audio)
                 
             }
             
             else {
                 texture.append(SKTexture(imageNamed: "audio.png"))
                 audio = true
+                self.gameSceneDelegate?.setAudioFeedback(audio)
             }
             
             let animation = SKAction.animateWithTextures(texture, timePerFrame: 0.2)
@@ -245,23 +246,7 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-   
-    
-    func setNextScene (nextScene: MenuScene) {
-        
-        
-        
-        let transition = SKTransition.crossFadeWithDuration(0.5)
-        nextScene.scaleMode = .AspectFill
-        
-        scene?.view?.presentScene(nextScene, transition: transition)
-        nextScene.setParticipant(user)
-        
-        print("initialise")
-
-        self.paused = true
-        
-    }
+  
 
     
     deinit {
