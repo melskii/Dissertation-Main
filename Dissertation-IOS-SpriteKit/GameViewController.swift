@@ -13,6 +13,7 @@ class GameViewController: UIViewController, MenuSceneDelegate {
     
     var scene: LevelScene!
     var user: UserProfile!
+    var audio: Bool = true
     
     @IBOutlet weak var skview: SKView!
 //    var scene: HomeScene!
@@ -84,6 +85,22 @@ class GameViewController: UIViewController, MenuSceneDelegate {
         print("initialise")
 
     }
+    
+    /*
+        The following two classes determine if audio feedback is required or not.
+        This is then passed to each scene.
+    */
+    func setAudioFeedback (audio: Bool)
+    {
+        self.audio = audio
+    }
+    
+    func getAudioFeedback () -> Bool {
+        
+        return audio
+    }
+    
+    
     
     func loadUserPage() {
         print("loaded user page")

@@ -8,12 +8,16 @@
 
 import SpriteKit
 
-protocol MenuSceneDelegate {
+protocol GameSceneDelegate {
     
     
     func homeScene()
     
     func userScene()
+    
+    func setAudioFeedback()
+    
+    func getAudioFeedback()
     
 }
 
@@ -25,14 +29,27 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
     var labelPosition: CGFloat!
     var audio: Bool = true
     
-    var menuSceneDelegate: MenuSceneDelegate?
+    var gameSceneDelegate: GameSceneDelegate?
    
+    
+    init?(coder aDecoder: NSCoder, audio: Bool?) {
+        
+        super.init(coder: aDecoder)
+        
+        audio = gameSceneDelegate?.getAudioFeedback()
+        
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)
+        
+        
+
+    }
     /*
         This function is called when the view appears
     */
-    
-
-    
     override func didMoveToView(view: SKView) {
         
         
@@ -58,7 +75,6 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         Get the menu SKSprite with it's children (logo, home and login/user buttons)
     */
     func getMenuSprite () -> SKSpriteNode {
-        
         
         
         // Background for Menu
@@ -93,7 +109,6 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         aspect = sound.size.width/sound.size.height
         sound.size = CGSize (width: 33 * aspect, height: 33)
         
-//        pos = ((menu.size.width/2)) - (sound.size.width/2) - 5
         pos += (logo.size.width/2) + (sound.size.width/2) + 10
         
         sound.position = CGPoint(x: pos, y:0)
@@ -104,8 +119,7 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         let home = SKSpriteNode(imageNamed: "home.png")
         aspect = home.size.width/home.size.height
         home.size = CGSize (width: 43 * aspect, height: 43)
-        
-//        pos -=  (home.size.width/2 + sound.size.width/2) + 5
+
         pos = ((menu.size.width/2)) - (home.size.width/2) - 5
         
         home.position = CGPoint(x: pos, y: 0)
@@ -182,7 +196,7 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
                 
                 print("home button")
          
-                self.menuSceneDelegate?.homeScene()
+                self.gameSceneDelegate?.homeScene()
                 
             }
             
@@ -200,7 +214,7 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
             
             print("login button")
             
-            self.menuSceneDelegate?.userScene()
+            self.gameSceneDelegate?.userScene()
             
 //            setNextScene(UserScene(size: scene!.size))
             
@@ -231,10 +245,7 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func setSound (audio: Bool)
-    {
-        self.audio = audio
-    }
+   
     
     func setNextScene (nextScene: MenuScene) {
         
@@ -242,8 +253,6 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         
         let transition = SKTransition.crossFadeWithDuration(0.5)
         nextScene.scaleMode = .AspectFill
-        nextScene.setSound(audio)
-        
         
         scene?.view?.presentScene(nextScene, transition: transition)
         nextScene.setParticipant(user)
