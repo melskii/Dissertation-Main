@@ -1,22 +1,41 @@
 //
-//  HomeScene.swift
+//  UserScene.swift
 //  Dissertation-IOS-SpriteKit
 //
-//  Created by Mel Schatynski on 17/03/2016.
+//  Created by Mel Schatynski on 22/03/2016.
 //  Copyright © 2016 Mel Schatynski. All rights reserved.
 //
 
 import SpriteKit
 
-class HomeScene: MenuScene {
+class UserScene: MenuScene {
     
 
-   
- 
     override func didMoveToView(view: SKView) {
         
         super.didMoveToView(view)
-        self.name = "HomeScene"
+        
+        self.name = "UserScene"
+        
+        addChild(setupUserScreen())
+              
+        
+        
+    }
+    
+    /*
+    
+    */
+    func setupUserScreen() -> SKSpriteNode {
+        
+        let body = SKSpriteNode(imageNamed: "outBckground")
+        body.size = CGSize(width: _width, height: _height)
+        body.position = CGPoint(x: (body.size.width * 0.5), y: (body.size.height * 0.5))
+
+        body.name = "userBackground"
+        
+        
+        return body
         
     }
     
@@ -33,6 +52,5 @@ class HomeScene: MenuScene {
         
     }
 
-    
-
 }
+    

@@ -9,10 +9,12 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, MenuSceneDelegate {
     
     var scene: LevelScene!
     var user: UserProfile!
+    
+    @IBOutlet weak var skview: SKView!
 //    var scene: HomeScene!
 
     override func viewDidLoad() {
@@ -22,38 +24,77 @@ class GameViewController: UIViewController {
         
         
         
-        let skView = view as! SKView
-        skView.multipleTouchEnabled = false
+        skview = view as! SKView
+        skview.multipleTouchEnabled = false
         
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        skview.showsFPS = true
+        skview.showsNodeCount = true
         //skView.showsPhysics = true
-        skView.showsDrawCount = true
+        skview.showsDrawCount = true
         /* Sprite Kit applies additional optimizations to improve rendering performance */
-        skView.ignoresSiblingOrder = false
+        skview.ignoresSiblingOrder = false
 
         
         //initialise userprofile
         user = UserProfile(participant: 0)
 
         //initialise first Scene
-        scene = LevelScene(size: skView.bounds.size)
+        scene = LevelScene(size: skview.bounds.size)
 //        scene = HomeScene(size: skView.bounds.size)
         scene.scaleMode = .AspectFill
         
         //present the scene
-        skView.presentScene(scene)
+        skview.presentScene(scene)
         
         scene.setParticipant(user)
         
+        scene.menuSceneDelegate = self
         
         
         
 
     }
+    
+    func homeScene() {
+        
+        let nextScene = HomeScene(size: skview.bounds.size)
+        nextScene.menuSceneDelegate = self
+        
+        let transition = SKTransition.crossFadeWithDuration(0.5)
+        
+        
+        skview.presentScene(nextScene, transition: transition)
+
+        
+        print("initialise home")
+
+    }
+    
+    func userScene() {
+        
+        let nextScene = UserScene(size: skview.bounds.size)
+        nextScene.menuSceneDelegate = self
+        
+        let transition = SKTransition.crossFadeWithDuration(0.5)
+    
+        
+        skview.presentScene(nextScene, transition: transition)
+
+    
+        print("initialise")
+
+    }
+    
+    func loadUserPage() {
+        print("loaded user page")
+    }
 
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }

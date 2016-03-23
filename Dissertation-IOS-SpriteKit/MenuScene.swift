@@ -8,6 +8,15 @@
 
 import SpriteKit
 
+protocol MenuSceneDelegate {
+    
+    
+    func homeScene()
+    
+    func userScene()
+    
+}
+
 class MenuScene: SKScene, SKPhysicsContactDelegate {
     
     var _width, _height: CGFloat!
@@ -15,10 +24,15 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
     var menu: SKSpriteNode!
     var labelPosition: CGFloat!
     var audio: Bool = true
+    
+    var menuSceneDelegate: MenuSceneDelegate?
    
     /*
         This function is called when the view appears
     */
+    
+
+    
     override func didMoveToView(view: SKView) {
         
         
@@ -165,8 +179,10 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
             node.runAction(animation)
             
             if self.name != "HomeScene" {
+                
+                print("home button")
          
-                setNextScene(HomeScene(size: scene!.size))
+                self.menuSceneDelegate?.homeScene()
                 
             }
             
@@ -181,6 +197,12 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
             
             let animation = SKAction.animateWithTextures(texture, timePerFrame: 0.2)
             node.runAction(animation)
+            
+            print("login button")
+            
+            self.menuSceneDelegate?.userScene()
+            
+//            setNextScene(UserScene(size: scene!.size))
             
             
         }
@@ -217,6 +239,7 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
     func setNextScene (nextScene: MenuScene) {
         
         
+        
         let transition = SKTransition.crossFadeWithDuration(0.5)
         nextScene.scaleMode = .AspectFill
         nextScene.setSound(audio)
@@ -224,11 +247,20 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         
         scene?.view?.presentScene(nextScene, transition: transition)
         nextScene.setParticipant(user)
-       
-       
         
+        print("initialise")
+
+        self.paused = true
         
     }
+
+    
+    deinit {
+        
+        print("deallocated")
+        
+    }
+
     
     
     
