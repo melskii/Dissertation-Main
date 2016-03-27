@@ -19,59 +19,43 @@ class UserViewController: UIViewController {
     
     var scene: UserScene!
     var userDelegate: UserDelegate?
-    var gameSceneDelegate: GameSceneDelegate?
     
     @IBOutlet weak var skview: SKView!
+    
 
     override func loadView() {
         
         super.loadView()
         
-        self.view = SKView(frame: self.view.frame)//[[SKView alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
+        print("init user view")
     }
   
-    
+//    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+    
+        
+        
+        
+    }
 
+    @IBAction func btnOKTouchDown(sender: AnyObject) {
         
-        self.view.backgroundColor = UIColor.redColor()
-        
-        skview = view as! SKView
-        skview.multipleTouchEnabled = false
-        
-        skview.showsFPS = true
-        skview.showsNodeCount = true
-        //skView.showsPhysics = true
-        skview.showsDrawCount = true
-        /* Sprite Kit applies additional optimizations to improve rendering performance */
-        skview.ignoresSiblingOrder = false
-        
-        //initialise first Scene
-        scene = UserScene(size: skview.bounds.size)
-        scene.scaleMode = .AspectFill
-        
-        //present the scene
-        scene.gameSceneDelegate = self.gameSceneDelegate
-        skview.presentScene(scene)
-        
+        returnToPreviousController()
         
     }
     
-    func setupLogin () {
+    @IBAction func btCancelTouchDown(sender: AnyObject) {
         
-        
-        
+        returnToPreviousController()
     }
     
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    func returnToPreviousController() {
         
-        //Update the users details at this point
-        self.userDelegate?.setUserDetals()
+        self.dismissViewControllerAnimated(true, completion: {});
         
+
     }
     
     

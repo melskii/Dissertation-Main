@@ -8,31 +8,16 @@
 
 import SpriteKit
 
-class HomeScene: MenuScene {
+class HomeScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate {
     
-
-   
- 
     override func didMoveToView(view: SKView) {
         
         super.didMoveToView(view)
+        
         self.name = "HomeScene"
+
         
+        self.backgroundColor = UIColor.redColor()
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
-        
-        /* Called when a touch begins */
-        let touch = touches
-        let location = touch.first!.locationInNode(self)
-        let node = self.nodeAtPoint(location)
-        
-        
-        menuNodeForTouch(location, node:node)
-        
-    }
-
-    
-
 }
