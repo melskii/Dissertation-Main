@@ -63,6 +63,16 @@
 		A0F3B79A1C7E2D87000A686A /* prgBckground.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F3B7991C7E2D87000A686A /* prgBckground.png */; };
 		A0F3B79C1C7E2F68000A686A /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3B79B1C7E2F68000A686A /* Levels.swift */; };
 		A0F3B79E1C7E355D000A686A /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3B79D1C7E355D000A686A /* Blocks.swift */; };
+		A0FD091F1CA85F4B00267669 /* EnterName.png in Resources */ = {isa = PBXBuildFile; fileRef = A0FD091E1CA85F4B00267669 /* EnterName.png */; };
+		A0FD09211CA85FC300267669 /* EnterNumber.png in Resources */ = {isa = PBXBuildFile; fileRef = A0FD09201CA85FC300267669 /* EnterNumber.png */; };
+		A0FD09271CA96A3100267669 /* NumberDetails.png in Resources */ = {isa = PBXBuildFile; fileRef = A0FD09261CA96A3100267669 /* NumberDetails.png */; };
+		A0FD09291CA97B2300267669 /* btnOK.png in Resources */ = {isa = PBXBuildFile; fileRef = A0FD09281CA97B2300267669 /* btnOK.png */; };
+		A0FD092B1CA97B2A00267669 /* btnCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = A0FD092A1CA97B2A00267669 /* btnCancel.png */; };
+		A0FD092D1CAADB1A00267669 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD092C1CAADB1A00267669 /* HomeViewController.swift */; };
+		A0FD09351CAADBF700267669 /* menuBackgroundwithText.png in Resources */ = {isa = PBXBuildFile; fileRef = A0FD09341CAADBF700267669 /* menuBackgroundwithText.png */; };
+		A0FD09371CAADC0D00267669 /* btnPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = A0FD09361CAADC0D00267669 /* btnPlay.png */; };
+		A0FD09391CAADC1300267669 /* btnHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = A0FD09381CAADC1300267669 /* btnHelp.png */; };
+		A0FD093B1CAADDF000267669 /* homebackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A0FD093A1CAADDF000267669 /* homebackground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +146,16 @@
 		A0F3B7991C7E2D87000A686A /* prgBckground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prgBckground.png; sourceTree = "<group>"; };
 		A0F3B79B1C7E2F68000A686A /* Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
 		A0F3B79D1C7E355D000A686A /* Blocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blocks.swift; sourceTree = "<group>"; };
+		A0FD091E1CA85F4B00267669 /* EnterName.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnterName.png; sourceTree = "<group>"; };
+		A0FD09201CA85FC300267669 /* EnterNumber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnterNumber.png; sourceTree = "<group>"; };
+		A0FD09261CA96A3100267669 /* NumberDetails.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NumberDetails.png; sourceTree = "<group>"; };
+		A0FD09281CA97B2300267669 /* btnOK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnOK.png; sourceTree = "<group>"; };
+		A0FD092A1CA97B2A00267669 /* btnCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnCancel.png; sourceTree = "<group>"; };
+		A0FD092C1CAADB1A00267669 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A0FD09341CAADBF700267669 /* menuBackgroundwithText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackgroundwithText.png; sourceTree = "<group>"; };
+		A0FD09361CAADC0D00267669 /* btnPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnPlay.png; sourceTree = "<group>"; };
+		A0FD09381CAADC1300267669 /* btnHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnHelp.png; sourceTree = "<group>"; };
+		A0FD093A1CAADDF000267669 /* homebackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homebackground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +202,7 @@
 			children = (
 				A04006811CA1C38E00B6916E /* UserViewController.swift */,
 				A0E87C5E1C7A358E0098BEE2 /* GameViewController.swift */,
+				A0FD092C1CAADB1A00267669 /* HomeViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -255,9 +276,7 @@
 				A0151AE11C83370A0078D3EF /* Scenes */,
 				A0151AE01C8336F00078D3EF /* Sections */,
 				A0E87C631C7A358E0098BEE2 /* Assets.xcassets */,
-				A0AD39B81CA83DB20088FB60 /* User.storyboard */,
-				A0E87C601C7A358E0098BEE2 /* Main.storyboard */,
-				A0E87C651C7A358E0098BEE2 /* LaunchScreen.storyboard */,
+				A0FD092E1CAADB3500267669 /* Storyboards */,
 				A0E87C681C7A358E0098BEE2 /* Info.plist */,
 				A0E87C801C7A3BBE0098BEE2 /* Supporting Files */,
 				A0F3B7871C7DCAB3000A686A /* TestScene.sks */,
@@ -277,6 +296,12 @@
 		A0E87C801C7A3BBE0098BEE2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A0FD09311CAADBC800267669 /* Home */,
+				A0FD092A1CA97B2A00267669 /* btnCancel.png */,
+				A0FD09281CA97B2300267669 /* btnOK.png */,
+				A0FD09261CA96A3100267669 /* NumberDetails.png */,
+				A0FD091E1CA85F4B00267669 /* EnterName.png */,
+				A0FD09201CA85FC300267669 /* EnterNumber.png */,
 				A0DFDBC51C9C64320056196A /* Menu */,
 				A0F1BE4C1C7F5CFF00C62870 /* Program */,
 				A0F1BE431C7F525F00C62870 /* Block */,
@@ -340,6 +365,27 @@
 				A0F3B7971C7DF5D0000A686A /* instBackground.png */,
 			);
 			name = Bckgrounds;
+			sourceTree = "<group>";
+		};
+		A0FD092E1CAADB3500267669 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A0AD39B81CA83DB20088FB60 /* User.storyboard */,
+				A0E87C601C7A358E0098BEE2 /* Main.storyboard */,
+				A0E87C651C7A358E0098BEE2 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		A0FD09311CAADBC800267669 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A0FD093A1CAADDF000267669 /* homebackground.png */,
+				A0FD09381CAADC1300267669 /* btnHelp.png */,
+				A0FD09361CAADC0D00267669 /* btnPlay.png */,
+				A0FD09341CAADBF700267669 /* menuBackgroundwithText.png */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,16 +481,23 @@
 				A04006751CA19A4900B6916E /* user_pressed.png in Resources */,
 				A0F1BE471C7F528900C62870 /* play.png in Resources */,
 				A0F1BE451C7F528300C62870 /* play_highlight.png in Resources */,
+				A0FD093B1CAADDF000267669 /* homebackground.png in Resources */,
 				A0DFDBC41C9C64290056196A /* menuBackground.png in Resources */,
 				A0151B061C834D150078D3EF /* program_objectc.png in Resources */,
 				A040067C1CA1AE4D00B6916E /* mute.png in Resources */,
 				A04006731CA199E600B6916E /* user.png in Resources */,
 				A031D46D1CA3277800CC24E7 /* user_disabled.png in Resources */,
 				A0151AFA1C834BA00078D3EF /* objectc.png in Resources */,
+				A0FD092B1CA97B2A00267669 /* btnCancel.png in Resources */,
+				A0FD09211CA85FC300267669 /* EnterNumber.png in Resources */,
+				A0FD091F1CA85F4B00267669 /* EnterName.png in Resources */,
 				A0151B031C834D150078D3EF /* program_left.png in Resources */,
+				A0FD09291CA97B2300267669 /* btnOK.png in Resources */,
 				A0151AEC1C834B350078D3EF /* objectA_highlight.png in Resources */,
 				A0F3B79A1C7E2D87000A686A /* prgBckground.png in Resources */,
 				A0151AE31C83410D0078D3EF /* bin.png in Resources */,
+				A0FD09371CAADC0D00267669 /* btnPlay.png in Resources */,
+				A0FD09391CAADC1300267669 /* btnHelp.png in Resources */,
 				A0151B021C834D150078D3EF /* program_down.png in Resources */,
 				A04006781CA1A67600B6916E /* home_pressed.png in Resources */,
 				A0151AF81C834BA00078D3EF /* objecta.png in Resources */,
@@ -455,6 +508,7 @@
 				A0151AEB1C834B350078D3EF /* left_highlight.png in Resources */,
 				A0F1BE4E1C7F5D3900C62870 /* program_up.png in Resources */,
 				A0151AF91C834BA00078D3EF /* objectb.png in Resources */,
+				A0FD09271CA96A3100267669 /* NumberDetails.png in Resources */,
 				A0E87C641C7A358E0098BEE2 /* Assets.xcassets in Resources */,
 				A0151B051C834D150078D3EF /* program_objectb.png in Resources */,
 				A0E87C621C7A358E0098BEE2 /* Main.storyboard in Resources */,
@@ -463,6 +517,7 @@
 				A0151AEF1C834B350078D3EF /* right_highlight.png in Resources */,
 				A0F1BE501C7F5D3F00C62870 /* program_play.png in Resources */,
 				A031D46B1CA3268F00CC24E7 /* home_disabled.png in Resources */,
+				A0FD09351CAADBF700267669 /* menuBackgroundwithText.png in Resources */,
 				A0F3B7881C7DCAB3000A686A /* TestScene.sks in Resources */,
 				A0F3B78D1C7DEFF0000A686A /* outBckground.png in Resources */,
 				A0F1BE491C7F5C6E00C62870 /* up_highlight.png in Resources */,
@@ -488,6 +543,7 @@
 				A0F1BE521C7F6CC100C62870 /* Program.swift in Sources */,
 				A04006821CA1C38F00B6916E /* UserViewController.swift in Sources */,
 				A04006801CA1B70800B6916E /* UserScene.swift in Sources */,
+				A0FD092D1CAADB1A00267669 /* HomeViewController.swift in Sources */,
 				A0DFDBC01C9B14910056196A /* HomeScene.swift in Sources */,
 				A0AD39B51CA6DE140088FB60 /* GameScene.swift in Sources */,
 				A0F3B79E1C7E355D000A686A /* Blocks.swift in Sources */,

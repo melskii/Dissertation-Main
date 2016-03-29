@@ -21,7 +21,8 @@ class UserViewController: UIViewController {
     var userDelegate: UserDelegate?
     
     @IBOutlet weak var skview: SKView!
-    
+    @IBOutlet var txtParticipant: UITextField!
+    @IBOutlet var txtName: UITextField!
 
     override func loadView() {
         
@@ -42,9 +43,52 @@ class UserViewController: UIViewController {
 
     @IBAction func btnOKTouchDown(sender: AnyObject) {
         
-        returnToPreviousController()
+        
+        if (txtParticipant.text != "")
+        {
+            let request = NSMutableURLRequest(URL: NSURL(string: "http://melbook.local/website/ipad/getData.php")!)
+            request.HTTPMethod = "POST"
+            let postString = "id=\(txtParticipant.text!)"
+            request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+            
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+                data, response, error in
+                
+                if error != nil {
+                    print("ERRORSTRING=\(error)")
+                    return
+                }
+                
+                print("response = \(response)")
+                
+                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print("RESPONSESTRING = \(responseString)")
+            
+                let values: NSArray = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+                
+                
+                print("values \(values)")
+                
+                let userArray = values as! [String]
+                
+                if userArray.contains("id") {
+                    
+                    print("can I get a whoop whoop");
+                    
+                }
+                
+                
+            }
+            task.resume()
+        }
+        
+        
+        
+//        returnToPreviousController()
         
     }
+    
+  
     
     @IBAction func btCancelTouchDown(sender: AnyObject) {
         
