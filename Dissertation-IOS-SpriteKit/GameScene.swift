@@ -38,7 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         
         self.backgroundColor = UIColor.whiteColor()
         self.width = frame.size.width
-        self.height = frame.size.height
+        self.height = frame.size.height - 54
         
         //Set up Instruction Blocks
         inst = setupInstructionBlocks()

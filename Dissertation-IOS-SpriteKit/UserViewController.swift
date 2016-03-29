@@ -17,7 +17,7 @@ protocol UserDelegate {
 
 class UserViewController: UIViewController {
     
-    var scene: UserScene!
+
     var userDelegate: UserDelegate?
     
     @IBOutlet weak var skview: SKView!
