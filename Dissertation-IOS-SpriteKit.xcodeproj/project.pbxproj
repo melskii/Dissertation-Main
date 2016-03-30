@@ -26,6 +26,7 @@
 		A0151B051C834D150078D3EF /* program_objectb.png in Resources */ = {isa = PBXBuildFile; fileRef = A0151AFF1C834D150078D3EF /* program_objectb.png */; };
 		A0151B061C834D150078D3EF /* program_objectc.png in Resources */ = {isa = PBXBuildFile; fileRef = A0151B001C834D150078D3EF /* program_objectc.png */; };
 		A0151B071C834D150078D3EF /* program_right.png in Resources */ = {isa = PBXBuildFile; fileRef = A0151B011C834D150078D3EF /* program_right.png */; };
+		A022B96E1CAC420000091B7F /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A022B96D1CAC420000091B7F /* ProgramCell.swift */; };
 		A031D46B1CA3268F00CC24E7 /* home_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = A031D46A1CA3268F00CC24E7 /* home_disabled.png */; };
 		A031D46D1CA3277800CC24E7 /* user_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = A031D46C1CA3277800CC24E7 /* user_disabled.png */; };
 		A04006731CA199E600B6916E /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = A04006721CA199E600B6916E /* user.png */; };
@@ -108,6 +109,7 @@
 		A0151AFF1C834D150078D3EF /* program_objectb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = program_objectb.png; sourceTree = "<group>"; };
 		A0151B001C834D150078D3EF /* program_objectc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = program_objectc.png; sourceTree = "<group>"; };
 		A0151B011C834D150078D3EF /* program_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = program_right.png; sourceTree = "<group>"; };
+		A022B96D1CAC420000091B7F /* ProgramCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
 		A031D46A1CA3268F00CC24E7 /* home_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_disabled.png; sourceTree = "<group>"; };
 		A031D46C1CA3277800CC24E7 /* user_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_disabled.png; sourceTree = "<group>"; };
 		A04006721CA199E600B6916E /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			children = (
 				A05814411CAC1BE1001627B8 /* MaterialView.swift */,
 				A058144B1CAC239E001627B8 /* MaterialTextField.swift */,
+				A022B96D1CAC420000091B7F /* ProgramCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -293,9 +296,9 @@
 			children = (
 				A05814441CAC1C23001627B8 /* Util */,
 				A0E87C581C7A358E0098BEE2 /* AppDelegate.swift */,
+				A05814431CAC1BE6001627B8 /* View */,
 				A031D4691CA2EE9600CC24E7 /* Models */,
 				A031D4681CA2EE8500CC24E7 /* ViewControllers */,
-				A05814431CAC1BE6001627B8 /* View */,
 				A0151AE11C83370A0078D3EF /* Scenes */,
 				A0151AE01C8336F00078D3EF /* Sections */,
 				A0E87C631C7A358E0098BEE2 /* Assets.xcassets */,
@@ -569,6 +572,7 @@
 				A0F1BE521C7F6CC100C62870 /* Program.swift in Sources */,
 				A04006821CA1C38F00B6916E /* UserViewController.swift in Sources */,
 				A05814421CAC1BE1001627B8 /* MaterialView.swift in Sources */,
+				A022B96E1CAC420000091B7F /* ProgramCell.swift in Sources */,
 				A0FD092D1CAADB1A00267669 /* HomeViewController.swift in Sources */,
 				A0DFDBC01C9B14910056196A /* HomeScene.swift in Sources */,
 				A0AD39B51CA6DE140088FB60 /* GameScene.swift in Sources */,

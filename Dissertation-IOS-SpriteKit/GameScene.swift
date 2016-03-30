@@ -6,6 +6,10 @@
 //  Copyright © 2016 Mel Schatynski. All rights reserved.
 //
 
+
+
+
+
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate {
@@ -25,6 +29,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
     var progscale: CGFloat = 0.6
     
     var width, height: CGFloat!
+    
+    var gameSceneDelegate: GameDelegate? //Delegate is in GameViewController
     
     override func didMoveToView(view: SKView) {
         
@@ -73,6 +79,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         let y = self.height - (body.size.height * 0.5)
         body.position = CGPoint(x: x, y: y)
         
+        
+        
         body.name = "instructionBackground"
         
         
@@ -87,6 +95,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         var i = 0
         let inst = levelData.getInstructions()
         let blocksize = inst.first?.block.size
+        
+        
+       
         var comp:Int = 0
         
         if blocksize != nil {
@@ -269,7 +280,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
                     let animation = SKAction.animateWithTextures(texture, timePerFrame: 0.2)
                     node.runAction(animation)
                     
-                    addProgramBlock(block!)
+                    self.gameSceneDelegate?.appendProgramFlowBlock(block!)
                     
                     
                     
@@ -305,37 +316,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
     //        print("hello")
     //    }
     
-    private func addProgramBlock(instruction: Block) {
-        
-        
-        //default anchor point is in Spritekit is (0.5, 0.5) which is center of the node/sprite (0,0)
-        //set the new co-ordinates to work from.
-        //work out the initial values for everything
-        
-        let instance: Program = instruction.press(progscale, id: programs.count)
-        
-        if (progscale >= 0.5)
-        {
-            
-            
-            programs.append(instance)
-            
-            if (positionProgram(programs.last!, id: instance.id)) {
-                
-                
-                prog.addChild(instance.program)
-                
-                
-                
-            }
-                
-            else
-            {
-                programs.removeLast()
-            }
-            
-        }
-    }
+   
     
     private func scaleProgram(scale:CGFloat) {
         
@@ -440,3 +421,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
 
     
 }
+

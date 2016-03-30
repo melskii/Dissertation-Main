@@ -21,15 +21,7 @@ class HomeViewController: UIViewController {
         
         
      
-        for family: String in UIFont.familyNames()
-        {
-            print("family: \(family)")
-            for names: String in UIFont.fontNamesForFamilyName(family)
-            {
-                print("== \(names)")
-            }
-        }
-        
+     
     }
     
    

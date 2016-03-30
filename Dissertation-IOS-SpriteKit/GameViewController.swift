@@ -9,7 +9,9 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, UserDelegate {
+
+
+class GameViewController: UIViewController, UIGestureRecognizerDelegate, UICollectionViewDelegate, GameDelegate {
     
     var scene: GameScene!
     
@@ -25,32 +27,43 @@ class GameViewController: UIViewController, UserDelegate {
     
     @IBOutlet weak var skview: SKView!
     @IBOutlet weak var gameContainer: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    private var program: [Block] = []
+    
+    
+    private var lPG: UILongPressGestureRecognizer!
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+//        
+//        for _ in 0...30 {
+//            
+//            program.append(Play())
+//            
+//        }
+//        
+//        print(program)
+//        
+
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        
+        
+        lPG = UILongPressGestureRecognizer(target: self, action: "handleLongGesture:")
+        
+        lPG.minimumPressDuration = 0.0
+        lPG.delaysTouchesBegan = true
+        lPG.delegate = self
+        self.collectionView.addGestureRecognizer(lPG)
+    
     
         _GAMEHEIGHT = self.view!.frame.height - MENU_HEIGHT
         
         gameView  = SKView(frame: CGRectMake(0, MENU_HEIGHT, self.view!.frame.width, _GAMEHEIGHT))
      
-        
-//        if let scene = GameScene(size: gameView.bounds.size) as? GameScene {
-//            
-//            let skview = self.view as! SKView
-//            self.gameScene = scene
-//            
-//            gameView.ignoresSiblingOrder = true
-//            scene.scaleMode = .AspectFill
-//            
-////            self.view!.addSubview(gameView)
-////            self.view!.bringSubviewToFront(gameView)
-//            
-////            gameView.allowsTransparency = true
-//            scene.backgroundColor = UIColor.clearColor()
-//            gameView.presentScene(scene)
-//            
-//        }
+
 
         
         skview = view as! SKView
@@ -62,6 +75,8 @@ class GameViewController: UIViewController, UserDelegate {
         
         scene = GameScene(size: skview.bounds.size)
         scene.scaleMode = .AspectFit
+        
+        scene.gameSceneDelegate = self
         
         skview.presentScene(scene)
         
@@ -83,18 +98,21 @@ class GameViewController: UIViewController, UserDelegate {
         
     }
     
-  
-    
     /*
-        UserDelegate methods
+        GameDelegate methods
     */
     
-    func setUserDetals() {
+    func appendProgramFlowBlock(newblock: Block) {
+        
+        
+        let index = program.count == 0 ? 0 : program.count - 1
+ 
+        program.append(newblock)
+        
+        self.collectionView?.reloadData()
+        
         
     }
-
-    
- 
     
     /* 
         Variables within the Scenes
@@ -131,45 +149,84 @@ class GameViewController: UIViewController, UserDelegate {
     }
     
     
-    
-    
-    /*  override func viewDidLoad() {
-    
-    super.viewDidLoad()
-    
-    
-    print("hello\(view)")
-    
-    skview = view as! SKView
-    setupDebugTools()
-    
-    /* Sprite Kit applies additional optimizations to improve rendering performance */
-    skview.ignoresSiblingOrder = false
-    skview.multipleTouchEnabled = false
-    
-    
-    //initialise userprofile
-    user = UserModel()
-    //initialise first Scene
-    scene = LevelScene(size: skview.bounds.size)
-    scene.scaleMode = .AspectFill
-    
-    //present the scene
-    //        skview.presentScene(scene)
-    
-    
-    menuscene = MenuScene(size: skview.bounds.size)
-    menuscene.scaleMode = .AspectFill
-    
-    
-    menuscene.gameSceneDelegate = self
-    
-    //present the scene
-    skview.presentScene(menuscene)
-    
-    
-    
-    }*/
+    /*
+        Make the UICollectionView Re-Order
+    */
+    func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        
+        switch(gesture.state) {
+            
+        case UIGestureRecognizerState.Began:
+            guard let selectedIndexPath = self.collectionView.indexPathForItemAtPoint(gesture.locationInView(self.collectionView)) else {
+                break
+            }
+            collectionView.beginInteractiveMovementForItemAtIndexPath(selectedIndexPath)
+        case UIGestureRecognizerState.Changed:
+            collectionView.updateInteractiveMovementTargetPosition(gesture.locationInView(gesture.view!))
+        case UIGestureRecognizerState.Ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
+        }
+    }
     
     
 }
+
+
+extension GameViewController: UICollectionViewDataSource {
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return program.count
+    }
+    
+
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        if let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("ProgramCell", forIndexPath: indexPath) as? ProgramCell
+        {
+            
+            let b = program[indexPath.row]
+            
+            cell.configureCell(b)
+            
+            return cell
+        }
+            
+        else {
+            return UICollectionViewCell()
+        }
+        
+    }
+    
+    func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        
+        let temp = program.removeAtIndex(sourceIndexPath.item)
+        program.insert(temp, atIndex: destinationIndexPath.item)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        
+        return CGSizeMake (70, 70)
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+}
+
+protocol GameDelegate {
+    
+    func appendProgramFlowBlock (newblock: Block)
+    
+}
+
+
+
+
+
+

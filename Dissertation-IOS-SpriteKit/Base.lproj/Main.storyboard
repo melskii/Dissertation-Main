@@ -6,6 +6,9 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </mutableArray>
         <mutableArray key="Si Kancil.ttf">
             <string>SiKancil</string>
             <string>SiKancil</string>
@@ -59,6 +62,47 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Vw-tl-Sf6">
+                                <rect key="frame" x="301" y="66" width="653" height="325"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="653" id="Mpx-0a-dVe"/>
+                                    <constraint firstAttribute="height" constant="325" id="w51-8g-fr9"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="qpd-RJ-LSJ">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" reuseIdentifier="ProgramCell" id="DP0-jY-G3R" customClass="ProgramCell" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="program_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="foX-xF-mc4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="foX-xF-mc4" secondAttribute="bottom" id="HMc-hx-9LP"/>
+                                            <constraint firstItem="foX-xF-mc4" firstAttribute="leading" secondItem="DP0-jY-G3R" secondAttribute="leading" id="epM-gT-EgP"/>
+                                            <constraint firstItem="foX-xF-mc4" firstAttribute="top" secondItem="DP0-jY-G3R" secondAttribute="top" id="fP5-c7-7KJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="foX-xF-mc4" secondAttribute="trailing" id="jbv-WJ-kdn"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="thumbImg" destination="foX-xF-mc4" id="GD7-9w-7An"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
@@ -66,8 +110,10 @@
                             <constraint firstItem="6p8-bs-tis" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="93d-uf-Fff"/>
                             <constraint firstAttribute="trailing" secondItem="6p8-bs-tis" secondAttribute="trailing" id="H0Y-7P-eHe"/>
                             <constraint firstItem="6p8-bs-tis" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="Ray-36-veg"/>
+                            <constraint firstItem="7Vw-tl-Sf6" firstAttribute="top" secondItem="6p8-bs-tis" secondAttribute="bottom" constant="10" id="cNN-gB-IfF"/>
                             <constraint firstItem="6p8-bs-tis" firstAttribute="top" secondItem="1TK-A0-AlD" secondAttribute="bottom" id="ft8-xE-Hjl"/>
                             <constraint firstAttribute="trailing" secondItem="1TK-A0-AlD" secondAttribute="trailing" constant="5" id="pjc-oR-t3a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Vw-tl-Sf6" secondAttribute="trailing" constant="50" id="u5B-Bl-aVk"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -77,6 +123,9 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="collectionView" destination="7Vw-tl-Sf6" id="Pyk-Z2-lEj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
@@ -252,22 +301,22 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xCI-in-auk" userLabel="numberView" customClass="MaterialView" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target">
                                 <rect key="frame" x="199" y="373" width="676" height="195"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="PMn-Um-pxH">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="PMn-Um-pxH">
                                         <rect key="frame" x="20" y="20" width="634" height="160"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter Participant Number" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzZ-BV-Hc1" userLabel="Enter Number">
-                                                <rect key="frame" x="0.0" y="0.0" width="634" height="67"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Participant Number" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzZ-BV-Hc1" userLabel="Enter Number">
+                                                <rect key="frame" x="0.0" y="0.0" width="634" height="59"/>
                                                 <fontDescription key="fontDescription" name="SiKancil" family="Si Kancil" pointSize="57"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is the participant number you have been provided at the beginning of the study. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfN-rb-yAN">
-                                                <rect key="frame" x="0.0" y="82" width="634" height="33"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the participant number you have been provided at the beginning of the study. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfN-rb-yAN">
+                                                <rect key="frame" x="0.0" y="74" width="634" height="41"/>
                                                 <fontDescription key="fontDescription" name="SiKancil" family="Si Kancil" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0TL-8r-M8t" userLabel="txtParticipant" customClass="MaterialTextField" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0TL-8r-M8t" userLabel="txtParticipant" customClass="MaterialTextField" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="130" width="634" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="CUs-u9-PPk"/>
@@ -388,9 +437,10 @@
         <image name="menuBackground.png" width="3069" height="165"/>
         <image name="menuBackgroundwithText.png" width="3072" height="168"/>
         <image name="outBckground.png" width="2048" height="886"/>
+        <image name="program_play.png" width="126" height="126"/>
         <image name="user.png" width="168" height="144"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xap-0R-8mL"/>
+        <segue reference="eW4-pJ-HRy"/>
     </inferredMetricsTieBreakers>
 </document>
