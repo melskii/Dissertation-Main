@@ -8,13 +8,27 @@
 
 import UIKit
 import SpriteKit
+import Darwin
 
 class HomeViewController: UIViewController {
     
     
+    @IBOutlet weak var btnExit: UIButton!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        
+     
+        for family: String in UIFont.familyNames()
+        {
+            print("family: \(family)")
+            for names: String in UIFont.fontNamesForFamilyName(family)
+            {
+                print("== \(names)")
+            }
+        }
         
     }
     
@@ -24,5 +38,12 @@ class HomeViewController: UIViewController {
     */
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+
+    @IBAction func btnExitTouchDown() {
+        
+    
+        exit(0)
+        
     }
 }

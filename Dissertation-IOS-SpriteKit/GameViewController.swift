@@ -20,7 +20,7 @@ class GameViewController: UIViewController, UserDelegate {
     var userView: UserViewController!
     var audio: Bool = true
     
-    let _MENUHEIGHT: CGFloat = 56
+  
     var _GAMEHEIGHT: CGFloat!
     
     @IBOutlet weak var skview: SKView!
@@ -30,9 +30,9 @@ class GameViewController: UIViewController, UserDelegate {
         
         super.viewDidLoad()
     
-        _GAMEHEIGHT = self.view!.frame.height - _MENUHEIGHT
+        _GAMEHEIGHT = self.view!.frame.height - MENU_HEIGHT
         
-        gameView  = SKView(frame: CGRectMake(0, _MENUHEIGHT, self.view!.frame.width, _GAMEHEIGHT))
+        gameView  = SKView(frame: CGRectMake(0, MENU_HEIGHT, self.view!.frame.width, _GAMEHEIGHT))
      
         
 //        if let scene = GameScene(size: gameView.bounds.size) as? GameScene {

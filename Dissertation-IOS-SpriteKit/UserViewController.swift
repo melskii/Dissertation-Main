@@ -35,6 +35,8 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+//        txtParticipant.
     
         
         
@@ -83,6 +85,12 @@ class UserViewController: UIViewController {
                         return;
                     }
                 
+                
+                if active == "1" {
+                    
+                    self.txtParticipant.text = nil
+                    
+                }
                 print("ITEM \(item)")
                 print("active?: \(active)")
                 
