@@ -101,12 +101,11 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     /*
         GameDelegate methods
     */
-    
     func appendProgramFlowBlock(newblock: Block) {
         
         
         let index = program.count == 0 ? 0 : program.count - 1
- 
+        
         program.append(newblock)
         
         self.collectionView?.reloadData()
@@ -114,7 +113,109 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
     }
     
-    /* 
+    
+    
+    @IBAction func playTouchDown(sender: AnyObject) {
+        
+        validProgramFlow()
+    }
+    
+    func validProgramFlow() {
+        
+        var array = [Block]()
+        var valid = true
+        var prev:Block = Block()
+        var object:Object? = nil
+        var index = 0
+        
+        //Not currently looping in order
+        for cell in collectionView.visibleCells() as [UICollectionViewCell] {
+            
+            if let p = cell as? ProgramCell {
+            
+                let block = p.block
+                print(block)
+                
+                if index == 0 {
+                    
+                    valid = block is Play ? true : false
+                    
+                }
+                
+                else {
+                    
+                    if block is Object {
+                        
+                        prev = block
+                        object = block as? Object
+                        
+                    }
+                    
+                    else if block is Action {
+                        
+                        if object == nil {
+                            
+                            valid = false
+                            
+                        }
+                        
+                        else {
+                            
+                            prev = block
+                            
+                        }
+                    }
+                    
+                    else if block is Control {
+                        
+                        if !(prev is Action) {
+                            
+                            valid = false
+                            
+                        }
+                        
+                        else {
+                            
+                            prev = block
+                            
+                        }
+                        
+                    }
+                    
+                    else {
+                        valid = false
+                    }
+                    
+                }
+                
+                
+                if valid == false {
+                    return
+                }
+                
+                    
+                index++
+    
+                
+            }
+            
+            
+        }
+        
+        if prev is Object {
+            
+            valid = false
+            
+        }
+        
+        print("valid \(valid)")
+        
+        //add whole lot to the array and then log if the user is active.
+        
+        
+    }
+    
+    /*
         Variables within the Scenes
     */
     

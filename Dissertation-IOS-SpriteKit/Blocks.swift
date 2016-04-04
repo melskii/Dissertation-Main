@@ -77,6 +77,18 @@ class BlockSprite: SKSpriteNode {
     
 }
 
+/*
+Split into subclasses for the parsing
+*/
+
+class Object: Block {
+    
+}
+
+class Action: Block {
+    
+}
+
 class Play: Block {
     
     override init() {
@@ -88,55 +100,13 @@ class Play: Block {
   
 }
 
-class Up: Block {
-    
-    override init() {
-        
-        super.init()
-        setup("up")
-        
-    }
-    
+class Control: Block {
     
 }
 
-class Down: Block {
-    
-    override init() {
-        
-        super.init()
-        setup("down")
-        
-    }
-    
-    
-}
 
-class Left: Block {
-    
-    override init() {
-        
-        super.init()
-        setup("left")
-        
-    }
-    
-    
-}
-
-class Right: Block {
-    
-    override init() {
-        
-        super.init()
-        setup("right")
-        
-    }
-    
-    
-}
-
-class ObjectA: Block {
+//Objects
+class ObjectA: Object {
     
     override init() {
         
@@ -148,7 +118,7 @@ class ObjectA: Block {
     
 }
 
-class ObjectB: Block {
+class ObjectB: Object {
     
     override init() {
         
@@ -160,7 +130,7 @@ class ObjectB: Block {
     
 }
 
-class ObjectC: Block {
+class ObjectC: Object {
     
     override init() {
         
@@ -171,6 +141,84 @@ class ObjectC: Block {
     
     
 }
+
+
+//Action
+class Up: Action {
+    
+    override init() {
+        
+        super.init()
+        setup("up")
+        
+    }
+    
+    
+}
+
+class Down: Action {
+    
+    override init() {
+        
+        super.init()
+        setup("down")
+        
+    }
+    
+    
+}
+
+class Left: Action {
+    
+    override init() {
+        
+        super.init()
+        setup("left")
+        
+    }
+    
+    
+}
+
+class Right: Action {
+    
+    override init() {
+        
+        super.init()
+        setup("right")
+        
+    }
+    
+    
+}
+
+//Controls
+class Repeat: Control {
+    
+    override init() {
+        
+        super.init()
+        setup("repeat")
+        
+    }
+    
+    
+}
+
+class Wait: Control {
+    
+    override init() {
+        
+        super.init()
+        setup("wait")
+        
+    }
+    
+    
+}
+
+
+
 
 
 

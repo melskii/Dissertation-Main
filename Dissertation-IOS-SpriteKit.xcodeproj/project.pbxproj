@@ -204,7 +204,7 @@
 			name = Scenes;
 			sourceTree = "<group>";
 		};
-		A031D4681CA2EE8500CC24E7 /* ViewControllers */ = {
+		A031D4681CA2EE8500CC24E7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				A08CFF2C1CAB16D300D3B7AD /* SubViewControllers */,
@@ -212,7 +212,7 @@
 				A0E87C5E1C7A358E0098BEE2 /* GameViewController.swift */,
 				A0FD092C1CAADB1A00267669 /* HomeViewController.swift */,
 			);
-			name = ViewControllers;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		A031D4691CA2EE9600CC24E7 /* Models */ = {
@@ -298,7 +298,7 @@
 				A0E87C581C7A358E0098BEE2 /* AppDelegate.swift */,
 				A05814431CAC1BE6001627B8 /* View */,
 				A031D4691CA2EE9600CC24E7 /* Models */,
-				A031D4681CA2EE8500CC24E7 /* ViewControllers */,
+				A031D4681CA2EE8500CC24E7 /* Controller */,
 				A0151AE11C83370A0078D3EF /* Scenes */,
 				A0151AE01C8336F00078D3EF /* Sections */,
 				A0E87C631C7A358E0098BEE2 /* Assets.xcassets */,

@@ -13,3 +13,4 @@ import UIKit
 
 let SHADOW_COLOUR: CGFloat = 157.0/255.00
 let MENU_HEIGHT: CGFloat = 56
+let _user: UserModel = UserModel()
