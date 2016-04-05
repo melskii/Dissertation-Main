@@ -18,6 +18,10 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
 
     var audio: Bool = true
     
+    //Variables to delete Block from UICollectionView
+    var deleteCell: UICollectionViewCell?
+    var deleteBlock: Bool = false
+    
     
     @IBOutlet weak var skview: SKView!
     @IBOutlet weak var gameContainer: UIView!
@@ -117,8 +121,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             
             if let block = cell as? Block {
             
-//                let block = p.block
-                print(block)
                 
                 if index == 0 {
                     
@@ -240,29 +242,78 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     */
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {
         
+        
+        
         switch(gesture.state) {
+            
             
         case UIGestureRecognizerState.Began:
             guard let selectedIndexPath = self.collectionView.indexPathForItemAtPoint(gesture.locationInView(self.collectionView))
             else {
+                
                 break
             }
             collectionView.beginInteractiveMovementForItemAtIndexPath(selectedIndexPath)
+            deleteCell = collectionView.cellForItemAtIndexPath(selectedIndexPath)
+            
             
         case UIGestureRecognizerState.Changed:
-            collectionView.updateInteractiveMovementTargetPosition(gesture.locationInView(gesture.view!))
+            
+            
+            let location = gesture.locationInView(gesture.view!)
+           
+            
+            if (deleteCell != nil && (location.x >= 660 && location.y >= 288))
+            {
+                print("out of bounds")
+                
+                deleteBlock = true
+                scene.animateBin()
+                
+                
+            }
+            else {
+                collectionView.updateInteractiveMovementTargetPosition(location)
+            }
+            
+            
             
         case UIGestureRecognizerState.Ended:
+      
             collectionView.endInteractiveMovement()
             
+            if deleteBlock {
+                
+                removeCollectionCell()
+                
+                deleteBlock = false
+                deleteCell = nil
+            }
+            
         default:
+            
             collectionView.cancelInteractiveMovement()
             
         }
     }
     
+    func removeCollectionCell() {
+        
+        if deleteCell != nil {
+            
+            let path = collectionView.indexPathForCell(deleteCell!)
+            
+            program.removeAtIndex(path!.row)
+            collectionView.deleteItemsAtIndexPaths([path!])
+        }
+        
+    }
+    
+    
+    
     
 }
+
 
 
 extension GameViewController: UICollectionViewDataSource {
@@ -282,7 +333,7 @@ extension GameViewController: UICollectionViewDataSource {
             let b = program[indexPath.row]
             
             cell.configureCell(b)
-            
+                        
             return cell
         }
             
@@ -293,6 +344,7 @@ extension GameViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+    
         
         let temp = program.removeAtIndex(sourceIndexPath.item)
         program.insert(temp, atIndex: destinationIndexPath.item)
@@ -307,6 +359,7 @@ extension GameViewController: UICollectionViewDataSource {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
+    
     
 }
 

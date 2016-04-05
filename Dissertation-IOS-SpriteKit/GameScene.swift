@@ -8,8 +8,6 @@
 
 
 
-
-
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate {
@@ -31,6 +29,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
     var width, height: CGFloat!
     
     var gameSceneDelegate: GameDelegate? //Delegate is in GameViewController
+    
+    var binSprite: SKSpriteNode!
     
     override func didMoveToView(view: SKView) {
         
@@ -162,16 +162,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         pointer = CGPointMake(-(body.size.width/2), body.size.height/2)
         
         
-        let bin = SKSpriteNode(imageNamed: "bin")
-        bin.name = "bin"
+        binSprite = SKSpriteNode(imageNamed: "bin1")
+        binSprite.name = "bin"
+        
+        binSprite.xScale = 0.15
+        binSprite.yScale = 0.15
         
         //opposite corner of the initial block
-        bin.position = CGPointMake((body.size.width/2), -(body.size.height/2))
-        bin.position.x -= (bin.size.width * 0.7)
-        bin.position.y += (bin.size.height * 0.7)
+        binSprite.position = CGPointMake((body.size.width/2), -(body.size.height/2))
+        binSprite.position.x -= (binSprite.size.width * 0.7)
+        binSprite.position.y += (binSprite.size.height * 0.7)
         
         
-        body.addChild(bin)
+        body.addChild(binSprite)
         
         
         return body
@@ -188,6 +191,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         body.position = CGPoint(x: (body.size.width * 0.5), y: (body.size.height * 0.5))
         body.name = "outputBackground"
         
+        print(body)
         
         return body
         
@@ -197,21 +201,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         /* Called before each frame is rendered */
     }
     
-    func didBeginContact(contact: SKPhysicsContact) {
-        //this gets called automatically when two objects begin contact with each other
-        
-        let bodyA = contact.bodyA
-        let bodyB = contact.bodyB
-        
-        
-        
-        
-        
-    }
-    
-    func didEndContact(contact: SKPhysicsContact) {
-        //this gets called automatically when two objects end contact with each other
-    }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
@@ -235,9 +224,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
             let location = touch.locationInNode(self)
             let node = self.nodeAtPoint(location)
             
-            
-            print (node.name)
-            
             selectNodeForTouch(location, node: node, touch: touch)
             
             
@@ -256,8 +242,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         }
         
     }
+ 
     
-    func selectNodeForTouch(var touchLocation: CGPoint, node: SKNode, touch: UITouch?) {
+    func selectNodeForTouch(let touchLocation: CGPoint, node: SKNode, touch: UITouch?) {
         
         
         let touchedNode = node
@@ -288,135 +275,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
             }
             
         }
+
+        else if touchedNode.name == "bin" {
             
-        else if touchedNode is ProgramSprite {
-            
-            //            node.zPosition = 15
-            
-            if !(touch == nil){
-                
-                
-                touchLocation = touch!.locationInNode(prog)
-                
-                node.position = touchLocation
-                
-                
-                print(touchLocation)
-                
-            }
-            
-            
+            animateBin()
             
         }
         
     }
     
-    //    func didBeginContact(contact: SKPhysicsContact) {
-    //        print("hello")
-    //    }
+    func animateBin () {
+        
+        let binAnimateAtlas: SKTextureAtlas = SKTextureAtlas(named: "bin")
+        
+        let images = binAnimateAtlas.textureNames.count;
+        
+        var textures: [SKTexture] = []
+        
+        for (var i = images; i >= 1; i--) {
+            
+            let texture = binAnimateAtlas.textureNamed(String(format:"bin%d", i))
+            
+            textures.append(texture)
+            
+        }
+        
+        let animateAction = SKAction.animateWithTextures(textures, timePerFrame: 0.12);
+        
+        
+        binSprite.runAction(animateAction)
+
+        
+    }
     
    
-    
-    private func scaleProgram(scale:CGFloat) {
-        
-        pointer = CGPointMake(-(prog.size.width/2), prog.size.height/2)
-        
-        for b in programs {
-            
-            let node = b.program
-            node.setScale(scale)
-            
-            let scaleDown = SKAction.scaleTo(scale, duration: 0.2)
-            node.runAction(scaleDown, withKey: "drop")
-            
-            print(node.name)
-            
-            
-            
-            positionProgram(b, id: b.id)
-            
-            //            b.setPosition(pointer)
-            
-        }
-        
-    }
-    
-    private func positionProgram(block: Program, id: Int) -> Bool  {
-        
-        //        var position = position
-        let padding: CGFloat = 10
-        let blocksize = block.program.size //block = program block
-        
-        if id == 0 {
-            
-            pointer.x += (blocksize.width * 0.7)
-            pointer.y -= (blocksize.height * 0.7)
-            
-            block.setPosition(pointer)
-            
-            
-            
-            
-        }
-            
-            //(blocksize.width + bound + padding) > prog.width
-        else if ((blocksize.width + bounds + padding) > (prog.size.width))
-        {
-            
-            if ((blocksize.height + boundsy + padding) > (prog.size.height))
-            {
-                
-                
-                progscale = progscale - 0.1
-                
-                
-                if (progscale >= 0.5)
-                {
-                    //reset scale
-                    boundsy = 100
-                    bounds = 200
-                    scaleProgram(progscale)
-                    
-                    
-                }
-                    
-                else {
-                    return false
-                }
-            }
-                
-                
-            else {
-                
-                pointer.x = -(prog.size.width/2) + (blocksize.width * 0.7)  //reset x to the left hand side
-                pointer.y -= blocksize.height + padding //move y along and leave padding
-                
-                bounds = 200
-                boundsy = boundsy + blocksize.height
-                
-                block.setPosition(pointer)
-                
-                
-            }
-            
-        }
-            
-            
-        else {
-            
-            pointer.x += blocksize.width + padding  //move x right and leave padding
-            
-            bounds = bounds + blocksize.width
-            
-            block.setPosition(pointer)
-            
-        }
-        
-        return true
-        
-        
-        
-    }
 
     
 }

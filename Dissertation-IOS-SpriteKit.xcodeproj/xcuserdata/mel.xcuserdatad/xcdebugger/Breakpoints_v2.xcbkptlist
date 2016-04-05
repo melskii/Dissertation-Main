@@ -9,22 +9,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dissertation-IOS-SpriteKit/MenuScene.swift"
-            timestampString = "480443584.527932"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "didMoveToView(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/ControlsScene.swift"
             timestampString = "480706083.990153"
             startingColumnNumber = "9223372036854775807"
@@ -90,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481557911.279012"
+            timestampString = "481574515.075091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "GameViewController"
             landmarkType = "3">
             <Locations>
@@ -183,11 +167,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481557911.279012"
+            timestampString = "481574515.075091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -199,11 +183,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481560954.704102"
+            timestampString = "481575980.787612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -215,11 +199,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481560954.704102"
+            timestampString = "481575980.787612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "GameViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -231,11 +215,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481557911.279012"
+            timestampString = "481574515.075091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -247,11 +231,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481560954.704102"
+            timestampString = "481575980.787612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "collectionView(_:numberOfItemsInSection:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -263,11 +247,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameScene.swift"
-            timestampString = "481548722.267047"
+            timestampString = "481575980.787612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "selectNodeForTouch(_:node:touch:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -279,11 +263,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameScene.swift"
-            timestampString = "481548722.267047"
+            timestampString = "481575980.787612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
             landmarkName = "selectNodeForTouch(_:node:touch:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -294,30 +278,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481134064.725444"
+            filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
+            timestampString = "481575980.787612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "validUser(_:)"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "handleLongGesture(_:)"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481557911.279012"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "UserModel"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -327,12 +295,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481557911.279012"
+            timestampString = "481575980.787612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "validProgramFlow()"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "handleLongGesture(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -342,13 +310,61 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481558148.93782"
+            filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
+            timestampString = "481575980.787612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "setProgramFlow(_:type:)"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
+            landmarkName = "collectionView(_:moveItemAtIndexPath:toIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
+            timestampString = "481575980.787612"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "handleLongGesture(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
+            timestampString = "481575980.787612"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
+            landmarkName = "removeCollectionCell()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
+            timestampString = "481575980.787612"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "removeCollectionCell()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -358,78 +374,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481559122.424621"
+            filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
+            timestampString = "481575980.787612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "setProgramFlow(_:type:)"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "validProgramFlow()"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481558544.508894"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "setProgramFlow(_:type:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481560782.559696"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "setProgramFlow(_:type:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dissertation_IOS_SpriteKit.UserModel.setProgramFlow (Dissertation_IOS_SpriteKit.UserModel)(Swift.Array&lt;Dissertation_IOS_SpriteKit.Block&gt;, type : Swift.String) -&gt; ()"
-                  moduleName = "Dissertation-IOS-SpriteKit"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mel/Google%20Drive/Uni/Year%203/Dissertation/Project/Dissertation-IOS-SpriteKit/Dissertation-IOS-SpriteKit/UserModel.swift"
-                  timestampString = "481560955.721836"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "1949">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Dissertation_IOS_SpriteKit.UserModel.(setProgramFlow (Dissertation_IOS_SpriteKit.UserModel) -&gt; (Swift.Array&lt;Dissertation_IOS_SpriteKit.Block&gt;, type : Swift.String) -&gt; ()).(closure #1)"
-                  moduleName = "Dissertation-IOS-SpriteKit"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mel/Google%20Drive/Uni/Year%203/Dissertation/Project/Dissertation-IOS-SpriteKit/Dissertation-IOS-SpriteKit/UserModel.swift"
-                  timestampString = "481560955.722023"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

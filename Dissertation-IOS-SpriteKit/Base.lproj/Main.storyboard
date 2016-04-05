@@ -62,11 +62,18 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Vw-tl-Sf6">
-                                <rect key="frame" x="301" y="66" width="653" height="325"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYs-6a-mIs" userLabel="btnPlay">
+                                <rect key="frame" x="482" y="436" width="46" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="D8h-g5-cJ0"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Vw-tl-Sf6">
+                                <rect key="frame" x="301" y="64" width="653" height="325"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="653" id="Mpx-0a-dVe"/>
+                                    <constraint firstAttribute="width" constant="638" id="Mpx-0a-dVe"/>
                                     <constraint firstAttribute="height" constant="325" id="w51-8g-fr9"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="qpd-RJ-LSJ">
@@ -103,13 +110,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYs-6a-mIs" userLabel="btnPlay">
-                                <rect key="frame" x="482" y="436" width="46" height="30"/>
-                                <state key="normal" title="Play"/>
-                                <connections>
-                                    <action selector="playTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="D8h-g5-cJ0"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
@@ -120,7 +120,7 @@
                             <constraint firstItem="7Vw-tl-Sf6" firstAttribute="top" secondItem="6p8-bs-tis" secondAttribute="bottom" constant="10" id="cNN-gB-IfF"/>
                             <constraint firstItem="6p8-bs-tis" firstAttribute="top" secondItem="1TK-A0-AlD" secondAttribute="bottom" id="ft8-xE-Hjl"/>
                             <constraint firstAttribute="trailing" secondItem="1TK-A0-AlD" secondAttribute="trailing" constant="5" id="pjc-oR-t3a"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7Vw-tl-Sf6" secondAttribute="trailing" constant="50" id="u5B-Bl-aVk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Vw-tl-Sf6" secondAttribute="trailing" constant="65" id="u5B-Bl-aVk"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

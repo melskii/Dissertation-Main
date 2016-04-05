@@ -28,7 +28,6 @@ class UserViewController: UIViewController {
         
         super.loadView()
         
-        print("init user view")
     }
   
 //    

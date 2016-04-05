@@ -63,8 +63,6 @@ public class UserModel {
             request.HTTPMethod = "POST"
             let postString = "id=\(id)&level=\(LEVEL)&program=\(programflow)&error=\(type)"
             
-            print(postString)
-            
             request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
             
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
