@@ -259,14 +259,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
     
     func selectNodeForTouch(var touchLocation: CGPoint, node: SKNode, touch: UITouch?) {
         
-        let selectedNode = SKSpriteNode()
         
         let touchedNode = node
         
         if (touchedNode is BlockSprite && touch == nil) {
             
             let block:Block? = blocks[node.name!]
-            //return Animation from Block Object eventually
+            
             var texture = [SKTexture]()
             
             if (block?.highlight.count > 0) {

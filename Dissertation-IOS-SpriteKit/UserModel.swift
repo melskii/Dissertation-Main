@@ -83,7 +83,7 @@ public class UserModel {
             
             
             print(json)
-            //               https://www.raywenderlich.com/120442/swift-json-tutorial
+            //https://www.raywenderlich.com/120442/swift-json-tutorial
             
             guard let item = json[0] as? [String: AnyObject] ,
                 

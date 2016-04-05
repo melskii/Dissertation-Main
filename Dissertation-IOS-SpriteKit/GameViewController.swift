@@ -122,18 +122,22 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     
     func validProgramFlow() {
         
-        var array = [Block]()
+//        var array = [Block]()
         var valid = true
         var prev:Block = Block()
         var object:Object? = nil
         var index = 0
         
         //Not currently looping in order
-        for cell in collectionView.visibleCells() as [UICollectionViewCell] {
+//        for cell in collectionView.visibleCells() as [UICollectionViewCell] {
+        
+        for cell in program {
+        
             
-            if let p = cell as? ProgramCell {
             
-                let block = p.block
+            if let block = cell as? Block {
+            
+//                let block = p.block
                 print(block)
                 
                 if index == 0 {
@@ -190,7 +194,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
                 
                 
                 if valid == false {
-                    return
+                    break
                 }
                 
                     
