@@ -50,21 +50,68 @@ public class UserModel {
     }
     
     
-    func setProgramFlow(program: [Block], error: String) {
+    func setProgramFlow(program: [Block], type: String) {
         
         if active {
             
             
+            let programflow = programFlowToString(program)
+            
+            print(programflow)
+            
+            let request = NSMutableURLRequest(URL: NSURL(string: URL + "setProgramFlow.php")!)
+            request.HTTPMethod = "POST"
+            let postString = "id=\(id)&level=\(LEVEL)&program=\(programflow)&error=\(type)"
+            
+            print(postString)
+            
+            request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+            
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+                data, response, error in
+                
+                if error != nil {
+                    print("ERRORSTRING=\(error)")
+                    return
+                }
+                
+                print("response = \(response)")
+                
+                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print("RESPONSESTRING = \(responseString)")
+                
+                
+//                var json: Array<AnyObject>!
+//                
+//                do {
+//                    json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as? Array
+//                } catch {
+//                    print(error)
+//                }
+                
+            }
+            
+            task.resume()
             
             
         }
         
     }
     
-    private func setProgramFlow (program: [Block]) -> String {
+    private func programFlowToString (program: [Block]) -> String {
+        
+        var x = ""
+        
+        for block in program {
+       
+            x += block.name + "|"
+            
+        }
+        
+        x = String(x.characters.dropLast())
         
         
-        return nil
+        return x
         
     }
     
@@ -73,7 +120,9 @@ public class UserModel {
         self.active = false
         self.id = -1
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://melbook.local/website/ipad/getData.php")!)
+    
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: URL + "getData.php")!)
         request.HTTPMethod = "POST"
         let postString = "id=\(participant)"
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)

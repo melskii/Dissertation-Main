@@ -189,11 +189,14 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         if prev is Object {
             
             valid = false
-            USER.setProgramFlow(program, error:  "Parse")
+            
             
         }
         
-        print("valid \(valid)")
+        if valid == false {
+            USER.setProgramFlow(program, type:  "Parse")
+        }
+        
         
     }
     
