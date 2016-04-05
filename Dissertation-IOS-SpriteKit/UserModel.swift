@@ -49,6 +49,25 @@ public class UserModel {
         return active
     }
     
+    
+    func setProgramFlow(program: [Block], error: String) {
+        
+        if active {
+            
+            
+            
+            
+        }
+        
+    }
+    
+    private func setProgramFlow (program: [Block]) -> String {
+        
+        
+        return nil
+        
+    }
+    
     private func setUserDetails (participant: Int) {
         
         self.active = false

@@ -14,16 +14,10 @@ import SpriteKit
 class GameViewController: UIViewController, UIGestureRecognizerDelegate, UICollectionViewDelegate, GameDelegate {
     
     var scene: GameScene!
-    
-    var gameScene: SKScene!
     var gameView: SKView!
 
-    var user: UserModel!
-    var userView: UserViewController!
     var audio: Bool = true
     
-  
-    var _GAMEHEIGHT: CGFloat!
     
     @IBOutlet weak var skview: SKView!
     @IBOutlet weak var gameContainer: UIView!
@@ -37,15 +31,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//        
-//        for _ in 0...30 {
-//            
-//            program.append(Play())
-//            
-//        }
-//        
-//        print(program)
-//        
 
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -59,12 +44,9 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         self.collectionView.addGestureRecognizer(lPG)
     
     
-        _GAMEHEIGHT = self.view!.frame.height - MENU_HEIGHT
+//        GAME_HEIGHT = self.view!.frame.height - MENU_HEIGHT
         
-        gameView  = SKView(frame: CGRectMake(0, MENU_HEIGHT, self.view!.frame.width, _GAMEHEIGHT))
-     
-
-
+      
         
         skview = view as! SKView
         skview.multipleTouchEnabled = false
@@ -103,8 +85,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     */
     func appendProgramFlowBlock(newblock: Block) {
         
-        
-        let index = program.count == 0 ? 0 : program.count - 1
         
         program.append(newblock)
         
@@ -209,13 +189,11 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         if prev is Object {
             
             valid = false
+            USER.setProgramFlow(program, error:  "Parse")
             
         }
         
         print("valid \(valid)")
-        
-        //add whole lot to the array and then log if the user is active.
-        
         
     }
     
@@ -238,7 +216,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     //User information
     func getParticipantName () -> String? {
         
-        return user.getParticipantName()
+        return USER.getParticipantName()
         
     }
     
@@ -262,16 +240,21 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         switch(gesture.state) {
             
         case UIGestureRecognizerState.Began:
-            guard let selectedIndexPath = self.collectionView.indexPathForItemAtPoint(gesture.locationInView(self.collectionView)) else {
+            guard let selectedIndexPath = self.collectionView.indexPathForItemAtPoint(gesture.locationInView(self.collectionView))
+            else {
                 break
             }
             collectionView.beginInteractiveMovementForItemAtIndexPath(selectedIndexPath)
+            
         case UIGestureRecognizerState.Changed:
             collectionView.updateInteractiveMovementTargetPosition(gesture.locationInView(gesture.view!))
+            
         case UIGestureRecognizerState.Ended:
             collectionView.endInteractiveMovement()
+            
         default:
             collectionView.cancelInteractiveMovement()
+            
         }
     }
     

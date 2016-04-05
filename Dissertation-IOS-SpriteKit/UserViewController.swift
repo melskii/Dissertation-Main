@@ -48,7 +48,7 @@ class UserViewController: UIViewController {
         
         if (txtParticipant.text != "")
         {
-            let valid = _user.validUser(txtParticipant.text!)
+            let valid = USER.validUser(txtParticipant.text!)
             
             print("valid: \(valid)")
         }
