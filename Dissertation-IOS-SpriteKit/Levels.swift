@@ -21,6 +21,7 @@ public class LevelData {
   
     let level: Int
     var instructions: [Block]
+    var levelGrid: [[Object]]? //do 208 by 86
     //need to have one for output set up aswell but one step at time
     
     
@@ -31,6 +32,9 @@ public class LevelData {
         setInstructions(level)
         
     }
+    
+    
+    
   
     public func getInstructions() -> [Block]{
        

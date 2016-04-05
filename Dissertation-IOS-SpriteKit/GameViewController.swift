@@ -263,7 +263,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             let location = gesture.locationInView(gesture.view!)
            
             
-            if (deleteCell != nil && (location.x >= 660 && location.y >= 288))
+            if (deleteCell != nil && (location.x >= 655 && location.y >= 285))
             {
                 print("out of bounds")
                 
