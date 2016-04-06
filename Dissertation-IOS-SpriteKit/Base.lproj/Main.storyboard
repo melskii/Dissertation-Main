@@ -64,7 +64,10 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYs-6a-mIs" userLabel="btnPlay">
                                 <rect key="frame" x="482" y="436" width="46" height="30"/>
-                                <state key="normal" title="Play"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="playTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="D8h-g5-cJ0"/>
                                 </connections>

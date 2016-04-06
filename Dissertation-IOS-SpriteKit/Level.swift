@@ -24,7 +24,7 @@ public class Level {
     //Items that will be sent to GameScene
     private var _inst: [Block]
     var _objects: [GameCell]! = [GameCell]() //this is for the animations in Game Scene.
-    var _background: SKSpriteNode? //need to have one for output set up aswell but one step at time
+    var _background: SKSpriteNode! //need to have one for output set up aswell but one step at time
     var x, y: Int!
     
     //The Level Game Grid!!!!
@@ -75,7 +75,7 @@ public class Level {
     
     private func setLevelObjects() {
         
-        clearOutputGrid(10, y: 5) //loops 10 x 5
+        clearOutputGrid(15, y: 8) //loops 10 x 5
         
         
         if (self.level == 1) {
@@ -87,10 +87,14 @@ public class Level {
             _grid[7][3].setOutputObject(end, type: OutputType.End)
             
             //Only need to add these in once.
-            //Adds their initial positions with the SKSpriteNode
-            if (!_objects.isEmpty){
+            //Adds their initial positions with the SKSpriteNode & Background
+            if (_objects.count == 0){
                 _objects.append(_grid[1][1])
                 _objects.append(_grid[7][3])
+                
+                _background = SKSpriteNode(imageNamed: "homebackground")
+                
+                
             }
             
         }

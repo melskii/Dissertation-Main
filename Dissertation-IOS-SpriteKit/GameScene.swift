@@ -16,18 +16,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
     var programs :[Program] = []
     
     var inst, prog, out : SKSpriteNode!
+    var _outSquare: CGSize!
     
     //All about the program
     var pointer: CGPoint! //Program co-ordinates pointer
+    
+    var width, height: CGFloat!
+    
     var bounds: CGFloat = 200 //Out of bounds counter NEED TO INCLUDE HEIGHT AND WIDTH BOUNDS. TRANSFORM THE BLOCKS TO HALF SIZE
     var boundsy: CGFloat = 100
     var progscale: CGFloat = 0.6
-    
-    var width, height: CGFloat!
+
     
     var gameSceneDelegate: GameDelegate? //Delegate is in GameViewController
     
     var binSprite: SKSpriteNode!
+    
     
     override func didMoveToView(view: SKView) {
         
@@ -185,6 +189,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         body.name = "outputBackground"
         
         
+        let background = LEVEL._background
+        background.aspectFillToSize(body.size)
+        background.zPosition = -2
+   
+        let _width = body.size.width/15
+        let _height = body.size.height/8
+        
+        _outSquare = CGSize(width: _width , height: _height)
+    
+        let start = CGPoint(x: -(body.size.width * 0.5) + (_outSquare.width * 0.5), y: -(body.size.height * 0.5) + (_outSquare.height * 0.5))
+        
+        for cell in LEVEL._objects {
+            
+            for object in cell.objects {
+                
+                let sprite = object.1
+                sprite.aspectFillToSize(_outSquare)
+                let pos = CGPoint(x: start.x + (_outSquare.width * CGFloat(cell.x)), y: start.y + (_outSquare.height * CGFloat(cell.y)))
+                
+                sprite.position = pos
+                body.addChild(sprite)
+                
+            }
+            
+        }
+        
+        body.addChild(background)
+        
+        
+        
+        
         
         
         
@@ -306,6 +341,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
     
    
 
+    
+}
+
+extension SKSpriteNode {
+    
+    
+    
+    func aspectFillToSize(fillSize: CGSize) {
+        
+        if texture != nil {
+            self.size = texture!.size()
+            
+            let verticalRatio = fillSize.height / self.texture!.size().height
+            let horizontalRatio = fillSize.width /  self.texture!.size().width
+            
+            let scaleRatio = horizontalRatio > verticalRatio ? horizontalRatio : verticalRatio
+            
+            self.setScale(scaleRatio)
+        }
+    }
+    
+   
+    
+}
+
+class TalesSpriteNode: SKSpriteNode {
+    
+    var outputPoint: CGPoint?
+    
+    func positionInOutput(position: CGPoint) {
+        
+        self.outputPoint = position
+    }
     
 }
 
