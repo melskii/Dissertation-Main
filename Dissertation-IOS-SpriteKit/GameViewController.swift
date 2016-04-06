@@ -104,12 +104,17 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         if (!program.isEmpty && validProgramFlow()) {
             
             if LEVEL.validProgram(program) {
-                USER.setProgramFlow(program)
+                USER.setProgramFlow(program, type: nil)
+                print("valid")
+//                _LEVEL++
             }
             
             else {
                 
                 USER.setProgramFlow(program, type: "Code")
+                print("not valid")
+                
+                
             }
             
             
@@ -130,8 +135,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         var object:Object? = nil
         var index = 0
         
-        //Not currently looping in order
-//        for cell in collectionView.visibleCells() as [UICollectionViewCell] {
         
         for cell in program {
         

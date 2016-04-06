@@ -106,7 +106,7 @@ public class Level {
             let final = OutputObject(imgName: "house", type: OutputType.End)
             
             levelGrid[1][1].setOutputObject(objectA)
-            levelGrid[8][3].setOutputObject(final)
+            levelGrid[7][3].setOutputObject(final)
             
         }
         

@@ -50,7 +50,7 @@ public class UserModel {
     }
     
     
-    func setProgramFlow(program: [Block], type: String) {
+    func setProgramFlow(program: [Block], type: String?) {
         
         if active {
             
@@ -61,7 +61,14 @@ public class UserModel {
             
             let request = NSMutableURLRequest(URL: NSURL(string: URL + "setProgramFlow.php")!)
             request.HTTPMethod = "POST"
-            let postString = "id=\(id)&level=\(LEVEL)&program=\(programflow)&error=\(type)"
+            
+            var postString = "id=\(id)&level=\(_LEVEL)&program=\(programflow)"
+            
+            if type != nil {
+                postString = "id=\(id)&level=\(_LEVEL)&program=\(programflow)&error=\(type!)"
+            }
+            
+            
             
             request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
             
