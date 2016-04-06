@@ -12,9 +12,6 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate {
     
-    
-    var level: Int = 1
-    
     var blocks : [String: Block] = [:]
     var programs :[Program] = []
     
@@ -84,16 +81,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         body.name = "instructionBackground"
         
         
-        //set up the level
-        let levelData = LevelData(level: level)
-        
-        
         //default anchor point is in Spritekit is (0.5, 0.5) which is center of the node/sprite (0,0)
         //set the new co-ordinates to work from.
         //work out the initial values for everything.
         var pos = CGPointMake(-(body.size.width/2), body.size.height/2)
         var i = 0
-        let inst = levelData.getInstructions()
+        let inst = LEVEL.getInstructions()
         let blocksize = inst.first?.block.size
         
         

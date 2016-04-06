@@ -16,8 +16,10 @@ let MENU_HEIGHT: CGFloat = 56
 
 
 let USER: UserModel = UserModel()
-var LEVEL = 1
+var _LEVEL = 2
+var LEVEL: Level = Level(level: _LEVEL)
 var GAME_HEIGHT: CGFloat!
+
 
 let URL = "http://melbook.local/website/ipad/"
 

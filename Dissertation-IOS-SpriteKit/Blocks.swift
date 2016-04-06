@@ -113,15 +113,17 @@ class Object: Block {
         
         }
         
+        setup(name)
+        
     }
     
 }
 
 class Action: Block {
     
-    internal func gridAction(initial: GameCell) -> (Int, Int) {
+    internal func gridActionMove(cell: GameCell) -> (Int, Int) {
         
-        return (0, 0)
+        return (cell.x, cell.y)
         
         
     }
@@ -155,10 +157,10 @@ class Up: Action {
         
     }
     
-    override func gridAction(initial: GameCell) -> (Int, Int) {
+    override func gridActionMove(cell: GameCell) -> (Int, Int) {
         
         
-        return (initial.x, initial.y + 1)
+        return (cell.x, cell.y + 1)
         
         
     }
@@ -175,10 +177,10 @@ class Down: Action {
         
     }
     
-    override func gridAction(initial: GameCell) -> (Int, Int) {
+    override func gridActionMove(cell: GameCell) -> (Int, Int) {
         
         
-        return (initial.x, initial.y - 1)
+        return (cell.x, cell.y - 1)
         
         
     }
@@ -195,10 +197,10 @@ class Left: Action {
         
     }
     
-    override func gridAction(initial: GameCell) -> (Int, Int) {
+    override func gridActionMove(cell: GameCell) -> (Int, Int) {
         
         
-        return (initial.x - 1, initial.y)
+        return (cell.x - 1, cell.y)
         
         
     }
@@ -215,10 +217,10 @@ class Right: Action {
         
     }
     
-    override func gridAction(initial: GameCell) -> (Int, Int) {
+    override func gridActionMove(cell: GameCell) -> (Int, Int) {
         
         
-        return (initial.x + 1, initial.y)
+        return (cell.x + 1, cell.y)
         
         
     }

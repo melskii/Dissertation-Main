@@ -101,10 +101,28 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     
     @IBAction func playTouchDown(sender: AnyObject) {
         
-        validProgramFlow()
+        if (!program.isEmpty && validProgramFlow()) {
+            
+            if LEVEL.validProgram(program) {
+                USER.setProgramFlow(program)
+            }
+            
+            else {
+                
+                USER.setProgramFlow(program, type: "Code")
+            }
+            
+            
+        }
+        
+        else {
+            
+            print("not valid")
+        }
+        
     }
     
-    func validProgramFlow() {
+    func validProgramFlow() -> Bool {
         
 //        var array = [Block]()
         var valid = true
@@ -198,6 +216,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         if valid == false {
             USER.setProgramFlow(program, type:  "Parse")
         }
+        
+        return valid
         
         
     }
