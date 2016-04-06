@@ -184,7 +184,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         body.position = CGPoint(x: (body.size.width * 0.5), y: (body.size.height * 0.5))
         body.name = "outputBackground"
         
-        print(body)
+        
+        
+        
+        
         
         return body
         

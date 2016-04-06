@@ -23,9 +23,9 @@ var GAME_HEIGHT: CGFloat!
 
 let URL = "http://melbook.local/website/ipad/"
 
-public enum OutputType {
-    case A
-    case B
-    case C
-    case End
+public enum OutputType: String {
+    case A = "ObjectA"
+    case B = "ObjectB"
+    case C = "ObjectC"
+    case End = "End"
 }
