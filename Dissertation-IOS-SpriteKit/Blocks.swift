@@ -68,6 +68,7 @@ public class Block {
     
     }
     
+   
     
     
   
@@ -81,11 +82,49 @@ class BlockSprite: SKSpriteNode {
 Split into subclasses for the parsing
 */
 
+
+//Objects
 class Object: Block {
+    
+    var type: OutputType!
+    
+    override init() {
+        
+        super.init()
+        setup("objecta")
+        
+    }
+    
+    init(type: OutputType) {
+        
+        super.init()
+        self.type = type
+        
+        var name = "object"
+        
+        switch (type) {
+    
+        case .B:
+            name += "b"
+        case .C:
+            name += "c"
+        default:
+            name += "a"
+        
+        }
+        
+    }
     
 }
 
 class Action: Block {
+    
+    internal func gridAction(initial: GameCell) -> (Int, Int) {
+        
+        return (0, 0)
+        
+        
+    }
     
 }
 
@@ -105,43 +144,6 @@ class Control: Block {
 }
 
 
-//Objects
-class ObjectA: Object {
-    
-    override init() {
-        
-        super.init()
-        setup("objecta")
-        
-    }
-    
-    
-}
-
-class ObjectB: Object {
-    
-    override init() {
-        
-        super.init()
-        setup("objectb")
-        
-    }
-    
-    
-}
-
-class ObjectC: Object {
-    
-    override init() {
-        
-        super.init()
-        setup("objectc")
-        
-    }
-    
-    
-}
-
 
 //Action
 class Up: Action {
@@ -150,6 +152,14 @@ class Up: Action {
         
         super.init()
         setup("up")
+        
+    }
+    
+    override func gridAction(initial: GameCell) -> (Int, Int) {
+        
+        
+        return (initial.x, initial.y + 1)
+        
         
     }
     
@@ -165,6 +175,14 @@ class Down: Action {
         
     }
     
+    override func gridAction(initial: GameCell) -> (Int, Int) {
+        
+        
+        return (initial.x, initial.y - 1)
+        
+        
+    }
+    
     
 }
 
@@ -174,6 +192,14 @@ class Left: Action {
         
         super.init()
         setup("left")
+        
+    }
+    
+    override func gridAction(initial: GameCell) -> (Int, Int) {
+        
+        
+        return (initial.x - 1, initial.y)
+        
         
     }
     
@@ -189,11 +215,20 @@ class Right: Action {
         
     }
     
+    override func gridAction(initial: GameCell) -> (Int, Int) {
+        
+        
+        return (initial.x + 1, initial.y)
+        
+        
+    }
+    
     
 }
 
 //Controls
 class Repeat: Control {
+    
     
     override init() {
         

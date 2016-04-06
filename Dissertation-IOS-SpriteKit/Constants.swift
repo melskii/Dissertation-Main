@@ -20,3 +20,10 @@ var LEVEL = 1
 var GAME_HEIGHT: CGFloat!
 
 let URL = "http://melbook.local/website/ipad/"
+
+public enum OutputType {
+    case A
+    case B
+    case C
+    case End
+}
