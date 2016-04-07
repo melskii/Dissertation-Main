@@ -15,6 +15,9 @@ public class UserModel {
     private var id: Int! = -1
     private var name: String?
     private var active: Bool = false
+    private var attempts: [Int:Int] = [:]
+    private var timeToComplete: [Int:Int] = [:]
+    private var rewards: [Int: Int] = [:]
     
     public init() {
     
@@ -29,7 +32,6 @@ public class UserModel {
         
         return name
     }
-
     
     public func setUserDetails (tag: String, completion: (status: UserStatus) -> Void) {
         
@@ -123,6 +125,61 @@ public class UserModel {
         
     }
     
+    func appendTimeToComplete (time: Int) {
+        
+        
+        timeToComplete[_LEVEL] = time
+        
+        if active {
+            
+            
+            let request = NSMutableURLRequest(URL: NSURL(string: URL + "setCompleteLevel.php")!)
+            request.HTTPMethod = "POST"
+            
+            let postString = "id=\(self.id)&level=\(_LEVEL)&time=\(time)"
+
+            
+            
+            request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+            
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+                data, response, error in
+                
+                if error != nil {
+                    print("ERRORSTRING=\(error)")
+                    return
+                }
+                
+                print("response = \(response)")
+                
+                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print("RESPONSESTRING = \(responseString)")
+    
+                
+            }
+            
+            task.resume()
+            
+            
+            
+        }
+        
+    }
+    
+    func appendAttempts () {
+        
+        attempts[_LEVEL] = attempts[_LEVEL] == nil ? 1 : attempts[_LEVEL]! + 1
+        
+        print(attempts)
+        
+    }
+    
+    func resetAttempts() {
+        
+        attempts[_LEVEL] = 0
+        
+    }
+    
     
     func setProgramFlow(program: [Block], type: String?) {
         
@@ -130,8 +187,6 @@ public class UserModel {
             
             
             let programflow = programFlowToString(program)
-            
-            print(programflow)
             
             let request = NSMutableURLRequest(URL: NSURL(string: URL + "setProgramFlow.php")!)
             request.HTTPMethod = "POST"

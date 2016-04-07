@@ -22,6 +22,9 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     var deleteCell: UICollectionViewCell?
     var deleteBlock: Bool = false
     
+    var timer = NSTimer()
+    var binaryCount = 0b0000
+    
     
     @IBOutlet weak var skview: SKView!
     @IBOutlet weak var gameContainer: UIView!
@@ -66,8 +69,39 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         skview.presentScene(scene)
         
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "countUp", userInfo: nil, repeats: true)
+        
+        USER.resetAttempts() //Resets the attempts for the Rewards
+        
     }
     
+    func countUp() {
+        
+        binaryCount += 0b0001
+        
+        
+    }
+    
+    func stopCount(complete: Bool) {
+        
+        
+        
+        timer.invalidate()
+
+        
+        if complete {
+            let text = String(binaryCount, radix:2)
+            let number = Int(strtoul(text, nil, 2))
+            
+            
+            USER.appendTimeToComplete(number)
+            
+            print(number)
+        }
+        
+        binaryCount = 0b0000
+        
+    }
 
 
     /*
@@ -104,7 +138,9 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         if (!program.isEmpty && validProgramFlow()) {
             
             if LEVEL.validProgram(program) {
+                
                 USER.setProgramFlow(program, type: nil)
+                stopCount(true)
                 print("valid")
 //                _LEVEL++
             }
@@ -124,6 +160,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             
             print("not valid")
         }
+        
+        USER.appendAttempts()
         
     }
     
@@ -335,6 +373,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     
     @IBAction func btnHomeTouchDown(sender: AnyObject) {
         
+        stopCount(false)
         LEVEL = nil
         scene.removeAllChildren()
         scene.removeAllActions()
