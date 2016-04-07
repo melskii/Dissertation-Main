@@ -207,12 +207,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
             for object in cell.objects {
                 
                 let sprite = object.1
-                 print("pre size change: \(sprite.description)")
+                print("pre size change: \(sprite.description)")
             
                 sprite.aspectFillToSize(_outSquare)
-                let pos = CGPoint(x: start.x + (_outSquare.width * CGFloat(cell.x)), y: start.y + (_outSquare.height * CGFloat(cell.y)))
+                let point: CGPoint = CGPoint(x: start.x + (_outSquare.width * CGFloat(cell.x)), y: start.y + (_outSquare.height * CGFloat(cell.y)))
+                sprite.position = point
+                print(point)
                 
-                sprite.position = pos
+                sprite.startPoint(point)
                 
                 print("setup: \(sprite.description)")
                 body.addChild(sprite)

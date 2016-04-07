@@ -128,44 +128,7 @@ class Action: Block {
         
     }
     
-    internal func animateAction(sprite: SKSpriteNode) {
-        
-        /*
-        Code to make my Sprite Walk:
-        let spriteAnimatedAtlas = SKTextureAtlas(named: sprite.name!)
-        
-        var walkFrames = [SKTexture]()
-        
-        let images = spriteAnimatedAtlas.textureNames.count
-        
-        for var i = 1; i <= images; i++ {
-            let textureName = sprite.name! + String(i)
-            walkFrames.append(spriteAnimatedAtlas.textureNamed(textureName))
-        }
-        
-        let spriteWalkingFrames = walkFrames
-        
-        sprite.runAction(SKAction.repeatAction(
-            SKAction.animateWithTextures(spriteWalkingFrames,
-                timePerFrame: 0.1,
-                resize: false,
-                restore: true)
-            
-        , count: 5))
-        */
-        
-        print(sprite)
-
-        //let animateAction = SKAction.animateWithTextures(SOMETEXTURE, timePerFrame: 0.20)
-        let moveAction = SKAction.moveBy(CGVector(dx: 100, dy: 0), duration: 0.5)
-        let repeatAction = SKAction.repeatAction(moveAction, count: 2)
-        sprite.runAction(repeatAction)
-      
-    }
-    
-    func spriteMoveEnded(sprite: SKSpriteNode) {
-        sprite.removeAllActions()
-    }
+  
     
 }
 

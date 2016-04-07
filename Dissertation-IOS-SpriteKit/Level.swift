@@ -40,7 +40,7 @@ public class Level {
         setLevelInstructions()
         
         //Set up the Level Grid
-        setLevelObjects()
+        setLevelObjects(false)
         
     }
     
@@ -73,7 +73,7 @@ public class Level {
     
     }
     
-    private func setLevelObjects() {
+    private func setLevelObjects(reset: Bool) {
         
         clearOutputGrid(10, y: 5) //loops 10 x 5
         
@@ -83,26 +83,22 @@ public class Level {
             if _objects.count == 0 {
             
                 let A = GameCell(x: 1, y: 1)
-                let B = GameCell(x: 1, y: 2)
+           
                 let End = GameCell (x: 7, y: 3)
                 
                 
-                A.setOutputObject(SKSpriteNode(imageNamed: "monkey"), type: OutputType.A)
-                B.setOutputObject(SKSpriteNode(imageNamed: "monkey"), type: OutputType.B)
-                End.setOutputObject(SKSpriteNode(imageNamed: "house"), type: OutputType.End)
+                A.setOutputSprite(TLSpriteNode(imageNamed: "monkey"), type: OutputType.A)
+             
+                End.setOutputSprite(TLSpriteNode(imageNamed: "house"), type: OutputType.End)
                 
                 _objects.append(A)
-                _objects.append(B)
+                
                 _objects.append(End)
                 
                 _background = SKSpriteNode(imageNamed: "homebackground")
             }
        
-            for cell in _objects {
-                
-                _grid[cell.x][cell.y].objects = cell.objects
-                
-            }
+           
             
           
                 
@@ -110,9 +106,16 @@ public class Level {
             
         }
         
+        
+        for cell in _objects {
+            
+            
+            _grid[cell.x][cell.y].objects = cell.objects
+    
+        }
+ 
     }
     
-   
     
     private func clearOutputGrid(x: Int, y: Int) {
         
@@ -136,14 +139,32 @@ public class Level {
         }
         
         
+        
     }
     
+    public func validProgram(prog: [Block]) -> Bool  {
+        
+        let compiled = compileProgram(prog)
+        
+        for cell in _objects {
+            
+            for sprite in cell.objects {
+                
+                sprite.1.animateWithActionSquence(!compiled)
+                
+            }
+            
+        }
+        
+        return compiled
+        
+    }
 
 
     
-    public func validProgram(prog: [Block]) -> Bool {
+    private func compileProgram (prog: [Block]) -> Bool {
         
-        setLevelObjects()
+        
         
         var program = prog
         var objectCell: (type: OutputType, cell: GameCell)? = nil //The Cell of the Current Object
@@ -203,20 +224,20 @@ public class Level {
                         
                         let type = objectCell!.type
                         let currentCell = objectCell!.cell
-                        let object = currentCell.getOutputObject(type)
+                        let sprite = currentCell.getOutputSprite(type)
                         
                         print("hello")
                         
                         
-                        print("preanimate: \(object))")
+                        print("preanimate: \(sprite))")
                     
                         print(_objects[0].objects[OutputType.A])
                         
                         
-                        
-                        if object != nil {
+                        //Animate and Move Sprite if it exists.
+                        if sprite != nil {
                             
-                            action.animateAction(object!)
+                            sprite?.appendActionSequence()
                             
                             let newCell = _grid[pos.x][pos.y]
 
@@ -228,17 +249,17 @@ public class Level {
                             //Debugging: print("Current Cell Before \(currentCell.objects)")
                         
                             //Remove from old cell Location
-                            currentCell.removeOutputObject(type)
+                            currentCell.removeOutputSprite(type)
                             
                             //Add to new cell Location
-                            newCell.setOutputObject(object!, type: type)
+                            newCell.setOutputSprite(sprite!, type: type)
                             objectCell = (type, newCell)
                             
                             //Debugging: print("New Cell After \(newCell.objects)")
                             //Debugging: print("Current Cell After \(currentCell.objects)")
                             
                             
-                            if (newCell.getOutputObject(OutputType.End) != nil) {
+                            if (newCell.getOutputSprite(OutputType.End) != nil) {
                                 
                                 valid = true
                                 
@@ -267,6 +288,7 @@ public class Level {
         }
         
         
+        
         return valid
         
     }
@@ -278,7 +300,7 @@ public class Level {
         for var i = 0; i < x; i++ {
             for var j = 0; j < y; j++ {
 
-                if _grid[i][j].getOutputObject(type) != nil {
+                if _grid[i][j].getOutputSprite(type) != nil {
 
                     return _grid[i][j]
 
@@ -300,7 +322,7 @@ public class GameCell {
     
     var x, y: Int
     let original: (x: Int, y: Int)!
-    var objects: [OutputType: SKSpriteNode] = [:]
+    var objects: [OutputType: TLSpriteNode] = [:]
     
     
     init(x: Int, y: Int) {
@@ -314,28 +336,99 @@ public class GameCell {
         
     }
     
-    func setOutputObject(sprite: SKSpriteNode, type: OutputType) {
+    func setOutputSprite(sprite: TLSpriteNode, type: OutputType) {
         
         sprite.name = type.rawValue
         objects[type] = sprite
     }
     
-    func removeOutputObject(type: OutputType) {
+    func removeOutputSprite(type: OutputType) {
         
         objects.removeValueForKey(type)
         
     }
     
-    func removeAllOutputObjects() {
+    func removeAllOutputSprites() {
         
         objects.removeAll()
     }
     
-    func getOutputObject(type: OutputType) -> SKSpriteNode? {
+    func getOutputSprite(type: OutputType) -> TLSpriteNode? {
         
         return objects[type] != nil ? objects[type] : nil
         
     }
+    
+}
+class TLSpriteNode: SKSpriteNode {
+    
+    private var start: CGPoint!
+    private var actionSequence: [SKAction] = []
+    
+
+    
+    func startPoint (start: CGPoint) {
+        
+        self.start = start
+        
+    }
+    
+    func appendActionSequence()  {
+        
+        /*
+        Code to make my Sprite Walk:
+        let spriteAnimatedAtlas = SKTextureAtlas(named: sprite.name!)
+        
+        var walkFrames = [SKTexture]()
+        
+        let images = spriteAnimatedAtlas.textureNames.count
+        
+        for var i = 1; i <= images; i++ {
+        let textureName = sprite.name! + String(i)
+        walkFrames.append(spriteAnimatedAtlas.textureNamed(textureName))
+        }
+        
+        let spriteWalkingFrames = walkFrames
+        
+        sprite.runAction(SKAction.repeatAction(
+        SKAction.animateWithTextures(spriteWalkingFrames,
+        timePerFrame: 0.1,
+        resize: false,
+        restore: true)
+        
+        , count: 5))
+        */
+
+        
+        //let animateAction = SKAction.animateWithTextures(SOMETEXTURE, timePerFrame: 0.20)
+        let location = CGVector(dx: 100, dy: 0)
+        let moveAction = SKAction.moveBy(location, duration: 0.5)
+        actionSequence.append(moveAction)
+        
+    }
+    
+    func animateWithActionSquence (reset: Bool) { //(location: CGVector) {
+        
+        
+        
+        
+        if reset {
+            
+            actionSequence.append(SKAction.moveTo(start, duration: 0.3))
+            
+        }
+       
+       let sequence = SKAction.sequence(actionSequence)
+        
+        self.runAction(sequence, completion: {
+            
+            self.actionSequence.removeAll()
+            
+            
+            }
+        )
+    }
+    
     
 }
 

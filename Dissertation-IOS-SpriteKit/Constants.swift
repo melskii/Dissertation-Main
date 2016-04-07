@@ -20,8 +20,8 @@ var _LEVEL = 1
 var LEVEL: Level = Level(level: _LEVEL)
 var GAME_HEIGHT: CGFloat!
 
-var OUTSQUARE: CGSize!
 
+var OUTSQUARE: CGSize!
 
 
 let URL = "http://melbook.local/website/ipad/"
