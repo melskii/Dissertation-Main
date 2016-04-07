@@ -24,7 +24,7 @@ public class Level {
     //Items that will be sent to GameScene
     private var _inst: [Block]
     var _objects: [GameCell]! = [GameCell]() //this is for the animations in Game Scene.
-    var _background: SKSpriteNode! //need to have one for output set up aswell but one step at time
+    var _background: SKSpriteNode! = SKSpriteNode(imageNamed: "outBckground") //use outBckground as the default.
     var x, y: Int!
     
     //The Level Game Grid!!!!
@@ -75,31 +75,44 @@ public class Level {
     
     private func setLevelObjects() {
         
-        clearOutputGrid(15, y: 8) //loops 10 x 5
+        clearOutputGrid(10, y: 5) //loops 10 x 5
         
         
         if (self.level == 1) {
             
-            let objectA = SKSpriteNode(imageNamed: "monkey")
-            let end = SKSpriteNode(imageNamed: "house")
+            if _objects.count == 0 {
             
-            _grid[1][1].setOutputObject(objectA, type: OutputType.A)
-            _grid[7][3].setOutputObject(end, type: OutputType.End)
-            
-            //Only need to add these in once.
-            //Adds their initial positions with the SKSpriteNode & Background
-            if (_objects.count == 0){
-                _objects.append(_grid[1][1])
-                _objects.append(_grid[7][3])
+                let A = GameCell(x: 1, y: 1)
+                let B = GameCell(x: 1, y: 2)
+                let End = GameCell (x: 7, y: 3)
+                
+                
+                A.setOutputObject(SKSpriteNode(imageNamed: "monkey"), type: OutputType.A)
+                B.setOutputObject(SKSpriteNode(imageNamed: "monkey"), type: OutputType.B)
+                End.setOutputObject(SKSpriteNode(imageNamed: "house"), type: OutputType.End)
+                
+                _objects.append(A)
+                _objects.append(B)
+                _objects.append(End)
                 
                 _background = SKSpriteNode(imageNamed: "homebackground")
+            }
+       
+            for cell in _objects {
                 
+                _grid[cell.x][cell.y].objects = cell.objects
                 
             }
+            
+          
+                
+            
             
         }
         
     }
+    
+   
     
     private func clearOutputGrid(x: Int, y: Int) {
         
@@ -124,6 +137,8 @@ public class Level {
         
         
     }
+    
+
 
     
     public func validProgram(prog: [Block]) -> Bool {
@@ -190,9 +205,18 @@ public class Level {
                         let currentCell = objectCell!.cell
                         let object = currentCell.getOutputObject(type)
                         
+                        print("hello")
+                        
+                        
+                        print("preanimate: \(object))")
+                    
+                        print(_objects[0].objects[OutputType.A])
+                        
                         
                         
                         if object != nil {
+                            
+                            action.animateAction(object!)
                             
                             let newCell = _grid[pos.x][pos.y]
 
@@ -274,7 +298,8 @@ public class Level {
 public class GameCell {
     
     
-    let x, y: Int
+    var x, y: Int
+    let original: (x: Int, y: Int)!
     var objects: [OutputType: SKSpriteNode] = [:]
     
     
@@ -282,6 +307,8 @@ public class GameCell {
         
         self.x = x
         self.y = y
+        
+        self.original = (x, y)
         
         
         
@@ -297,6 +324,11 @@ public class GameCell {
         
         objects.removeValueForKey(type)
         
+    }
+    
+    func removeAllOutputObjects() {
+        
+        objects.removeAll()
     }
     
     func getOutputObject(type: OutputType) -> SKSpriteNode? {
