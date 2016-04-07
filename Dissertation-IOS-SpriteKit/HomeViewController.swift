@@ -39,9 +39,9 @@ class HomeViewController: UIViewController {
         
     }
     
-    @IBAction func btnPlayTouchDown(sender: AnyObject) {
-        
-        LEVEL = Level(level: _LEVEL)
-        
-    }
+//    @IBAction func btnPlayTouchDown(sender: AnyObject) {
+//        
+//        LEVEL = Level(level: _LEVEL)
+//        
+//    }
 }

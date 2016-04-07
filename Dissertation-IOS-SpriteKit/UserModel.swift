@@ -18,6 +18,7 @@ public class UserModel {
     private var attempts: [Int:Int] = [:]
     private var timeToComplete: [Int:Int] = [:]
     private var rewards: [Int: Int] = [:]
+    var unlockedLevel: Int = 1
     
     public init() {
     
@@ -80,11 +81,17 @@ public class UserModel {
                     guard !(json.isEmpty),
                     let item = json[0] as? [String: AnyObject] ,
                         let _active = item["active"] as? String,
-                        let _id = item["id"] else {
+                        let _id = item["id"] as? String,
+                        let _level = item["unlockedLevel"] as? String else {
                             
                             completion(status: UserStatus.NoUser)
                             return;
                     }
+                    
+                    self.id = Int(_id)
+                    self.unlockedLevel = Int(_level)!
+                    
+                    print(self.unlockedLevel)
                     
                     if _active == "1" {
                         
@@ -97,7 +104,7 @@ public class UserModel {
                         completion(status: UserStatus.Disabled)       
                     }
                     
-                    self.id = Int(_id as! String)
+                    
                     print("active \(self.active) id \(self.id)")
    
                     
@@ -123,6 +130,86 @@ public class UserModel {
             completion(status: UserStatus.Invalid)
         }
         
+        
+        
+    }
+    
+    public func syncProgress (level: Int) {
+        
+        if active {
+            
+            let start = level == 0 ? 1 : level
+            let end = level == 0 ? MAXLEVELS : level
+            
+            for var i = start; i <= end; i++ {
+                
+                let stars = rewards[i] == nil ? 0 : rewards[i]
+                let time = timeToComplete[i] == nil ? 0 : timeToComplete[i]
+                
+                let request = NSMutableURLRequest(URL: NSURL(string: URL + "syncProgress.php")!)
+                request.HTTPMethod = "POST"
+                let postString = "filter=sync&id=\(id)&level=\(i)&time=\(time!)&stars=\(stars!)"
+                request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+                
+                print(postString)
+                
+                let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+                    data, response, error in
+                    
+                    if error != nil {
+                        
+                        print("ERRORSTRING=\(error)")
+                        print(UserStatus.BadConn.rawValue)
+                        return
+                    }
+                    
+                    print("response = \(response)")
+                    
+                    let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                    print("RESPONSESTRING = \(responseString)")
+                    
+                    
+                    var json: Array<AnyObject>!
+                    
+                    do {
+                        json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as? Array
+                    } catch {
+                        
+//                        print(json)
+                        print(error)
+                    }
+                    
+                    /* https://www.raywenderlich.com/120442/swift-json-tutorial */
+                    
+                    if json != nil {
+                    
+                        //Extract the Time To Complete and Rewards
+                        guard !(json.isEmpty),
+                            let item = json[0] as? [String: AnyObject] ,
+                            let _time = item["time_to_complete"] as? String,
+                            let _stars = item["stars"] as? String else {
+
+                                return;
+                        }
+
+                        self.rewards[i] = Int(_stars)
+                        self.timeToComplete[i] = Int(_time)
+                        
+                     
+
+                        print("active \(_time) id \(_stars)")
+                    }
+                
+                    
+                }
+                task.resume()
+    
+                
+                
+            }
+            
+        }
+        
     }
     
     func appendTimeToComplete (time: Int) {
@@ -133,36 +220,8 @@ public class UserModel {
         
         if active {
             
-            
-            let request = NSMutableURLRequest(URL: NSURL(string: URL + "setCompleteLevel.php")!)
-            request.HTTPMethod = "POST"
-            
-            let postString = "id=\(self.id)&level=\(_LEVEL)&time=\(time)"
+            syncProgress (_LEVEL)
 
-            
-            
-            request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-            
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-                data, response, error in
-                
-                if error != nil {
-                    print("ERRORSTRING=\(error)")
-                    return
-                }
-                
-                print("response = \(response)")
-                
-                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("RESPONSESTRING = \(responseString)")
-    
-                
-            }
-            
-            task.resume()
-            
-            
-            
         }
         
     }
@@ -194,6 +253,8 @@ public class UserModel {
             rewards[_LEVEL] = stars
             
         }
+        
+        syncProgress (_LEVEL)
         
         print("rewards: \(rewards)")
         

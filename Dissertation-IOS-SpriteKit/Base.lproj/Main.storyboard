@@ -178,8 +178,7 @@
                                         </constraints>
                                         <state key="normal" image="btnPlay.png"/>
                                         <connections>
-                                            <action selector="btnPlayTouchDown:" destination="Qel-TB-K7h" eventType="touchDown" id="GLv-Zr-9Sd"/>
-                                            <segue destination="BV1-FR-VrT" kind="show" id="eFJ-ZG-X3J"/>
+                                            <segue destination="CNR-Q1-EEr" kind="show" id="ZRo-DL-XbH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wa4-bX-345" userLabel="btnHelp">
@@ -240,6 +239,143 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iq9-TZ-E8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="298" y="147"/>
+        </scene>
+        <!--Level View Controller-->
+        <scene sceneID="FVb-fo-1sn">
+            <objects>
+                <viewController id="CNR-Q1-EEr" customClass="LevelViewController" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a1a-UC-cl8"/>
+                        <viewControllerLayoutGuide type="bottom" id="fb6-FW-fqc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BPt-oC-xEm">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ZEn-zK-Gtr">
+                                <rect key="frame" x="40" y="334" width="944" height="100"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qpw-Ti-VmI">
+                                        <rect key="frame" x="0.0" y="0.0" width="184" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGE-8r-25E" userLabel="btnLevel1">
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="80"/>
+                                                <state key="normal" title="Level 1"/>
+                                                <connections>
+                                                    <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="7I6-5I-9ow"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3W0-Vz-pwv" userLabel="lblLevel1">
+                                                <rect key="frame" x="0.0" y="79" width="184" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yhh-qc-4G1">
+                                        <rect key="frame" x="190" y="0.0" width="184" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9k-M6-b7c" userLabel="btnLevel2">
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="80"/>
+                                                <state key="normal" title="Level 2"/>
+                                                <connections>
+                                                    <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="TDV-U4-Yfr"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umA-FT-7DP" userLabel="lblLevel2">
+                                                <rect key="frame" x="0.0" y="79" width="184" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kjo-Q9-VSB">
+                                        <rect key="frame" x="380" y="0.0" width="184" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQa-EI-gbD" userLabel="btnLevel3">
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="80"/>
+                                                <state key="normal" title="Level 3"/>
+                                                <connections>
+                                                    <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="uFQ-gj-kvh"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBp-ip-TCM" userLabel="lblLevel3">
+                                                <rect key="frame" x="0.0" y="79" width="184" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IVk-nL-pXr">
+                                        <rect key="frame" x="570" y="0.0" width="184" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-AH-rvJ" userLabel="btnLevel4">
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="80"/>
+                                                <state key="normal" title="Level 4"/>
+                                                <connections>
+                                                    <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="JJG-D2-sWM"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDF-ek-zdp" userLabel="lblLevel4">
+                                                <rect key="frame" x="0.0" y="79" width="184" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="g0m-SP-atX">
+                                        <rect key="frame" x="760" y="0.0" width="184" height="100"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvI-Sn-oAn" userLabel="btnLevel5">
+                                                <rect key="frame" x="0.0" y="0.0" width="184" height="80"/>
+                                                <state key="normal" title="Level 5"/>
+                                                <connections>
+                                                    <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="U8k-9A-Q0w"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KS1-Sz-mS9" userLabel="lblLevel5">
+                                                <rect key="frame" x="0.0" y="79" width="184" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="NUc-a7-zk0"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZEn-zK-Gtr" firstAttribute="leading" secondItem="BPt-oC-xEm" secondAttribute="leadingMargin" constant="20" id="925-dI-A4h"/>
+                            <constraint firstItem="ZEn-zK-Gtr" firstAttribute="centerY" secondItem="BPt-oC-xEm" secondAttribute="centerY" id="Frc-dV-sZA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZEn-zK-Gtr" secondAttribute="trailing" constant="20" id="agh-TR-d5g"/>
+                            <constraint firstItem="ZEn-zK-Gtr" firstAttribute="centerY" secondItem="BPt-oC-xEm" secondAttribute="centerY" id="tgE-9g-kCK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnLevel1" destination="ZGE-8r-25E" id="QJh-xW-sEA"/>
+                        <outlet property="btnLevel2" destination="c9k-M6-b7c" id="bbd-5o-aJo"/>
+                        <outlet property="btnLevel3" destination="UQa-EI-gbD" id="SJf-bR-kAk"/>
+                        <outlet property="btnLevel4" destination="Vq2-AH-rvJ" id="UI9-fY-ngu"/>
+                        <outlet property="btnLevel5" destination="bvI-Sn-oAn" id="YJW-zc-oTD"/>
+                        <outlet property="lblLevel1" destination="3W0-Vz-pwv" id="UM2-Dm-5Ep"/>
+                        <outlet property="lblLevel2" destination="umA-FT-7DP" id="mvU-7O-8Cg"/>
+                        <outlet property="lblLevel3" destination="YBp-ip-TCM" id="ZFf-1K-lL0"/>
+                        <outlet property="lblLevel4" destination="yDF-ek-zdp" id="V4b-Hh-NWW"/>
+                        <outlet property="lblLevel5" destination="KS1-Sz-mS9" id="KpW-8D-ub7"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="showLevelSegue" id="6iu-Ul-hqJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ubn-3E-MhL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-270" y="972"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="Ifd-Po-aqu">

@@ -50,9 +50,15 @@ class UserViewController: UIViewController {
             
             USER.setUserDetails(txtParticipant.text!) {
                 (status: UserStatus) in
+                if status == UserStatus.Active
+                {
+                    USER.syncProgress(0)
+                    
+                }
                 print ("got back: \(status.rawValue)")
                 
                 self.returnToPreviousController()
+                
             }
         }
         
