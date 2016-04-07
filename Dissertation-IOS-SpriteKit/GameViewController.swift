@@ -333,6 +333,15 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     }
     
     
+    @IBAction func btnHomeTouchDown(sender: AnyObject) {
+        
+        LEVEL = nil
+        scene.removeAllChildren()
+        scene.removeAllActions()
+        scene = nil
+        gameView = nil
+        
+    }
     
     
 }

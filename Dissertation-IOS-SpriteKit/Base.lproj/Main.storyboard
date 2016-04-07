@@ -46,6 +46,7 @@
                                         </constraints>
                                         <state key="normal" image="home.png"/>
                                         <connections>
+                                            <action selector="btnHomeTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="Aqx-fk-lXu"/>
                                             <segue destination="Qel-TB-K7h" kind="show" id="cPp-iS-osE"/>
                                         </connections>
                                     </button>
@@ -177,6 +178,7 @@
                                         </constraints>
                                         <state key="normal" image="btnPlay.png"/>
                                         <connections>
+                                            <action selector="btnPlayTouchDown:" destination="Qel-TB-K7h" eventType="touchDown" id="GLv-Zr-9Sd"/>
                                             <segue destination="BV1-FR-VrT" kind="show" id="eFJ-ZG-X3J"/>
                                         </connections>
                                     </button>
@@ -434,6 +436,6 @@
         <image name="user.png" width="168" height="144"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eW4-pJ-HRy"/>
+        <segue reference="xap-0R-8mL"/>
     </inferredMetricsTieBreakers>
 </document>

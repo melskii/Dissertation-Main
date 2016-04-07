@@ -29,24 +29,98 @@ public class UserModel {
         
         return name
     }
+
     
-    func validUser (participant: String) -> Bool
-    {
-        if let id = Int(participant) {
+    public func setUserDetails (tag: String, completion: (status: UserStatus) -> Void) {
+        
+        if let id = Int(tag) {
             
             if id != self.id {
                 
+                active = false
+                self.id = -1
                 
-                self.setUserDetails(id)
+                let request = NSMutableURLRequest(URL: NSURL(string: URL + "getData.php")!)
+                request.HTTPMethod = "POST"
+                let postString = "id=\(id)"
+                request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
                 
-                return active
+                let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+                    data, response, error in
+                    
+                    if error != nil {
+                        
+                        print("ERRORSTRING=\(error)")
+                        completion(status: UserStatus.BadConn)
+                        return
+                    }
+                    
+                    print("response = \(response)")
+                    
+                    let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                    print("RESPONSESTRING = \(responseString)")
+                    
+                    
+                    var json: Array<AnyObject>!
+                    
+                    do {
+                        json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as? Array
+                    } catch {
+                        
+                        completion(status: UserStatus.BadJSON)
+                        print(json)
+                        print(error)
+                    }
+              
+                    /* https://www.raywenderlich.com/120442/swift-json-tutorial */
+                    
+                    //Extract the User ID and Active Status
+                    guard !(json.isEmpty),
+                    let item = json[0] as? [String: AnyObject] ,
+                        let _active = item["active"] as? String,
+                        let _id = item["id"] else {
+                            
+                            completion(status: UserStatus.NoUser)
+                            return;
+                    }
+                    
+                    if _active == "1" {
+                        
+                        self.active = true
+                        completion(status: UserStatus.Active)
+             
+                    }
+                    else {
+                        self.active = false
+                        completion(status: UserStatus.Disabled)       
+                    }
+                    
+                    self.id = Int(_id as! String)
+                    print("active \(self.active) id \(self.id)")
+   
+                    
+                }
+                task.resume()
                 
             }
             
+            else {
+                
+                if active {
+                    completion(status: UserStatus.Active)
+                } else {
+                    completion(status: UserStatus.Disabled)
+                }
+                
+            }
             
         }
         
-        return active
+        else {
+            
+            completion(status: UserStatus.Invalid)
+        }
+        
     }
     
     
@@ -86,13 +160,13 @@ public class UserModel {
                 print("RESPONSESTRING = \(responseString)")
                 
                 
-//                var json: Array<AnyObject>!
-//                
-//                do {
-//                    json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as? Array
-//                } catch {
-//                    print(error)
-//                }
+                //                var json: Array<AnyObject>!
+                //
+                //                do {
+                //                    json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as? Array
+                //                } catch {
+                //                    print(error)
+                //                }
                 
             }
             
@@ -108,7 +182,7 @@ public class UserModel {
         var x = ""
         
         for block in program {
-       
+            
             x += block.name + "|"
             
         }
@@ -119,67 +193,5 @@ public class UserModel {
         return x
         
     }
-    
-    private func setUserDetails (participant: Int) {
-        
-        self.active = false
-        self.id = -1
-        
-    
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: URL + "getData.php")!)
-        request.HTTPMethod = "POST"
-        let postString = "id=\(participant)"
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
-            
-            if error != nil {
-                print("ERRORSTRING=\(error)")
-                return
-            }
-            
-            print("response = \(response)")
-            
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("RESPONSESTRING = \(responseString)")
-            
-            
-            var json: Array<AnyObject>!
-            
-            do {
-                json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as? Array
-            } catch {
-                print(error)
-            }
-            
-            
-            print(json)
-            //https://www.raywenderlich.com/120442/swift-json-tutorial
-            
-            guard let item = json[0] as? [String: AnyObject] ,
-                
-                let active = item["active"] as? String, let id = item["id"] else {
-                    return;
-            }
-            
-            
-            self.active = Int(active) == 1 ? true : false
-            self.id = Int(id as! String)
-            
-            
-            print("active \(active) id \(id)")
-            
-            
-        }
-        task.resume()
-        
-    }
-    
-    
-    
-    
-
 
 }

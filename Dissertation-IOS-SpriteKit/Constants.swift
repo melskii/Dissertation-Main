@@ -17,7 +17,7 @@ let MENU_HEIGHT: CGFloat = 56
 
 let USER: UserModel = UserModel()
 var _LEVEL = 1
-var LEVEL: Level = Level(level: _LEVEL)
+var LEVEL: Level!
 var GAME_HEIGHT: CGFloat!
 
 
@@ -31,4 +31,13 @@ public enum OutputType: String {
     case B = "ObjectB"
     case C = "ObjectC"
     case End = "End"
+}
+
+public enum UserStatus: String {
+    case Disabled = "Disabled"
+    case Active = "Active"
+    case NoUser = "No User Available for that number"
+    case BadConn = "Unable to Connect"
+    case BadJSON = "Unable to Parse JSON"
+    case Invalid = "Invalid text entered into the box"
 }

@@ -47,14 +47,15 @@ class UserViewController: UIViewController {
         
         if (txtParticipant.text != "")
         {
-            let valid = USER.validUser(txtParticipant.text!)
             
-            print("valid: \(valid)")
+            USER.setUserDetails(txtParticipant.text!) {
+                (status: UserStatus) in
+                print ("got back: \(status.rawValue)")
+                
+                self.returnToPreviousController()
+            }
         }
         
-        
-        
-//        returnToPreviousController()
         
     }
     
