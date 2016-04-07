@@ -84,7 +84,7 @@ public class Level {
             
                 let A = GameCell(x: 1, y: 1)
            
-                let End = GameCell (x: 7, y: 3)
+                let End = GameCell (x: 2, y: 2)
                 
                 
                 A.setOutputSprite(TLSpriteNode(imageNamed: "monkey"), type: OutputType.A)
@@ -164,13 +164,11 @@ public class Level {
     
     private func compileProgram (prog: [Block]) -> Bool {
         
-        
+        print(prog)
         
         var program = prog
         var objectCell: (type: OutputType, cell: GameCell)? = nil //The Cell of the Current Object
         var valid = false
-        
-        program.removeAtIndex(0) //Removes Play from Program - Has already been validated
         
         for b in program {
             
@@ -178,21 +176,28 @@ public class Level {
             
             //Debugging: print("program block: \(b)")
             
-            if let object = b as? Object {
+            if let _ = b as? Play {
+                
+                //Removes Play from Program - Has already been validated
+                //Should only be the first element as the parser would have stopped it from getting this far
+                program.removeFirst()
+            }
+            
+            else if let block = b as? Object {
                 
                 
-                guard let c = getCellWithType(object.type) else {
+                guard let c = getCellWithType(block.type) else {
                     
                     break
                 }
                 
                 
                 //Debugging: print("object \(object.type)")
-                objectCell = (object.type, c)
+                objectCell = (block.type, c)
                 
             }
             
-            else if let action = b as? Action {
+            else if let block = b as? Action {
                 
                 //Debugging: print("object \(action.name)")
                 
@@ -207,56 +212,36 @@ public class Level {
                     
                 
                 
-                    guard let pos: (x: Int, y: Int) = action.gridActionMove(objectCell!.cell) else {
+                    guard let pos: (x: Int, y: Int) = block.gridActionMove(objectCell!.cell) else {
                         
                         
                         break
                     }
                     
+                    let type = objectCell!.type
+                    let currentCell = objectCell!.cell
+                    let sprite = currentCell.getOutputSprite(type)
                     
-                    //Debugging: print("position \(pos) object: \(objectCell!.type)")
-                    
-                    //if the new pos are in bounds then continue and move the object
-                    if (pos.x >= 0 && pos.x < x) && (pos.y >= 0 && pos.y < y)
-                    {
+                    if sprite != nil {
                         
-                        //Debugging: print("inside the bounds")
+                        sprite?.appendActionSequence(block.spriteActionMove())
+
+
                         
-                        let type = objectCell!.type
-                        let currentCell = objectCell!.cell
-                        let sprite = currentCell.getOutputSprite(type)
-                        
-                        print("hello")
-                        
-                        
-                        print("preanimate: \(sprite))")
-                    
-                        print(_objects[0].objects[OutputType.A])
-                        
-                        
-                        //Animate and Move Sprite if it exists.
-                        if sprite != nil {
-                            
-                            sprite?.appendActionSequence()
-                            
+                        //if the new pos are in bounds then continue and move the object
+                        if (pos.x >= 0 && pos.x < x) && (pos.y >= 0 && pos.y < y)
+                        {
+
+                            //Animate and Move Sprite if it exists.
                             let newCell = _grid[pos.x][pos.y]
 
-                            
-                            //Debugging: print("object not null \(object)")
-                            
-                            
-                            //Debugging: print("New Cell Before \(newCell.objects)")
-                            //Debugging: print("Current Cell Before \(currentCell.objects)")
-                        
                             //Remove from old cell Location
                             currentCell.removeOutputSprite(type)
                             
                             //Add to new cell Location
                             newCell.setOutputSprite(sprite!, type: type)
                             objectCell = (type, newCell)
-                            
-                            //Debugging: print("New Cell After \(newCell.objects)")
-                            //Debugging: print("Current Cell After \(currentCell.objects)")
+                       
                             
                             
                             if (newCell.getOutputSprite(OutputType.End) != nil) {
@@ -265,21 +250,19 @@ public class Level {
                                 
                             }
                             
-                            
-                            
                         }
                         
-                        
-                        
+                        else {
+                            
+                            //animate off the screen but don't move in the grid
+                            //Debugging: print ("out of bounds")
+                            break
+                            
+                        }
                     }
                     
-                    else {
-                        
-                        //animate off the screen but don't move in the grid
-                        //Debugging: print ("out of bounds")
-                        break
-                        
-                    }
+                    
+                    
                 }
                 
                 
@@ -373,7 +356,7 @@ class TLSpriteNode: SKSpriteNode {
         
     }
     
-    func appendActionSequence()  {
+    func appendActionSequence(location: CGVector)  {
         
         /*
         Code to make my Sprite Walk:
@@ -398,10 +381,9 @@ class TLSpriteNode: SKSpriteNode {
         
         , count: 5))
         */
-
+        
         
         //let animateAction = SKAction.animateWithTextures(SOMETEXTURE, timePerFrame: 0.20)
-        let location = CGVector(dx: 100, dy: 0)
         let moveAction = SKAction.moveBy(location, duration: 0.5)
         actionSequence.append(moveAction)
         

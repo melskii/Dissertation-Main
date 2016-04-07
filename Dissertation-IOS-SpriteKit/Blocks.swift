@@ -119,18 +119,7 @@ class Object: Block {
     
 }
 
-class Action: Block {
-    
-    internal func gridActionMove(cell: GameCell) -> (Int, Int) {
-        
-        return (cell.x, cell.y)
-        
-        
-    }
-    
-  
-    
-}
+
 
 class Play: Block {
     
@@ -149,7 +138,27 @@ class Control: Block {
 
 
 
-//Action
+//ACTIONS!!!!
+
+class Action: Block {
+    
+    internal func gridActionMove(cell: GameCell) -> (Int, Int) {
+        
+        return (cell.x, cell.y)
+        
+        
+    }
+    
+    func spriteActionMove() -> CGVector {
+        
+        return CGVector(dx: 0, dy: 0) //default to still
+        
+    }
+    
+    
+    
+}
+
 class Up: Action {
     
     override init() {
@@ -166,6 +175,13 @@ class Up: Action {
         
         
     }
+    
+    override func spriteActionMove() -> CGVector {
+        
+        return CGVector(dx: 0, dy: OUTSQUARE.height) //default to still
+        
+    }
+
     
     
     
@@ -189,6 +205,13 @@ class Down: Action {
         
     }
     
+    override func spriteActionMove() -> CGVector {
+        
+        return CGVector(dx: 0, dy: -OUTSQUARE.height) //default to still
+        
+    }
+
+    
     
 }
 
@@ -209,6 +232,13 @@ class Left: Action {
         
     }
     
+    override func spriteActionMove() -> CGVector {
+        
+        return CGVector(dx: -OUTSQUARE.height, dy: 0) //default to still
+        
+    }
+
+    
     
 }
 
@@ -226,6 +256,12 @@ class Right: Action {
         
         return (cell.x + 1, cell.y)
         
+        
+    }
+    
+    override func spriteActionMove() -> CGVector {
+        
+        return CGVector(dx: OUTSQUARE.height, dy: 0) //default to still
         
     }
     

@@ -134,7 +134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
             i = i + 1
             
             b.block.position = pos
-            b.block.zPosition = 2
+            b.block.zPosition = 3
             body.addChild(b.block)
             
         }
@@ -188,6 +188,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         body.size = CGSize(width: self.width, height: self.height * 0.5)
         body.position = CGPoint(x: (body.size.width * 0.5), y: (body.size.height * 0.5))
         body.name = "outputBackground"
+        
+        body.zPosition = -1
    
         
         let background = LEVEL._background
@@ -207,16 +209,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
             for object in cell.objects {
                 
                 let sprite = object.1
-                print("pre size change: \(sprite.description)")
+    
             
                 sprite.aspectFillToSize(_outSquare)
                 let point: CGPoint = CGPoint(x: start.x + (_outSquare.width * CGFloat(cell.x)), y: start.y + (_outSquare.height * CGFloat(cell.y)))
                 sprite.position = point
-                print(point)
+          
                 
                 sprite.startPoint(point)
-                
-                print("setup: \(sprite.description)")
                 body.addChild(sprite)
                 
             }
@@ -287,6 +287,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         
         
         let touchedNode = node
+        
+        print(touchedNode)
         
         if (touchedNode is BlockSprite && touch == nil) {
             
