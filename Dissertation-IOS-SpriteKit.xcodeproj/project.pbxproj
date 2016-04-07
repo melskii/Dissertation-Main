@@ -37,6 +37,7 @@
 		A04006821CA1C38F00B6916E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04006811CA1C38E00B6916E /* UserViewController.swift */; };
 		A056A1831CB546210027E530 /* monkey.png in Resources */ = {isa = PBXBuildFile; fileRef = A056A1821CB546210027E530 /* monkey.png */; };
 		A056A1851CB5481F0027E530 /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = A056A1841CB5481F0027E530 /* house.png */; };
+		A056A1871CB6AFC10027E530 /* dog.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A056A1861CB6AFC10027E530 /* dog.atlas */; };
 		A05814421CAC1BE1001627B8 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05814411CAC1BE1001627B8 /* MaterialView.swift */; };
 		A05814461CAC1C2E001627B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05814451CAC1C2E001627B8 /* Constants.swift */; };
 		A058144A1CAC2158001627B8 /* Si Kancil.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A05814491CAC2158001627B8 /* Si Kancil.ttf */; };
@@ -118,6 +119,7 @@
 		A04006811CA1C38E00B6916E /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		A056A1821CB546210027E530 /* monkey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monkey.png; sourceTree = "<group>"; };
 		A056A1841CB5481F0027E530 /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
+		A056A1861CB6AFC10027E530 /* dog.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = dog.atlas; sourceTree = "<group>"; };
 		A05814411CAC1BE1001627B8 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		A05814451CAC1C2E001627B8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A05814491CAC2158001627B8 /* Si Kancil.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Si Kancil.ttf"; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		A056A1811CB546110027E530 /* Output Objects */ = {
 			isa = PBXGroup;
 			children = (
+				A056A1861CB6AFC10027E530 /* dog.atlas */,
 				A056A1841CB5481F0027E530 /* house.png */,
 				A056A1821CB546210027E530 /* monkey.png */,
 			);
@@ -549,6 +552,7 @@
 				A056A1831CB546210027E530 /* monkey.png in Resources */,
 				A031D46B1CA3268F00CC24E7 /* home_disabled.png in Resources */,
 				A0FD09351CAADBF700267669 /* menuBackgroundwithText.png in Resources */,
+				A056A1871CB6AFC10027E530 /* dog.atlas in Resources */,
 				A0F3B7881C7DCAB3000A686A /* TestScene.sks in Resources */,
 				A0F3B78D1C7DEFF0000A686A /* outBckground.png in Resources */,
 				A0F1BE491C7F5C6E00C62870 /* up_highlight.png in Resources */,

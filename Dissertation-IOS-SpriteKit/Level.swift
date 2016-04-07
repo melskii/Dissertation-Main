@@ -85,8 +85,14 @@ public class Level {
                 let End = GameCell (x: 7, y: 3)
                 let A = GameCell(x: 1, y: 1)
                 
-                End.setOutputSprite(TLSpriteNode(imageNamed: "house"), type: OutputType.End)
-                A.setOutputSprite(TLSpriteNode(imageNamed: "monkey"), type: OutputType.A)
+                let house = TLSpriteNode(imageNamed: "house")
+                house.name = "house"
+                
+                let dog = TLSpriteNode(imageNamed: "dog")
+                dog.name = "dog"
+                
+                End.setOutputSprite(house, type: OutputType.End)
+                A.setOutputSprite(dog, type: OutputType.A)
     
                 _objects.append(End)
                 _objects.append(A)
@@ -101,13 +107,10 @@ public class Level {
             
             
         }
-        
-        print("OBJECTS \(_objects)")
+    
         
         for cell in _objects {
-            
-            print("CELL: \(cell.x) \(cell.y)")
-            print("CELL OBJECTS : \(cell.objects)")
+         
             _grid[cell.x][cell.y].objects = cell.objects
     
         }
@@ -157,6 +160,7 @@ public class Level {
             
         }
         
+        //Move on to the next level if compiled
         if (!compiled) {
             setLevelObjects()
         }
@@ -319,7 +323,7 @@ public class GameCell {
     
     func setOutputSprite(sprite: TLSpriteNode, type: OutputType) {
         
-        sprite.name = type.rawValue
+       
         objects[type] = sprite
     }
     
@@ -356,30 +360,25 @@ class TLSpriteNode: SKSpriteNode {
     
     func appendActionSequence(location: CGPoint)  {
         
-        /*
-        Code to make my Sprite Walk:
-        let spriteAnimatedAtlas = SKTextureAtlas(named: sprite.name!)
+       
+        //Code to make my Sprite Run:
+        let spriteAnimatedAtlas = SKTextureAtlas(named: self.name!)
         
         var walkFrames = [SKTexture]()
         
         let images = spriteAnimatedAtlas.textureNames.count
         
-        for var i = 1; i <= images; i++ {
-        let textureName = sprite.name! + String(i)
-        walkFrames.append(spriteAnimatedAtlas.textureNamed(textureName))
+        for var i = 1; i < images; i++ {
+            let textureName = self.name! + String(i)
+            walkFrames.append(spriteAnimatedAtlas.textureNamed(textureName))
         }
         
         let spriteWalkingFrames = walkFrames
         
-        sprite.runAction(SKAction.repeatAction(
-        SKAction.animateWithTextures(spriteWalkingFrames,
-        timePerFrame: 0.1,
-        resize: false,
-        restore: true)
-        
-        , count: 5))
-        */
-        
+        let runAction = SKAction.animateWithTextures(spriteWalkingFrames,
+            timePerFrame: 0.1,
+            resize: false,
+            restore: true)
         
         //let animateAction = SKAction.animateWithTextures(SOMETEXTURE, timePerFrame: 0.20)
         
@@ -387,7 +386,10 @@ class TLSpriteNode: SKSpriteNode {
         
         
         let moveAction = SKAction.moveByX(location.x, y: location.y, duration: 0.5)
-        actionSequence.append(moveAction)
+        
+        let groupActions = SKAction.group([runAction, moveAction])
+
+        actionSequence.append(groupActions)
         
     }
     
@@ -398,7 +400,11 @@ class TLSpriteNode: SKSpriteNode {
         
         if reset {
             
+            actionSequence.append(SKAction.fadeOutWithDuration(0.3))
+            actionSequence.append(SKAction.hide())
             actionSequence.append(SKAction.moveTo(start, duration: 0.3))
+            actionSequence.append(SKAction.unhide())
+            actionSequence.append(SKAction.fadeInWithDuration(0.3))
             
         }
         
