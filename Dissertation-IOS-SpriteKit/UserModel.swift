@@ -129,6 +129,7 @@ public class UserModel {
         
         
         timeToComplete[_LEVEL] = time
+        self.appendRewards()
         
         if active {
             
@@ -166,9 +167,42 @@ public class UserModel {
         
     }
     
+    private func appendRewards() {
+        
+        var stars = 0
+        
+        if attempts[_LEVEL] >= 5 {
+            
+            stars = 1
+            
+        }
+            
+        else if attempts[_LEVEL] >= 3 {
+            
+            stars = 2
+            
+        }
+            
+        else if attempts[_LEVEL] >= 1 {
+            
+            stars = 3
+            
+        }
+        
+        if stars > (rewards[_LEVEL] == nil ? 0 : rewards[_LEVEL]) {
+            
+            rewards[_LEVEL] = stars
+            
+        }
+        
+        print("rewards: \(rewards)")
+        
+    }
+    
     func appendAttempts () {
         
-        attempts[_LEVEL] = attempts[_LEVEL] == nil ? 1 : attempts[_LEVEL]! + 1
+        attempts[_LEVEL] = (attempts[_LEVEL] == nil ? 1 : (attempts[_LEVEL]! + 1))
+        
         
         print(attempts)
         

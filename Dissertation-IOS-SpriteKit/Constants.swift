@@ -17,6 +17,7 @@ let MENU_HEIGHT: CGFloat = 56
 
 let USER: UserModel = UserModel()
 var _LEVEL = 1
+let MAXLEVELS = 5
 var LEVEL: Level!
 var GAME_HEIGHT: CGFloat!
 

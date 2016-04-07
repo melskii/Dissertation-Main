@@ -135,12 +135,15 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     
     @IBAction func playTouchDown(sender: AnyObject) {
         
+        USER.appendAttempts()
+        
         if (!program.isEmpty && validProgramFlow()) {
             
             if LEVEL.validProgram(program) {
                 
                 USER.setProgramFlow(program, type: nil)
                 stopCount(true)
+                
                 print("valid")
 //                _LEVEL++
             }
@@ -161,8 +164,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             print("not valid")
         }
         
-        USER.appendAttempts()
-        
     }
     
     func validProgramFlow() -> Bool {
@@ -175,9 +176,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         
         for cell in program {
-        
-            
-            
+  
             if let block = cell as? Block {
             
                 
