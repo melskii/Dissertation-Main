@@ -40,7 +40,7 @@ public class Level {
         setLevelInstructions()
         
         //Set up the Level Grid
-        setLevelObjects(false)
+        setLevelObjects()
         
     }
     
@@ -73,7 +73,7 @@ public class Level {
     
     }
     
-    private func setLevelObjects(reset: Bool) {
+    private func setLevelObjects() {
         
         clearOutputGrid(10, y: 5) //loops 10 x 5
         
@@ -81,19 +81,15 @@ public class Level {
         if (self.level == 1) {
             
             if _objects.count == 0 {
-            
-                let A = GameCell(x: 1, y: 1)
            
-                let End = GameCell (x: 2, y: 2)
+                let End = GameCell (x: 7, y: 3)
+                let A = GameCell(x: 1, y: 1)
                 
-                
-                A.setOutputSprite(TLSpriteNode(imageNamed: "monkey"), type: OutputType.A)
-             
                 End.setOutputSprite(TLSpriteNode(imageNamed: "house"), type: OutputType.End)
-                
-                _objects.append(A)
-                
+                A.setOutputSprite(TLSpriteNode(imageNamed: "monkey"), type: OutputType.A)
+    
                 _objects.append(End)
+                _objects.append(A)
                 
                 _background = SKSpriteNode(imageNamed: "homebackground")
             }
@@ -106,10 +102,12 @@ public class Level {
             
         }
         
+        print("OBJECTS \(_objects)")
         
         for cell in _objects {
             
-            
+            print("CELL: \(cell.x) \(cell.y)")
+            print("CELL OBJECTS : \(cell.objects)")
             _grid[cell.x][cell.y].objects = cell.objects
     
         }
@@ -150,10 +148,17 @@ public class Level {
             
             for sprite in cell.objects {
                 
-                sprite.1.animateWithActionSquence(!compiled)
+                if sprite.0 != OutputType.End {
+                    
+                    sprite.1.animateWithActionSquence(!compiled)
+                }
                 
             }
             
+        }
+        
+        if (!compiled) {
+            setLevelObjects()
         }
         
         return compiled
@@ -163,27 +168,19 @@ public class Level {
 
     
     private func compileProgram (prog: [Block]) -> Bool {
-        
-        print(prog)
-        
+      
         var program = prog
         var objectCell: (type: OutputType, cell: GameCell)? = nil //The Cell of the Current Object
         var valid = false
+        
+        print(program)
         
         for b in program {
             
             valid = false
             
-            //Debugging: print("program block: \(b)")
-            
-            if let _ = b as? Play {
-                
-                //Removes Play from Program - Has already been validated
-                //Should only be the first element as the parser would have stopped it from getting this far
-                program.removeFirst()
-            }
-            
-            else if let block = b as? Object {
+            //Play is ignored!
+            if let block = b as? Object {
                 
                 
                 guard let c = getCellWithType(block.type) else {
@@ -222,6 +219,7 @@ public class Level {
                     let currentCell = objectCell!.cell
                     let sprite = currentCell.getOutputSprite(type)
                     
+                    print("Sprite that's being changed: \(sprite)")
                     if sprite != nil {
                         
                         sprite?.appendActionSequence(block.spriteActionMove())
@@ -356,7 +354,7 @@ class TLSpriteNode: SKSpriteNode {
         
     }
     
-    func appendActionSequence(location: CGVector)  {
+    func appendActionSequence(location: CGPoint)  {
         
         /*
         Code to make my Sprite Walk:
@@ -384,7 +382,11 @@ class TLSpriteNode: SKSpriteNode {
         
         
         //let animateAction = SKAction.animateWithTextures(SOMETEXTURE, timePerFrame: 0.20)
-        let moveAction = SKAction.moveBy(location, duration: 0.5)
+        
+        print("move by: \(location)")
+        
+        
+        let moveAction = SKAction.moveByX(location.x, y: location.y, duration: 0.5)
         actionSequence.append(moveAction)
         
     }
@@ -399,16 +401,26 @@ class TLSpriteNode: SKSpriteNode {
             actionSequence.append(SKAction.moveTo(start, duration: 0.3))
             
         }
+        
+        else
+        {
+            actionSequence.append(SKAction.fadeOutWithDuration(0.3))
+        }
+        
        
        let sequence = SKAction.sequence(actionSequence)
+        
+        print(actionSequence.count)
         
         self.runAction(sequence, completion: {
             
             self.actionSequence.removeAll()
+            self.position = self.start
             
             
             }
         )
+       
     }
     
     

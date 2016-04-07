@@ -111,7 +111,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             
             else {
               
-//                USER.setProgramFlow(program, type: "Code")
+                USER.setProgramFlow(program, type: "Code")
                 print("not valid")
                 
                 

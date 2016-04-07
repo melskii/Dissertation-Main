@@ -149,9 +149,9 @@ class Action: Block {
         
     }
     
-    func spriteActionMove() -> CGVector {
+    func spriteActionMove() -> CGPoint {
         
-        return CGVector(dx: 0, dy: 0) //default to still
+        return CGPoint(x: 0, y: 0) //default to still
         
     }
     
@@ -176,9 +176,9 @@ class Up: Action {
         
     }
     
-    override func spriteActionMove() -> CGVector {
+    override func spriteActionMove() ->  CGPoint {
         
-        return CGVector(dx: 0, dy: OUTSQUARE.height) //default to still
+        return CGPoint(x: 0, y: OUTSQUARE.height) //default to still
         
     }
 
@@ -205,9 +205,9 @@ class Down: Action {
         
     }
     
-    override func spriteActionMove() -> CGVector {
+    override func spriteActionMove() -> CGPoint {
         
-        return CGVector(dx: 0, dy: -OUTSQUARE.height) //default to still
+        return CGPoint(x: 0, y: -OUTSQUARE.height) //default to still
         
     }
 
@@ -232,9 +232,9 @@ class Left: Action {
         
     }
     
-    override func spriteActionMove() -> CGVector {
+    override func spriteActionMove() -> CGPoint {
         
-        return CGVector(dx: -OUTSQUARE.height, dy: 0) //default to still
+        return CGPoint(x: -OUTSQUARE.width, y: 0) //default to still
         
     }
 
@@ -259,9 +259,9 @@ class Right: Action {
         
     }
     
-    override func spriteActionMove() -> CGVector {
+    override func spriteActionMove() -> CGPoint {
         
-        return CGVector(dx: OUTSQUARE.height, dy: 0) //default to still
+        return CGPoint(x: OUTSQUARE.width, y: 0) //default to still
         
     }
     

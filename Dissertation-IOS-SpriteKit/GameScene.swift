@@ -209,12 +209,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
             for object in cell.objects {
                 
                 let sprite = object.1
-    
-            
+                
                 sprite.aspectFillToSize(_outSquare)
                 let point: CGPoint = CGPoint(x: start.x + (_outSquare.width * CGFloat(cell.x)), y: start.y + (_outSquare.height * CGFloat(cell.y)))
                 sprite.position = point
-          
                 
                 sprite.startPoint(point)
                 body.addChild(sprite)
