@@ -42,3 +42,8 @@ public enum UserStatus: String {
     case BadJSON = "Unable to Parse JSON"
     case Invalid = "Invalid text entered into the box"
 }
+
+public enum AnimationStatus {
+    case Start 
+    case Stop
+}

@@ -48,7 +48,6 @@
                                         <state key="normal" image="home.png"/>
                                         <connections>
                                             <action selector="btnHomeTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="Aqx-fk-lXu"/>
-                                            <segue destination="Qel-TB-K7h" kind="show" id="cPp-iS-osE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfB-EH-BGO" userLabel="btnUser">
@@ -64,21 +63,11 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYs-6a-mIs" userLabel="btnPlay">
-                                <rect key="frame" x="482" y="436" width="46" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Play">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="qGH-VN-Kxc"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evD-4V-gdj" userLabel="btnUndo">
-                                <rect key="frame" x="552" y="436" width="46" height="30"/>
+                                <rect key="frame" x="552" y="436" width="63" height="31"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Undo">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="btnUndoTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="D5B-oJ-T54"/>
@@ -126,13 +115,32 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHu-nC-CZf" userLabel="btnRedo">
-                                <rect key="frame" x="617" y="436" width="46" height="30"/>
+                                <rect key="frame" x="617" y="436" width="70" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Redo">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="btnRedoTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="YdX-nG-rb4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANB-W0-rjg">
+                                <rect key="frame" x="465" y="437" width="46" height="30"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="BSO-mv-alg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYs-6a-mIs" userLabel="btnPlay">
+                                <rect key="frame" x="403" y="437" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="qGH-VN-Kxc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -157,7 +165,10 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="btnPlay" destination="dYs-6a-mIs" id="aVu-Nd-vvf"/>
+                        <outlet property="btnRedo" destination="VHu-nC-CZf" id="B1C-UE-uNQ"/>
+                        <outlet property="btnUndo" destination="evD-4V-gdj" id="Ogs-2A-BQ3"/>
                         <outlet property="collectionView" destination="7Vw-tl-Sf6" id="Pyk-Z2-lEj"/>
+                        <segue destination="Qel-TB-K7h" kind="show" identifier="showHomeSegue" id="DdU-6o-vGn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -274,111 +285,152 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ZEn-zK-Gtr">
-                                <rect key="frame" x="40" y="334" width="944" height="100"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5Gp-Rp-eFZ" userLabel="All Levels">
+                                <rect key="frame" x="40" y="182" width="944" height="404"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qpw-Ti-VmI">
-                                        <rect key="frame" x="0.0" y="0.0" width="184" height="100"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ZEn-zK-Gtr" userLabel="Lvl 1, 2 and 3">
+                                        <rect key="frame" x="0.0" y="0.0" width="944" height="200"/>
                                         <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGE-8r-25E" userLabel="btnLevel1">
-                                                <rect key="frame" x="0.0" y="0.0" width="184" height="80"/>
-                                                <state key="normal" title="Level 1"/>
-                                                <connections>
-                                                    <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="7I6-5I-9ow"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3W0-Vz-pwv" userLabel="lblLevel1">
-                                                <rect key="frame" x="0.0" y="79" width="184" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Qpw-Ti-VmI" userLabel="Level 1">
+                                                <rect key="frame" x="0.0" y="0.0" width="311" height="200"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGE-8r-25E" userLabel="btnLevel1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="311" height="34"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="Level 1"/>
+                                                        <connections>
+                                                            <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="7I6-5I-9ow"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3W0-Vz-pwv" userLabel="lblLevel1">
+                                                        <rect key="frame" x="0.0" y="34" width="311" height="23"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="program_objecta.png" translatesAutoresizingMaskIntoConstraints="NO" id="tFi-lg-1tU">
+                                                        <rect key="frame" x="0.0" y="57" width="311" height="143"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Yhh-qc-4G1" userLabel="Level 2">
+                                                <rect key="frame" x="317" y="0.0" width="311" height="200"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9k-M6-b7c" userLabel="btnLevel2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="311" height="27"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="Level 2"/>
+                                                        <connections>
+                                                            <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="TDV-U4-Yfr"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umA-FT-7DP" userLabel="lblLevel2">
+                                                        <rect key="frame" x="0.0" y="27" width="311" height="19"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stars0.png" translatesAutoresizingMaskIntoConstraints="NO" id="R8R-Xd-VV5">
+                                                        <rect key="frame" x="0.0" y="46" width="311" height="155"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kjo-Q9-VSB" userLabel="Level 3">
+                                                <rect key="frame" x="634" y="0.0" width="311" height="200"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQa-EI-gbD" userLabel="btnLevel3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="311" height="52"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="Level 3"/>
+                                                        <connections>
+                                                            <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="uFQ-gj-kvh"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBp-ip-TCM" userLabel="lblLevel3">
+                                                        <rect key="frame" x="0.0" y="52" width="311" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cn4-lc-yKa">
+                                                        <rect key="frame" x="0.0" y="72" width="311" height="128"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="NUc-a7-zk0"/>
+                                        </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yhh-qc-4G1">
-                                        <rect key="frame" x="190" y="0.0" width="184" height="100"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jjE-4Q-Npo" userLabel="Lvl 4 and 5">
+                                        <rect key="frame" x="0.0" y="204" width="944" height="200"/>
                                         <subviews>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9k-M6-b7c" userLabel="btnLevel2">
-                                                <rect key="frame" x="0.0" y="0.0" width="184" height="80"/>
-                                                <state key="normal" title="Level 2"/>
-                                                <connections>
-                                                    <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="TDV-U4-Yfr"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umA-FT-7DP" userLabel="lblLevel2">
-                                                <rect key="frame" x="0.0" y="79" width="184" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="IVk-nL-pXr" userLabel="Level 4">
+                                                <rect key="frame" x="0.0" y="0.0" width="470" height="200"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-AH-rvJ" userLabel="btnLevel4">
+                                                        <rect key="frame" x="0.0" y="0.0" width="470" height="30"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="Level 4"/>
+                                                        <connections>
+                                                            <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="JJG-D2-sWM"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDF-ek-zdp" userLabel="lblLevel4">
+                                                        <rect key="frame" x="0.0" y="30" width="470" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yCp-Xm-FN1">
+                                                        <rect key="frame" x="0.0" y="51" width="470" height="150"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="g0m-SP-atX" userLabel="Level 5">
+                                                <rect key="frame" x="475" y="0.0" width="470" height="200"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvI-Sn-oAn" userLabel="btnLevel5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="470" height="30"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="Level 5"/>
+                                                        <connections>
+                                                            <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="U8k-9A-Q0w"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KS1-Sz-mS9" userLabel="lblLevel5">
+                                                        <rect key="frame" x="0.0" y="30" width="470" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RW5-VV-T9z">
+                                                        <rect key="frame" x="0.0" y="51" width="470" height="150"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kjo-Q9-VSB">
-                                        <rect key="frame" x="380" y="0.0" width="184" height="100"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQa-EI-gbD" userLabel="btnLevel3">
-                                                <rect key="frame" x="0.0" y="0.0" width="184" height="80"/>
-                                                <state key="normal" title="Level 3"/>
-                                                <connections>
-                                                    <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="uFQ-gj-kvh"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBp-ip-TCM" userLabel="lblLevel3">
-                                                <rect key="frame" x="0.0" y="79" width="184" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IVk-nL-pXr">
-                                        <rect key="frame" x="570" y="0.0" width="184" height="100"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-AH-rvJ" userLabel="btnLevel4">
-                                                <rect key="frame" x="0.0" y="0.0" width="184" height="80"/>
-                                                <state key="normal" title="Level 4"/>
-                                                <connections>
-                                                    <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="JJG-D2-sWM"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDF-ek-zdp" userLabel="lblLevel4">
-                                                <rect key="frame" x="0.0" y="79" width="184" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="g0m-SP-atX">
-                                        <rect key="frame" x="760" y="0.0" width="184" height="100"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvI-Sn-oAn" userLabel="btnLevel5">
-                                                <rect key="frame" x="0.0" y="0.0" width="184" height="80"/>
-                                                <state key="normal" title="Level 5"/>
-                                                <connections>
-                                                    <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="U8k-9A-Q0w"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KS1-Sz-mS9" userLabel="lblLevel5">
-                                                <rect key="frame" x="0.0" y="79" width="184" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="QMd-kr-i8d"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="NUc-a7-zk0"/>
+                                    <constraint firstAttribute="bottom" secondItem="jjE-4Q-Npo" secondAttribute="bottom" id="EwG-jj-sel"/>
+                                    <constraint firstItem="ZEn-zK-Gtr" firstAttribute="top" secondItem="5Gp-Rp-eFZ" secondAttribute="top" id="GAz-4g-Wi9"/>
+                                    <constraint firstItem="jjE-4Q-Npo" firstAttribute="leading" secondItem="5Gp-Rp-eFZ" secondAttribute="leading" id="Kon-bc-sie"/>
+                                    <constraint firstItem="ZEn-zK-Gtr" firstAttribute="leading" secondItem="5Gp-Rp-eFZ" secondAttribute="leading" id="To0-vi-5pZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="jjE-4Q-Npo" secondAttribute="trailing" id="eJ2-5s-xxJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZEn-zK-Gtr" secondAttribute="trailing" id="fwy-EA-1le"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZEn-zK-Gtr" firstAttribute="leading" secondItem="BPt-oC-xEm" secondAttribute="leadingMargin" constant="20" id="925-dI-A4h"/>
-                            <constraint firstItem="ZEn-zK-Gtr" firstAttribute="centerY" secondItem="BPt-oC-xEm" secondAttribute="centerY" id="Frc-dV-sZA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZEn-zK-Gtr" secondAttribute="trailing" constant="20" id="agh-TR-d5g"/>
-                            <constraint firstItem="ZEn-zK-Gtr" firstAttribute="centerY" secondItem="BPt-oC-xEm" secondAttribute="centerY" id="tgE-9g-kCK"/>
+                            <constraint firstItem="5Gp-Rp-eFZ" firstAttribute="centerX" secondItem="BPt-oC-xEm" secondAttribute="centerX" id="0EF-Ra-zHB"/>
+                            <constraint firstItem="5Gp-Rp-eFZ" firstAttribute="centerY" secondItem="BPt-oC-xEm" secondAttribute="centerY" id="JBm-6y-IKa"/>
+                            <constraint firstItem="5Gp-Rp-eFZ" firstAttribute="leading" secondItem="BPt-oC-xEm" secondAttribute="leadingMargin" constant="20" id="PKk-55-Fcu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Gp-Rp-eFZ" secondAttribute="trailing" constant="20" id="Y2p-5P-hiq"/>
                         </constraints>
                     </view>
                     <connections>
@@ -387,6 +439,11 @@
                         <outlet property="btnLevel3" destination="UQa-EI-gbD" id="SJf-bR-kAk"/>
                         <outlet property="btnLevel4" destination="Vq2-AH-rvJ" id="UI9-fY-ngu"/>
                         <outlet property="btnLevel5" destination="bvI-Sn-oAn" id="YJW-zc-oTD"/>
+                        <outlet property="imgLevel1" destination="tFi-lg-1tU" id="dbi-9o-bTp"/>
+                        <outlet property="imgLevel2" destination="R8R-Xd-VV5" id="vIo-xb-ksV"/>
+                        <outlet property="imgLevel3" destination="cn4-lc-yKa" id="AOj-j5-Afa"/>
+                        <outlet property="imgLevel4" destination="yCp-Xm-FN1" id="FVC-RF-GJQ"/>
+                        <outlet property="imgLevel5" destination="RW5-VV-T9z" id="Sl9-tD-qVk"/>
                         <outlet property="lblLevel1" destination="3W0-Vz-pwv" id="UM2-Dm-5Ep"/>
                         <outlet property="lblLevel2" destination="umA-FT-7DP" id="mvU-7O-8Cg"/>
                         <outlet property="lblLevel3" destination="YBp-ip-TCM" id="ZFf-1K-lL0"/>
@@ -397,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubn-3E-MhL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-270" y="972"/>
+            <point key="canvasLocation" x="-273" y="1007"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="Ifd-Po-aqu">
@@ -576,7 +633,9 @@
         <image name="menuBackground.png" width="3069" height="165"/>
         <image name="menuBackgroundwithText.png" width="3072" height="168"/>
         <image name="outBckground.png" width="2048" height="886"/>
+        <image name="program_objecta.png" width="126" height="126"/>
         <image name="program_play.png" width="126" height="126"/>
+        <image name="stars0.png" width="588" height="171"/>
         <image name="user.png" width="168" height="144"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -32,9 +32,14 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var btnPlay: UIButton!
     
+    @IBOutlet weak var btnRedo: UIButton!
+    @IBOutlet weak var btnUndo: UIButton!
+    
     
     private var program: [Block] = []
-    private var redo: [Block] = []
+    
+    private var undo: Bool = true //set to false if it's redo - relates to preliminary
+    private var preliminary: [Block] = []
     
     
     private var lPG: UILongPressGestureRecognizer!
@@ -127,15 +132,20 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     */
     func appendProgramFlowBlock(newblock: Block) {
         
+        resetUndoFlag()
         
         program.append(newblock)
-        
         self.collectionView?.reloadData()
         
         
     }
     
     
+    @IBAction func stopTouchDown(sender: AnyObject) {
+        
+        LEVEL.stopAnimation()
+        
+    }
     
     @IBAction func playTouchDown(sender: AnyObject) {
         
@@ -157,19 +167,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             else {
                 
                 
-                if btnPlay.tag == -1 {
-                        
-                    btnPlay.tag = -1 //Play
-                    btnPlay.setTitle("Play", forState: UIControlState.Normal)
-                    LEVEL.stopAnimation()
-                }
-                
-                else {
-                        
-                    btnPlay.tag = -1 //Stop
-                    btnPlay.setTitle("Stop", forState: UIControlState.Normal)
-                  
-                }
                 
                 
                 USER.setProgramFlow(program, type: "Code")
@@ -188,8 +185,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             
         }
         
-        btnPlay.tag = 1 //Play
-        btnPlay.setTitle("Play", forState: UIControlState.Normal)
+        
         
     }
     
@@ -388,12 +384,13 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         if deleteCell != nil {
             
+            resetUndoFlag()
+            
             let path = collectionView.indexPathForCell(deleteCell!)
             
             let block = program[path!.row]
             
             program.removeAtIndex(path!.row)
-            redo.append(block)
             collectionView.deleteItemsAtIndexPaths([path!])
         }
         
@@ -401,28 +398,36 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     
     @IBAction func btnUndoTouchDown(sender: AnyObject) {
         
-        if program.count > 0 {
+        if undo && preliminary.count > 0 {
             
-            let block = program[program.count - 1]
-
-            redo.append(block)
-            program.removeAtIndex(program.count - 1)
-
+            let hold = program
+            program = self.preliminary
             self.collectionView?.reloadData()
+            
+            undo = !undo
+            
+            self.preliminary = hold
+            
+            btnUndo.setTitle("Undo", forState: .Normal)
+            btnRedo.setTitle("Redo 1", forState: .Normal)
         }
 
     }
     
     @IBAction func btnRedoTouchDown(sender: AnyObject) {
         
-        if redo.count > 0 {
+        if !undo && preliminary.count > 0  {
             
-            let block = redo[0]
-            
-            program.append(block)
-            program.removeAtIndex(0)
-            
+            let hold = program
+            program = self.preliminary
             self.collectionView?.reloadData()
+            
+            undo = !undo
+            
+            self.preliminary = hold
+            
+            btnUndo.setTitle("Undo 1", forState: .Normal)
+            btnRedo.setTitle("Redo", forState: .Normal)
         }
 
 
@@ -431,13 +436,41 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     }
     @IBAction func btnHomeTouchDown(sender: AnyObject) {
         
-        stopCount(false)
-        LEVEL = nil
-        scene.removeAllChildren()
-        scene.removeAllActions()
-        scene = nil
-        gameView = nil
+        let alertController = UIAlertController(title: "Do you want to leave the level?", message: "", preferredStyle: .Alert)
         
+        let cancelAction = UIAlertAction(title: "No", style: .Cancel) { (action:UIAlertAction!) in
+            
+        }
+        alertController.addAction(cancelAction)
+        
+        let OKAction = UIAlertAction(title: "Yes", style: .Default) { (action:UIAlertAction!) in
+            
+            self.stopCount(false)
+            LEVEL = nil
+            self.scene.removeAllChildren()
+            self.scene.removeAllActions()
+            self.scene = nil
+            self.gameView = nil
+            
+            self.performSegueWithIdentifier("showHomeSegue", sender: nil)
+            
+            
+
+        }
+        alertController.addAction(OKAction)
+        
+        self.presentViewController(alertController, animated: true, completion:nil)
+        
+        
+    }
+    
+    func resetUndoFlag() {
+        
+        self.preliminary = program
+        undo = true
+        btnRedo.setTitle("Redo", forState: .Normal)
+        btnUndo.setTitle("Undo 1", forState: .Normal)
+
     }
     
     
@@ -474,6 +507,8 @@ extension GameViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
     
+        
+        resetUndoFlag()
         
         let temp = program.removeAtIndex(sourceIndexPath.item)
         program.insert(temp, atIndex: destinationIndexPath.item)

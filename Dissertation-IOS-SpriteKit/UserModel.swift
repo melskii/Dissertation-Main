@@ -261,6 +261,11 @@ public class UserModel {
         
     }
     
+    func getRewardsStar(level: Int) -> Int {
+  
+        return rewards[level] == nil || rewards.count == 0 ? 0 : rewards[level]!
+    }
+    
     func appendAttempts () {
         
         attempts[_LEVEL] = (attempts[_LEVEL] == nil ? 1 : (attempts[_LEVEL]! + 1))

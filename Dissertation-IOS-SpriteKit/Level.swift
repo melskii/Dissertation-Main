@@ -416,7 +416,6 @@ class TLSpriteNode: SKSpriteNode {
         
         
         
-        
         if reset {
             
             actionSequence.append(SKAction.fadeOutWithDuration(0.3))
@@ -453,10 +452,35 @@ class TLSpriteNode: SKSpriteNode {
         self.actionSequence.removeAll()
         
         self.removeAllActions()
-        self.position = self.start
-//        self.runAction(SKAction.unhide())
+               
+        let sequence = SKAction.sequence(resetSequence())
+        
+        print(actionSequence.count)
+        
+        self.runAction(sequence, completion: {
+            
+            self.actionSequence.removeAll()
+            self.position = self.start
+            
+            
+            }
+        )
+
         
         
+    }
+    
+    private func resetSequence() -> [SKAction]{
+        
+        var a = [SKAction]()
+        
+        a.append(SKAction.fadeOutWithDuration(0.3))
+        a.append(SKAction.hide())
+        a.append(SKAction.moveTo(start, duration: 0.3))
+        a.append(SKAction.unhide())
+        a.append(SKAction.fadeInWithDuration(0.3))
+        
+        return a
     }
 
     

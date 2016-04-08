@@ -40,6 +40,11 @@
 		A056A1871CB6AFC10027E530 /* dog.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A056A1861CB6AFC10027E530 /* dog.atlas */; };
 		A056A1891CB705600027E530 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056A1881CB705600027E530 /* LevelViewController.swift */; };
 		A056A18D1CB7C9F10027E530 /* validation.png in Resources */ = {isa = PBXBuildFile; fileRef = A056A18C1CB7C9F10027E530 /* validation.png */; };
+		A056A1C71CB81C820027E530 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056A1C51CB81C820027E530 /* FirstViewController.swift */; };
+		A056A1C81CB81C820027E530 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056A1C61CB81C820027E530 /* PopUpViewController.swift */; };
+		A056A1CB1CB81C930027E530 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A056A1C91CB81C930027E530 /* Test.storyboard */; };
+		A056A1CC1CB81C930027E530 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056A1CA1CB81C930027E530 /* CustomSegue.swift */; };
+		A056A1CE1CB831500027E530 /* stars.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A056A1CD1CB831500027E530 /* stars.atlas */; };
 		A05814421CAC1BE1001627B8 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05814411CAC1BE1001627B8 /* MaterialView.swift */; };
 		A05814461CAC1C2E001627B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05814451CAC1C2E001627B8 /* Constants.swift */; };
 		A058144A1CAC2158001627B8 /* Si Kancil.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A05814491CAC2158001627B8 /* Si Kancil.ttf */; };
@@ -49,7 +54,6 @@
 		A0A1F1CA1CB410E100C8CCA4 /* bin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A0A1F1C91CB410E100C8CCA4 /* bin.atlas */; };
 		A0AD39B51CA6DE140088FB60 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AD39B41CA6DE140088FB60 /* GameScene.swift */; };
 		A0AD39B71CA6DE2B0088FB60 /* ControlsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AD39B61CA6DE2B0088FB60 /* ControlsScene.swift */; };
-		A0AD39B91CA83DB20088FB60 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0AD39B81CA83DB20088FB60 /* User.storyboard */; };
 		A0DFDBC01C9B14910056196A /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DFDBBF1C9B14910056196A /* HomeScene.swift */; };
 		A0DFDBC41C9C64290056196A /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A0DFDBC31C9C64290056196A /* menuBackground.png */; };
 		A0E87C591C7A358E0098BEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E87C581C7A358E0098BEE2 /* AppDelegate.swift */; };
@@ -124,6 +128,11 @@
 		A056A1861CB6AFC10027E530 /* dog.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = dog.atlas; sourceTree = "<group>"; };
 		A056A1881CB705600027E530 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		A056A18C1CB7C9F10027E530 /* validation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = validation.png; sourceTree = "<group>"; };
+		A056A1C51CB81C820027E530 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		A056A1C61CB81C820027E530 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		A056A1C91CB81C930027E530 /* Test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
+		A056A1CA1CB81C930027E530 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
+		A056A1CD1CB831500027E530 /* stars.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = stars.atlas; sourceTree = "<group>"; };
 		A05814411CAC1BE1001627B8 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		A05814451CAC1C2E001627B8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A05814491CAC2158001627B8 /* Si Kancil.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Si Kancil.ttf"; sourceTree = "<group>"; };
@@ -133,7 +142,6 @@
 		A0A1F1C91CB410E100C8CCA4 /* bin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bin.atlas; sourceTree = "<group>"; };
 		A0AD39B41CA6DE140088FB60 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A0AD39B61CA6DE2B0088FB60 /* ControlsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsScene.swift; sourceTree = "<group>"; };
-		A0AD39B81CA83DB20088FB60 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = User.storyboard; path = ../User.storyboard; sourceTree = "<group>"; };
 		A0DFDBBF1C9B14910056196A /* HomeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
 		A0DFDBC31C9C64290056196A /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
 		A0E87C551C7A358E0098BEE2 /* Dissertation-IOS-SpriteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dissertation-IOS-SpriteKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +263,25 @@
 			name = "Output Objects";
 			sourceTree = "<group>";
 		};
+		A056A1BB1CB8109A0027E530 /* Testing Space */ = {
+			isa = PBXGroup;
+			children = (
+				A056A1C91CB81C930027E530 /* Test.storyboard */,
+				A056A1CA1CB81C930027E530 /* CustomSegue.swift */,
+				A056A1BE1CB810B00027E530 /* Controllers */,
+			);
+			name = "Testing Space";
+			sourceTree = "<group>";
+		};
+		A056A1BE1CB810B00027E530 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A056A1C51CB81C820027E530 /* FirstViewController.swift */,
+				A056A1C61CB81C820027E530 /* PopUpViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		A05814431CAC1BE6001627B8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +303,7 @@
 		A0DFDBC51C9C64320056196A /* Menu & Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				A056A1CD1CB831500027E530 /* stars.atlas */,
 				A056A18C1CB7C9F10027E530 /* validation.png */,
 				A031D46A1CA3268F00CC24E7 /* home_disabled.png */,
 				A0FD092A1CA97B2A00267669 /* btnCancel.png */,
@@ -408,7 +436,7 @@
 		A0FD092E1CAADB3500267669 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				A0AD39B81CA83DB20088FB60 /* User.storyboard */,
+				A056A1BB1CB8109A0027E530 /* Testing Space */,
 				A0E87C601C7A358E0098BEE2 /* Main.storyboard */,
 				A0E87C651C7A358E0098BEE2 /* LaunchScreen.storyboard */,
 			);
@@ -515,7 +543,6 @@
 				A0E87C671C7A358E0098BEE2 /* LaunchScreen.storyboard in Resources */,
 				A056A1851CB5481F0027E530 /* house.png in Resources */,
 				A0151AEE1C834B350078D3EF /* objectC_highlight.png in Resources */,
-				A0AD39B91CA83DB20088FB60 /* User.storyboard in Resources */,
 				A0151AF61C834BA00078D3EF /* down.png in Resources */,
 				A0F3B7981C7DF5D0000A686A /* instBackground.png in Resources */,
 				A04006751CA19A4900B6916E /* user_pressed.png in Resources */,
@@ -534,6 +561,7 @@
 				A056A18D1CB7C9F10027E530 /* validation.png in Resources */,
 				A0FD09291CA97B2300267669 /* btnOK.png in Resources */,
 				A0151AEC1C834B350078D3EF /* objectA_highlight.png in Resources */,
+				A056A1CB1CB81C930027E530 /* Test.storyboard in Resources */,
 				A0F3B79A1C7E2D87000A686A /* prgBckground.png in Resources */,
 				A0FD09371CAADC0D00267669 /* btnPlay.png in Resources */,
 				A0FD09391CAADC1300267669 /* btnHelp.png in Resources */,
@@ -561,6 +589,7 @@
 				A0FD09351CAADBF700267669 /* menuBackgroundwithText.png in Resources */,
 				A056A1871CB6AFC10027E530 /* dog.atlas in Resources */,
 				A0F3B7881C7DCAB3000A686A /* TestScene.sks in Resources */,
+				A056A1CE1CB831500027E530 /* stars.atlas in Resources */,
 				A0F3B78D1C7DEFF0000A686A /* outBckground.png in Resources */,
 				A0F1BE491C7F5C6E00C62870 /* up_highlight.png in Resources */,
 			);
@@ -586,12 +615,15 @@
 				A05814421CAC1BE1001627B8 /* MaterialView.swift in Sources */,
 				A022B96E1CAC420000091B7F /* ProgramCell.swift in Sources */,
 				A0FD092D1CAADB1A00267669 /* HomeViewController.swift in Sources */,
+				A056A1CC1CB81C930027E530 /* CustomSegue.swift in Sources */,
 				A0DFDBC01C9B14910056196A /* HomeScene.swift in Sources */,
 				A0AD39B51CA6DE140088FB60 /* GameScene.swift in Sources */,
+				A056A1C71CB81C820027E530 /* FirstViewController.swift in Sources */,
 				A0F3B79E1C7E355D000A686A /* Blocks.swift in Sources */,
 				A0F3B79C1C7E2F68000A686A /* Level.swift in Sources */,
 				A05814461CAC1C2E001627B8 /* Constants.swift in Sources */,
 				A056A1891CB705600027E530 /* LevelViewController.swift in Sources */,
+				A056A1C81CB81C820027E530 /* PopUpViewController.swift in Sources */,
 				A0E87C591C7A358E0098BEE2 /* AppDelegate.swift in Sources */,
 				A058144C1CAC239E001627B8 /* MaterialTextField.swift in Sources */,
 				A0AD39B71CA6DE2B0088FB60 /* ControlsScene.swift in Sources */,
