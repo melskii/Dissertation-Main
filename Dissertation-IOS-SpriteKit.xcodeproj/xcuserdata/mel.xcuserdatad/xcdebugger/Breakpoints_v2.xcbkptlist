@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481742024.134138"
+            timestampString = "481760077.701337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "GameViewController"
             landmarkType = "3">
             <Locations>
@@ -167,11 +167,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481742024.134138"
+            timestampString = "481764849.189499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -183,11 +183,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481744818.116105"
+            timestampString = "481765567.521352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -199,11 +199,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481744818.116105"
+            timestampString = "481765567.521352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "390"
-            endingLineNumber = "390"
+            startingLineNumber = "449"
+            endingLineNumber = "449"
             landmarkName = "GameViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -215,11 +215,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481742024.134138"
+            timestampString = "481764849.189499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -231,11 +231,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481744818.116105"
+            timestampString = "481765567.521352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "452"
+            endingLineNumber = "452"
             landmarkName = "collectionView(_:numberOfItemsInSection:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -279,11 +279,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481744818.116105"
+            timestampString = "481765567.521352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "handleLongGesture(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -295,7 +295,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481744818.116105"
+            timestampString = "481765567.521352"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
+            landmarkName = "handleLongGesture(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
+            timestampString = "481765567.521352"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
+            landmarkName = "collectionView(_:moveItemAtIndexPath:toIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
+            timestampString = "481765567.521352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "347"
@@ -311,43 +343,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481744818.116105"
+            timestampString = "481765567.521352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
-            landmarkName = "collectionView(_:moveItemAtIndexPath:toIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481744818.116105"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
-            landmarkName = "handleLongGesture(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481744818.116105"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
             landmarkName = "removeCollectionCell()"
             landmarkType = "5">
          </BreakpointContent>
@@ -359,11 +359,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481744818.116105"
+            timestampString = "481765567.521352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
             landmarkName = "removeCollectionCell()"
             landmarkType = "5">
          </BreakpointContent>
@@ -375,11 +375,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481744818.116105"
+            timestampString = "481765567.521352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "validProgramFlow()"
             landmarkType = "5">
          </BreakpointContent>
@@ -471,11 +471,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481742024.134138"
+            timestampString = "481764849.189499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -599,11 +599,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/Level.swift"
-            timestampString = "481735481.264346"
+            timestampString = "481764849.189499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "420"
-            endingLineNumber = "420"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "animateWithActionSquence(_:)"
             landmarkType = "5">
             <Locations>
@@ -647,11 +647,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/Level.swift"
-            timestampString = "481735481.264346"
+            timestampString = "481764849.189499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
             landmarkName = "animateWithActionSquence(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -663,11 +663,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/Level.swift"
-            timestampString = "481735014.634218"
+            timestampString = "481764849.189499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "compileProgram(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -679,11 +679,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/Level.swift"
-            timestampString = "481735014.634218"
+            timestampString = "481764849.189499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "compileProgram(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -695,11 +695,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/Level.swift"
-            timestampString = "481735014.634218"
+            timestampString = "481764849.189499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "compileProgram(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -711,11 +711,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/Level.swift"
-            timestampString = "481735014.634218"
+            timestampString = "481764849.189499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "compileProgram(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -727,11 +727,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/Level.swift"
-            timestampString = "481735014.634218"
+            timestampString = "481764849.189499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
             landmarkName = "animateWithActionSquence(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -743,11 +743,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/Level.swift"
-            timestampString = "481735014.634218"
+            timestampString = "481764849.189499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "compileProgram(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -759,28 +759,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/GameViewController.swift"
-            timestampString = "481744818.116105"
+            timestampString = "481765567.521352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
-            landmarkName = "btnHomeTouchDown(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dissertation-IOS-SpriteKit/UserViewController.swift"
-            timestampString = "481739995.881467"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "btnOKTouchDown(_:)"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
+            landmarkName = "btnRedoTouchDown(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -791,11 +775,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481758498.529916"
+            timestampString = "481809949.506498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "appendTimeToComplete(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -885,11 +869,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481758498.529916"
+            timestampString = "481809949.506498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "appendAttempts()"
             landmarkType = "5">
          </BreakpointContent>
@@ -901,11 +885,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481758498.529916"
+            timestampString = "481809949.506498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "appendRewards()"
             landmarkType = "5">
          </BreakpointContent>
@@ -917,11 +901,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481758498.529916"
+            timestampString = "481809949.506498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "appendTimeToComplete(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -933,11 +917,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481758498.529916"
+            timestampString = "481809949.506498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "setUserDetails(_:completion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -949,28 +933,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dissertation-IOS-SpriteKit/UserModel.swift"
-            timestampString = "481758498.529916"
+            timestampString = "481809949.506498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "syncProgress(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dissertation-IOS-SpriteKit/UserViewController.swift"
-            timestampString = "481755858.55073"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "btnOKTouchDown(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -987,6 +955,38 @@
             startingLineNumber = "20"
             endingLineNumber = "20"
             landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dissertation-IOS-SpriteKit/UserViewController.swift"
+            timestampString = "481809949.506498"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "btnOKTouchDown(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dissertation-IOS-SpriteKit/UserViewController.swift"
+            timestampString = "481809949.506498"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "btnOKTouchDown(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -13,6 +13,7 @@
             <string>SiKancil</string>
             <string>SiKancil</string>
             <string>SiKancil</string>
+            <string>SiKancil</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -63,14 +64,24 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYs-6a-mIs" userLabel="btnPlay">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYs-6a-mIs" userLabel="btnPlay">
                                 <rect key="frame" x="482" y="436" width="46" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Play">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="D8h-g5-cJ0"/>
+                                    <action selector="playTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="qGH-VN-Kxc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evD-4V-gdj" userLabel="btnUndo">
+                                <rect key="frame" x="552" y="436" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Undo">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnUndoTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="D5B-oJ-T54"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Vw-tl-Sf6">
@@ -114,6 +125,16 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHu-nC-CZf" userLabel="btnRedo">
+                                <rect key="frame" x="617" y="436" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Redo">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnRedoTouchDown:" destination="BV1-FR-VrT" eventType="touchDown" id="YdX-nG-rb4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
@@ -135,6 +156,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="btnPlay" destination="dYs-6a-mIs" id="aVu-Nd-vvf"/>
                         <outlet property="collectionView" destination="7Vw-tl-Sf6" id="Pyk-Z2-lEj"/>
                     </connections>
                 </viewController>
@@ -411,7 +433,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bvm-cE-lvY">
                                         <rect key="frame" x="20" y="20" width="634" height="340"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Name" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sF5-xB-wce">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your Name" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sF5-xB-wce">
                                                 <rect key="frame" x="0.0" y="0.0" width="634" height="72"/>
                                                 <fontDescription key="fontDescription" name="SiKancil" family="Si Kancil" pointSize="57"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -498,6 +520,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter a Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzF-et-3jT" userLabel="lblError">
+                                <rect key="frame" x="199" y="97" width="675" height="63"/>
+                                <fontDescription key="fontDescription" name="SiKancil" family="Si Kancil" pointSize="19"/>
+                                <color key="textColor" red="0.76470588235294112" green="0.0" blue="0.086274509803921567" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -510,9 +538,11 @@
                             <constraint firstItem="Mbp-GI-ahT" firstAttribute="centerX" secondItem="Y1f-Sg-g2S" secondAttribute="centerX" id="Xtd-z7-qVt"/>
                             <constraint firstItem="Mbp-GI-ahT" firstAttribute="leading" secondItem="Y1f-Sg-g2S" secondAttribute="leading" constant="200" id="YHM-oy-kNW"/>
                             <constraint firstItem="k8T-Cc-c3L" firstAttribute="top" secondItem="hYh-v0-WAp" secondAttribute="bottom" id="eZN-r6-igq"/>
+                            <constraint firstItem="Mbp-GI-ahT" firstAttribute="top" secondItem="pzF-et-3jT" secondAttribute="bottom" constant="20" id="h82-NM-UM8"/>
                             <constraint firstItem="lQY-Tw-bio" firstAttribute="centerX" secondItem="Y1f-Sg-g2S" secondAttribute="centerX" id="liW-cu-AvC"/>
                             <constraint firstItem="hYh-v0-WAp" firstAttribute="leading" secondItem="rfi-f0-aka" secondAttribute="leading" id="ms3-Ug-glX"/>
                             <constraint firstItem="rfi-f0-aka" firstAttribute="leading" secondItem="Y1f-Sg-g2S" secondAttribute="leading" id="opL-dG-gbn"/>
+                            <constraint firstItem="pzF-et-3jT" firstAttribute="centerX" secondItem="Y1f-Sg-g2S" secondAttribute="centerX" id="q63-w7-qCN"/>
                             <constraint firstAttribute="trailing" secondItem="Mbp-GI-ahT" secondAttribute="trailing" constant="150" id="tpy-t6-d1n"/>
                             <constraint firstItem="k8T-Cc-c3L" firstAttribute="leading" secondItem="Y1f-Sg-g2S" secondAttribute="leading" id="vK9-L5-gcS"/>
                             <constraint firstAttribute="trailing" secondItem="rfi-f0-aka" secondAttribute="trailing" id="wKC-yF-Pd2"/>
@@ -524,6 +554,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="lblError" destination="pzF-et-3jT" id="E11-HS-Obf"/>
                         <outlet property="txtName" destination="ugM-2u-NnO" id="elX-He-FG9"/>
                         <outlet property="txtParticipant" destination="0TL-8r-M8t" id="y2X-mb-3ZG"/>
                     </connections>
@@ -549,6 +580,6 @@
         <image name="user.png" width="168" height="144"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xap-0R-8mL"/>
+        <segue reference="eW4-pJ-HRy"/>
     </inferredMetricsTieBreakers>
 </document>

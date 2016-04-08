@@ -13,7 +13,7 @@ public class UserModel {
 
     
     private var id: Int! = -1
-    private var name: String?
+    private var name: String! = ""
     private var active: Bool = false
     private var attempts: [Int:Int] = [:]
     private var timeToComplete: [Int:Int] = [:]
@@ -22,13 +22,14 @@ public class UserModel {
     
     public init() {
     
-        
-        self.name = "Mel"
-        
-        
     }
     
-    func getParticipantName() -> String?{
+    func setUsersName(name: String) {
+        
+        self.name = name
+    }
+    
+    func getUsersName() -> String?{
         
         
         return name

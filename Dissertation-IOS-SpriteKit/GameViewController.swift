@@ -24,13 +24,17 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     
     var timer = NSTimer()
     var binaryCount = 0b0000
+
     
     
     @IBOutlet weak var skview: SKView!
     @IBOutlet weak var gameContainer: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var btnPlay: UIButton!
+    
     
     private var program: [Block] = []
+    private var redo: [Block] = []
     
     
     private var lPG: UILongPressGestureRecognizer!
@@ -137,32 +141,55 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         USER.appendAttempts()
         
+
         if (!program.isEmpty && validProgramFlow()) {
-            
+        
+
             if LEVEL.validProgram(program) {
                 
                 USER.setProgramFlow(program, type: nil)
                 stopCount(true)
                 
                 print("valid")
-//                _LEVEL++
+        //                _LEVEL++
             }
             
             else {
-              
+                
+                
+                if btnPlay.tag == -1 {
+                        
+                    btnPlay.tag = -1 //Play
+                    btnPlay.setTitle("Play", forState: UIControlState.Normal)
+                    LEVEL.stopAnimation()
+                }
+                
+                else {
+                        
+                    btnPlay.tag = -1 //Stop
+                    btnPlay.setTitle("Stop", forState: UIControlState.Normal)
+                  
+                }
+                
+                
                 USER.setProgramFlow(program, type: "Code")
                 print("not valid")
+
                 
                 
             }
+        
+                
+        }
             
+        else {
+                
+                print("not valid")
             
         }
         
-        else {
-            
-            print("not valid")
-        }
+        btnPlay.tag = 1 //Play
+        btnPlay.setTitle("Play", forState: UIControlState.Normal)
         
     }
     
@@ -281,7 +308,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     //User information
     func getParticipantName () -> String? {
         
-        return USER.getParticipantName()
+        return USER.getUsersName()
         
     }
     
@@ -363,13 +390,45 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             
             let path = collectionView.indexPathForCell(deleteCell!)
             
+            let block = program[path!.row]
+            
             program.removeAtIndex(path!.row)
+            redo.append(block)
             collectionView.deleteItemsAtIndexPaths([path!])
         }
         
     }
     
+    @IBAction func btnUndoTouchDown(sender: AnyObject) {
+        
+        if program.count > 0 {
+            
+            let block = program[program.count - 1]
+
+            redo.append(block)
+            program.removeAtIndex(program.count - 1)
+
+            self.collectionView?.reloadData()
+        }
+
+    }
     
+    @IBAction func btnRedoTouchDown(sender: AnyObject) {
+        
+        if redo.count > 0 {
+            
+            let block = redo[0]
+            
+            program.append(block)
+            program.removeAtIndex(0)
+            
+            self.collectionView?.reloadData()
+        }
+
+
+        
+        
+    }
     @IBAction func btnHomeTouchDown(sender: AnyObject) {
         
         stopCount(false)

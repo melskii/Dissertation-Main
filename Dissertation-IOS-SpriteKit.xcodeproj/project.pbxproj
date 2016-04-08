@@ -39,6 +39,7 @@
 		A056A1851CB5481F0027E530 /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = A056A1841CB5481F0027E530 /* house.png */; };
 		A056A1871CB6AFC10027E530 /* dog.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A056A1861CB6AFC10027E530 /* dog.atlas */; };
 		A056A1891CB705600027E530 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056A1881CB705600027E530 /* LevelViewController.swift */; };
+		A056A18D1CB7C9F10027E530 /* validation.png in Resources */ = {isa = PBXBuildFile; fileRef = A056A18C1CB7C9F10027E530 /* validation.png */; };
 		A05814421CAC1BE1001627B8 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05814411CAC1BE1001627B8 /* MaterialView.swift */; };
 		A05814461CAC1C2E001627B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05814451CAC1C2E001627B8 /* Constants.swift */; };
 		A058144A1CAC2158001627B8 /* Si Kancil.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A05814491CAC2158001627B8 /* Si Kancil.ttf */; };
@@ -122,6 +123,7 @@
 		A056A1841CB5481F0027E530 /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
 		A056A1861CB6AFC10027E530 /* dog.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = dog.atlas; sourceTree = "<group>"; };
 		A056A1881CB705600027E530 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
+		A056A18C1CB7C9F10027E530 /* validation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = validation.png; sourceTree = "<group>"; };
 		A05814411CAC1BE1001627B8 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		A05814451CAC1C2E001627B8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A05814491CAC2158001627B8 /* Si Kancil.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Si Kancil.ttf"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		A0DFDBC51C9C64320056196A /* Menu & Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				A056A18C1CB7C9F10027E530 /* validation.png */,
 				A031D46A1CA3268F00CC24E7 /* home_disabled.png */,
 				A0FD092A1CA97B2A00267669 /* btnCancel.png */,
 				A0FD09281CA97B2300267669 /* btnOK.png */,
@@ -528,6 +531,7 @@
 				A0151AFA1C834BA00078D3EF /* objectc.png in Resources */,
 				A0FD092B1CA97B2A00267669 /* btnCancel.png in Resources */,
 				A0151B031C834D150078D3EF /* program_left.png in Resources */,
+				A056A18D1CB7C9F10027E530 /* validation.png in Resources */,
 				A0FD09291CA97B2300267669 /* btnOK.png in Resources */,
 				A0151AEC1C834B350078D3EF /* objectA_highlight.png in Resources */,
 				A0F3B79A1C7E2D87000A686A /* prgBckground.png in Resources */,

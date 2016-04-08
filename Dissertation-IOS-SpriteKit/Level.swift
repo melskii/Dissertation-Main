@@ -168,6 +168,25 @@ public class Level {
         return compiled
         
     }
+    
+    public func stopAnimation() {
+        
+        for cell in _objects {
+            
+            for sprite in cell.objects {
+                
+                if sprite.0 != OutputType.End {
+                    
+                    sprite.1.resetAnimation()
+                }
+                
+            }
+            
+        }
+
+        
+        
+    }
 
 
     
@@ -428,6 +447,18 @@ class TLSpriteNode: SKSpriteNode {
         )
        
     }
+    
+    func resetAnimation() {
+        
+        self.actionSequence.removeAll()
+        
+        self.removeAllActions()
+        self.position = self.start
+//        self.runAction(SKAction.unhide())
+        
+        
+    }
+
     
     
 }
