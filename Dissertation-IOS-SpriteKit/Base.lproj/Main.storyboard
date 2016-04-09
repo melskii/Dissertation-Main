@@ -36,11 +36,18 @@
                                     <constraint firstAttribute="height" constant="56" id="i09-MQ-1mv"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1TK-A0-AlD">
-                                <rect key="frame" x="898" y="3" width="121" height="52"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1TK-A0-AlD">
+                                <rect key="frame" x="898" y="3" width="158" height="52"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyY-3I-anh" userLabel="btnHelp">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="52"/>
+                                        <state key="normal" title="Help"/>
+                                        <connections>
+                                            <action selector="showLevelHelp" destination="BV1-FR-VrT" eventType="touchDown" id="2Se-Zl-YNA"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nuf-AY-wIs" userLabel="btnHome">
-                                        <rect key="frame" x="0.0" y="0.0" width="58" height="52"/>
+                                        <rect key="frame" x="37" y="0.0" width="58" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="llQ-56-Lll"/>
                                             <constraint firstAttribute="width" secondItem="nuf-AY-wIs" secondAttribute="height" multiplier="9:8" id="pKe-W0-pvb"/>
@@ -51,7 +58,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfB-EH-BGO" userLabel="btnUser">
-                                        <rect key="frame" x="63" y="0.0" width="58" height="52"/>
+                                        <rect key="frame" x="100" y="0.0" width="58" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="iJh-DD-OdZ"/>
                                             <constraint firstAttribute="width" secondItem="pfB-EH-BGO" secondAttribute="height" multiplier="9:8" id="ig8-hN-H1b"/>
@@ -291,25 +298,22 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZEn-zK-Gtr" userLabel="Lvl 1, 2 and 3">
                                         <rect key="frame" x="0.0" y="0.0" width="944" height="200"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qpw-Ti-VmI" userLabel="Level 1">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qpw-Ti-VmI" userLabel="Level 1">
                                                 <rect key="frame" x="0.0" y="0.0" width="308" height="200"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGE-8r-25E" userLabel="btnLevel1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="308" height="67"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="308" height="64"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Level 1"/>
                                                         <connections>
                                                             <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="7I6-5I-9ow"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3W0-Vz-pwv" userLabel="lblLevel1">
-                                                        <rect key="frame" x="0.0" y="67" width="308" height="67"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="padlock.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZzS-Nv-drz" userLabel="imgLock1">
+                                                        <rect key="frame" x="0.0" y="69" width="308" height="63"/>
+                                                    </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star0.png" translatesAutoresizingMaskIntoConstraints="NO" id="tFi-lg-1tU">
-                                                        <rect key="frame" x="0.0" y="134" width="308" height="67"/>
+                                                        <rect key="frame" x="0.0" y="137" width="308" height="64"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="0qs-Mc-BVf"/>
                                                             <constraint firstAttribute="width" secondItem="tFi-lg-1tU" secondAttribute="height" multiplier="311:155" id="dtO-hi-KRh"/>
@@ -317,47 +321,41 @@
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Yhh-qc-4G1" userLabel="Level 2">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Yhh-qc-4G1" userLabel="Level 2">
                                                 <rect key="frame" x="318" y="0.0" width="308" height="200"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9k-M6-b7c" userLabel="btnLevel2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="308" height="67"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="308" height="64"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Level 2"/>
                                                         <connections>
                                                             <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="TDV-U4-Yfr"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umA-FT-7DP" userLabel="lblLevel2">
-                                                        <rect key="frame" x="0.0" y="67" width="308" height="67"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="padlock.png" translatesAutoresizingMaskIntoConstraints="NO" id="MOb-C5-9ih" userLabel="imgLock2">
+                                                        <rect key="frame" x="0.0" y="69" width="308" height="63"/>
+                                                    </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star0.png" translatesAutoresizingMaskIntoConstraints="NO" id="R8R-Xd-VV5">
-                                                        <rect key="frame" x="0.0" y="134" width="308" height="67"/>
+                                                        <rect key="frame" x="0.0" y="137" width="308" height="64"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kjo-Q9-VSB" userLabel="Level 3">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kjo-Q9-VSB" userLabel="Level 3">
                                                 <rect key="frame" x="636" y="0.0" width="308" height="200"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQa-EI-gbD" userLabel="btnLevel3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="308" height="67"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="308" height="64"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Level 3"/>
                                                         <connections>
                                                             <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="uFQ-gj-kvh"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBp-ip-TCM" userLabel="lblLevel3">
-                                                        <rect key="frame" x="0.0" y="67" width="308" height="67"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="padlock.png" translatesAutoresizingMaskIntoConstraints="NO" id="Sqf-Yb-XKd">
+                                                        <rect key="frame" x="0.0" y="69" width="308" height="63"/>
+                                                    </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star0.png" translatesAutoresizingMaskIntoConstraints="NO" id="cn4-lc-yKa">
-                                                        <rect key="frame" x="0.0" y="134" width="308" height="67"/>
+                                                        <rect key="frame" x="0.0" y="137" width="308" height="64"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="cn4-lc-yKa" secondAttribute="height" multiplier="311:171" id="kPc-do-s7f"/>
                                                             <constraint firstAttribute="width" constant="200" id="oKq-jc-Gqa"/>
@@ -370,50 +368,44 @@
                                             <constraint firstAttribute="height" constant="200" id="NUc-a7-zk0"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="jjE-4Q-Npo" userLabel="Lvl 4 and 5">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="jjE-4Q-Npo" userLabel="Lvl 4 and 5">
                                         <rect key="frame" x="0.0" y="220" width="894" height="200"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IVk-nL-pXr" userLabel="Level 4">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IVk-nL-pXr" userLabel="Level 4">
                                                 <rect key="frame" x="0.0" y="0.0" width="434" height="200"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-AH-rvJ" userLabel="btnLevel4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="434" height="67"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="434" height="64"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Level 4"/>
                                                         <connections>
                                                             <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="JJG-D2-sWM"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDF-ek-zdp" userLabel="lblLevel4">
-                                                        <rect key="frame" x="0.0" y="67" width="434" height="67"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="padlock.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uam-hB-7uN">
+                                                        <rect key="frame" x="0.0" y="69" width="434" height="63"/>
+                                                    </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star0.png" translatesAutoresizingMaskIntoConstraints="NO" id="yCp-Xm-FN1">
-                                                        <rect key="frame" x="0.0" y="134" width="434" height="67"/>
+                                                        <rect key="frame" x="0.0" y="137" width="434" height="64"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="g0m-SP-atX" userLabel="Level 5">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g0m-SP-atX" userLabel="Level 5">
                                                 <rect key="frame" x="461" y="0.0" width="434" height="200"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvI-Sn-oAn" userLabel="btnLevel5">
-                                                        <rect key="frame" x="0.0" y="0.0" width="434" height="67"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="434" height="64"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Level 5"/>
                                                         <connections>
                                                             <action selector="btnLevelTouchDown:" destination="CNR-Q1-EEr" eventType="touchDown" id="U8k-9A-Q0w"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KS1-Sz-mS9" userLabel="lblLevel5">
-                                                        <rect key="frame" x="0.0" y="67" width="434" height="67"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="padlock.png" translatesAutoresizingMaskIntoConstraints="NO" id="yOV-Ax-rt5">
+                                                        <rect key="frame" x="0.0" y="69" width="434" height="63"/>
+                                                    </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star0.png" translatesAutoresizingMaskIntoConstraints="NO" id="RW5-VV-T9z">
-                                                        <rect key="frame" x="0.0" y="134" width="434" height="67"/>
+                                                        <rect key="frame" x="0.0" y="137" width="434" height="64"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
@@ -463,11 +455,11 @@
                         <outlet property="imgLevel3" destination="cn4-lc-yKa" id="AOj-j5-Afa"/>
                         <outlet property="imgLevel4" destination="yCp-Xm-FN1" id="FVC-RF-GJQ"/>
                         <outlet property="imgLevel5" destination="RW5-VV-T9z" id="Sl9-tD-qVk"/>
-                        <outlet property="lblLevel1" destination="3W0-Vz-pwv" id="UM2-Dm-5Ep"/>
-                        <outlet property="lblLevel2" destination="umA-FT-7DP" id="mvU-7O-8Cg"/>
-                        <outlet property="lblLevel3" destination="YBp-ip-TCM" id="ZFf-1K-lL0"/>
-                        <outlet property="lblLevel4" destination="yDF-ek-zdp" id="V4b-Hh-NWW"/>
-                        <outlet property="lblLevel5" destination="KS1-Sz-mS9" id="KpW-8D-ub7"/>
+                        <outlet property="imgLock1" destination="ZzS-Nv-drz" id="c1G-ZN-leo"/>
+                        <outlet property="imgLock2" destination="MOb-C5-9ih" id="qDI-j2-4TZ"/>
+                        <outlet property="imgLock3" destination="Sqf-Yb-XKd" id="b9n-YG-Per"/>
+                        <outlet property="imgLock4" destination="Uam-hB-7uN" id="yLp-XA-sPm"/>
+                        <outlet property="imgLock5" destination="yOV-Ax-rt5" id="Gb7-lv-NzR"/>
                         <segue destination="BV1-FR-VrT" kind="show" identifier="showLevelSegue" id="6iu-Ul-hqJ"/>
                     </connections>
                 </viewController>
@@ -639,6 +631,53 @@
             </objects>
             <point key="canvasLocation" x="1438" y="154"/>
         </scene>
+        <!--Feedback View Controller-->
+        <scene sceneID="Ydf-gn-pPg">
+            <objects>
+                <viewController storyboardIdentifier="FeedbackViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="exo-Os-hMi" customClass="FeedbackViewController" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Je7-Bq-unw"/>
+                        <viewControllerLayoutGuide type="bottom" id="A5T-W1-EPP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wJy-wJ-HWV" customClass="FeedbackView" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QmI-ap-hye">
+                                <rect key="frame" x="56" y="71" width="493" height="444"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9G-QH-43Z">
+                                        <rect key="frame" x="229" y="312" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="test" destination="wJy-wJ-HWV" eventType="touchDown" id="mbm-DP-3cv"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SUP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh1-U3-gGf">
+                                        <rect key="frame" x="106" y="63" width="207" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QmI-ap-hye" firstAttribute="centerY" secondItem="wJy-wJ-HWV" secondAttribute="centerY" id="5bw-sY-VY0"/>
+                            <constraint firstItem="QmI-ap-hye" firstAttribute="centerX" secondItem="wJy-wJ-HWV" secondAttribute="centerX" id="lLC-zc-PGg"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="lblMessage" destination="mh1-U3-gGf" id="f2c-tg-1zF"/>
+                            <outlet property="popUpView" destination="QmI-ap-hye" id="LNs-E4-8ck"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2V2-1x-xgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-591" y="-253"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Grey Logo" width="220" height="80"/>
@@ -652,6 +691,7 @@
         <image name="menuBackground.png" width="3069" height="165"/>
         <image name="menuBackgroundwithText.png" width="3072" height="168"/>
         <image name="outBckground.png" width="2048" height="886"/>
+        <image name="padlock.png" width="291" height="414"/>
         <image name="program_play.png" width="126" height="126"/>
         <image name="star0.png" width="588" height="171"/>
         <image name="user.png" width="168" height="144"/>

@@ -78,9 +78,17 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         skview.presentScene(scene)
         
+        self.showLevelHelp()
+        
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "countUp", userInfo: nil, repeats: true)
         
         USER.resetAttempts() //Resets the attempts for the Rewards
+        
+    }
+    
+    @IBAction func showLevelHelp() {
+        
+        self.showFeedbackView(FeedbackType.LevelHelp)
         
     }
     
@@ -152,35 +160,50 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         USER.appendAttempts()
         
 
-        if (!program.isEmpty && validProgramFlow()) {
-        
+        if (!program.isEmpty && self.validProgramFlow()) {
 
-            if LEVEL.validProgram(program) {
+            let valid = LEVEL.validProgram(program)
+   
+            if valid == true {
                 
-                USER.setProgramFlow(program, type: nil)
-                stopCount(true)
+                USER.setProgramFlow(self.program, type: nil)
+                self.stopCount(true)
                 
                 print("valid")
-        //                _LEVEL++
+                
             }
-            
-            else {
+            else
+            {
                 
+                USER.setProgramFlow(self.program, type: "Code")
                 
-                
-                
-                USER.setProgramFlow(program, type: "Code")
                 print("not valid")
-
-                
-                
             }
+         
         
-                
-        }
+            LEVEL.runAnimation(valid) {
+                (animationComplete: Bool) in
             
-        else {
+                if animationComplete == true {
                 
+                    if valid == true {
+            
+                        self.showFeedbackView(FeedbackType.LevelComplete)
+                    }
+                    else {
+            
+                        self.showFeedbackView(FeedbackType.InvalidProgram)
+            
+                    }
+    
+                }
+            }
+        }
+    
+    
+        else {
+            
+                showFeedbackView(FeedbackType.InvalidSyntax)
                 print("not valid")
             
         }
@@ -464,7 +487,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
     }
     
-    func resetUndoFlag() {
+    private func resetUndoFlag() {
         
         self.preliminary = program
         undo = true
@@ -473,7 +496,27 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
 
     }
     
-    
+    private func showFeedbackView (type: FeedbackType) {
+        
+        
+        
+        var feedback: FeedbackViewController
+        
+        let controllerID = "FeedbackViewController"
+        let storyboardName = "Main"
+        let storyboard = UIStoryboard(name: storyboardName, bundle:  NSBundle.mainBundle())
+        
+        
+        
+        feedback = ((storyboard.instantiateViewControllerWithIdentifier(controllerID) as! UIViewController!) as? FeedbackViewController)!
+        
+        feedback.showInView(self.view, scene: scene, type: type)
+        
+        
+        
+        
+    }
+
 }
 
 

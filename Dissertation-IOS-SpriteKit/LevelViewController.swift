@@ -11,11 +11,12 @@ import SpriteKit
 
 class LevelViewController: UIViewController {
     
-    @IBOutlet var lblLevel1: UILabel!
-    @IBOutlet var lblLevel2: UILabel!
-    @IBOutlet var lblLevel3: UILabel!
-    @IBOutlet var lblLevel4: UILabel!
-    @IBOutlet var lblLevel5: UILabel!
+    @IBOutlet var imgLock1: UIImageView!
+    @IBOutlet var imgLock2: UIImageView!
+    @IBOutlet var imgLock3: UIImageView!
+    @IBOutlet var imgLock4: UIImageView!
+    @IBOutlet var imgLock5: UIImageView!
+    
     @IBOutlet var btnLevel1: UIButton!
     @IBOutlet var btnLevel2: UIButton!
     @IBOutlet var btnLevel3: UIButton!
@@ -35,7 +36,7 @@ class LevelViewController: UIViewController {
         
         super.viewDidLoad()
         
-        let unlockedLevel = USER.unlockedLevel
+        let unlockedLevel = (USER.unlockedLevel + 1)
         
         btnLevel1.enabled = false
         btnLevel2.enabled = false
@@ -52,14 +53,14 @@ class LevelViewController: UIViewController {
         
         if unlockedLevel >= 1 {
             
-            lblLevel1.text = ""
+            imgLock1.hidden = true
             btnLevel1.enabled = true
             
             imgLevel1.image = UIImage(named: "star\(String(USER.getRewardsStar(1)))")
             
             if unlockedLevel >= 2 {
                 
-                lblLevel2.text = ""
+                imgLock2.hidden = true
                 btnLevel2.enabled = true
                 
                 imgLevel2.image = UIImage(named: "star\(String(USER.getRewardsStar(2)))")
@@ -70,21 +71,21 @@ class LevelViewController: UIViewController {
                 
                 if unlockedLevel >= 3 {
                     
-                    lblLevel3.text = ""
+                    imgLock3.hidden = true
                     btnLevel3.enabled = true
                     
                     imgLevel3.image = UIImage(named: "star\(String(USER.getRewardsStar(3)))")
                     
                     if unlockedLevel >= 4 {
                         
-                        lblLevel4.text = ""
+                        imgLock4.hidden = true
                         btnLevel4.enabled = true
                         
                         imgLevel4.image = UIImage(named: "star\(String(USER.getRewardsStar(4)))")
                         
                         if unlockedLevel == 5 {
                             
-                            lblLevel5.text = ""
+                            imgLock5.hidden = true
                             btnLevel5.enabled = true
                             
                             imgLevel5.image = UIImage(named: "star\(String(USER.getRewardsStar(5)))")

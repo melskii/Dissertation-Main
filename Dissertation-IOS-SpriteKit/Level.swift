@@ -147,25 +147,45 @@ public class Level {
         
         let compiled = compileProgram(prog)
         
+        
+        return compiled
+        
+    }
+    
+    public func runAnimation (compiled: Bool, completion: (animationComplete: Bool) -> Void) {
+        
         for cell in _objects {
             
             for sprite in cell.objects {
                 
                 if sprite.0 != OutputType.End {
                     
-                    sprite.1.animateWithActionSquence(!compiled)
+                    sprite.1.animateWithActionSquence(!compiled) {
+                        (status: Bool) in
+                        
+                        if status == true {
+                            
+                            completion(animationComplete: true)
+                            
+                        }
+                        
+                    }
                 }
                 
             }
             
         }
         
-        //Move on to the next level if compiled
+        
+        if _objects.count == 0 {
+            completion(animationComplete: true)
+        }
+        
+        //Reset the animation if not true.
         if (!compiled) {
             setLevelObjects()
         }
         
-        return compiled
         
     }
     
@@ -412,7 +432,7 @@ class TLSpriteNode: SKSpriteNode {
         
     }
     
-    func animateWithActionSquence (reset: Bool) { //(location: CGVector) {
+    func animateWithActionSquence (reset: Bool, completion: (status: Bool) -> Void) { //(location: CGVector) {
         
         
         
@@ -440,6 +460,7 @@ class TLSpriteNode: SKSpriteNode {
             
             self.actionSequence.removeAll()
             self.position = self.start
+            completion(status: true)
             
             
             }

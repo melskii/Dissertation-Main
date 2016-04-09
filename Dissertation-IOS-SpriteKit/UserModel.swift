@@ -18,7 +18,7 @@ public class UserModel {
     private var attempts: [Int:Int] = [:]
     private var timeToComplete: [Int:Int] = [:]
     private var rewards: [Int: Int] = [:]
-    var unlockedLevel: Int = 1
+    var unlockedLevel: Int = 0
     
     public init() {
     

@@ -241,13 +241,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        
-        /* Called when a touch begins */
-        let touch = touches
-        let location = touch.first!.locationInNode(self)
-        let node = self.nodeAtPoint(location)
-        
-        selectNodeForTouch(location, node: node, touch: nil)
+        if !(self.paused) {
+            
+            /* Called when a touch begins */
+            let touch = touches
+            let location = touch.first!.locationInNode(self)
+            let node = self.nodeAtPoint(location)
+            
+            selectNodeForTouch(location, node: node, touch: nil)
+            
+        }
         
     }
     

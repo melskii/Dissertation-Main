@@ -46,4 +46,15 @@ public enum UserStatus: String {
 public enum AnimationStatus {
     case Start 
     case Stop
+
+}
+
+
+public enum FeedbackType: String {
+    
+    case InvalidSyntax = "Invalid Syntax"
+    case InvalidProgram = "Invalid Program"
+    case LevelComplete = "Level Complete"
+    case LevelHelp = "Level Help"
+    
 }
