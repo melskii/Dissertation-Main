@@ -146,7 +146,7 @@ public class UserModel {
                 
                 let stars = rewards[i] == nil ? 0 : rewards[i]
                 let time = timeToComplete[i] == nil ? 0 : timeToComplete[i]
-                
+           
                 let request = NSMutableURLRequest(URL: NSURL(string: URL + "syncProgress.php")!)
                 request.HTTPMethod = "POST"
                 let postString = "filter=sync&id=\(id)&level=\(i)&time=\(time!)&stars=\(stars!)"
@@ -167,7 +167,7 @@ public class UserModel {
                     print("response = \(response)")
                     
                     let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                    print("RESPONSESTRING = \(responseString)")
+                    print("RESPONSESTRING \(i) = \(responseString)")
                     
                     
                     var json: Array<AnyObject>!
@@ -188,13 +188,14 @@ public class UserModel {
                         guard !(json.isEmpty),
                             let item = json[0] as? [String: AnyObject] ,
                             let _time = item["time_to_complete"] as? String,
-                            let _stars = item["stars"] as? String else {
+                            let _stars = item["stars"] as? String,
+                            let _level = item["level"] as? String else {
 
                                 return;
                         }
 
-                        self.rewards[i] = Int(_stars)
-                        self.timeToComplete[i] = Int(_time)
+                        self.rewards[Int(_level)!] = Int(_stars)
+                        self.timeToComplete[Int(_level)!] = Int(_time)
                         
                      
 

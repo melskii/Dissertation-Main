@@ -44,18 +44,18 @@ class LevelViewController: UIViewController {
         btnLevel5.enabled = false
         
         
-//        imgLevel1.image = UIImage(named: "star0.png")
-        imgLevel2.image = UIImage(named: "star0.png")
-        imgLevel3.image = UIImage(named: "star0.png")
-        imgLevel4.image = UIImage(named: "star0.png")
-        imgLevel5.image = UIImage(named: "star0.png")
+        imgLevel1.image = UIImage(named: "star0")
+        imgLevel2.image = UIImage(named: "star0")
+        imgLevel3.image = UIImage(named: "star0")
+        imgLevel4.image = UIImage(named: "star0")
+        imgLevel5.image = UIImage(named: "star0")
         
         if unlockedLevel >= 1 {
             
             lblLevel1.text = ""
             btnLevel1.enabled = true
             
-//            imgLevel1.image = UIImage(named: "star\(String(USER.getRewardsStar(1)))")
+            imgLevel1.image = UIImage(named: "star\(String(USER.getRewardsStar(1)))")
             
             if unlockedLevel >= 2 {
                 
@@ -63,6 +63,10 @@ class LevelViewController: UIViewController {
                 btnLevel2.enabled = true
                 
                 imgLevel2.image = UIImage(named: "star\(String(USER.getRewardsStar(2)))")
+                
+                print(String(USER.getRewardsStar(2)))
+                
+                print(imgLevel2.image)
                 
                 if unlockedLevel >= 3 {
                     
