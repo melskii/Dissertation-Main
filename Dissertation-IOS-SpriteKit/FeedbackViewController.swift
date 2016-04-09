@@ -11,22 +11,30 @@ import UIKit
 
 class FeedbackViewController: UIViewController {
     
+    var vw: FeedbackView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.vw = self.view as! FeedbackView
 
      
     }
     
     //func showInView(aView: UIView!, withImage image : UIImage!, withMessage message: String!, animated: Bool)
     func showInView(parent: UIView!, scene: GameScene, type: FeedbackType)
-        
     {
-        let view = self.view as! FeedbackView
+        if self.viewIfLoaded == nil {
+            
+            loadView()
+            
+            self.vw = self.view as! FeedbackView
+            
+        }
         
-        view.setupView(parent, scene: scene, type: type)
-        parent.addSubview(view)
+        vw.setupView(parent, scene: scene, type: type)
+        parent.addSubview(vw)
 
         self.showAnimate()
 

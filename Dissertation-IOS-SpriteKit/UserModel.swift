@@ -18,6 +18,7 @@ public class UserModel {
     private var attempts: [Int:Int] = [:]
     private var timeToComplete: [Int:Int] = [:]
     private var rewards: [Int: Int] = [:]
+    private var programs: [(level: Int, program: [Block], error: FeedbackType)] = [] //only stores here if offline
     var unlockedLevel: Int = 0
     
     public init() {
@@ -137,6 +138,8 @@ public class UserModel {
     
     public func syncProgress (level: Int) {
         
+        
+        
         if active {
             
             let start = level == 0 ? 1 : level
@@ -197,6 +200,12 @@ public class UserModel {
                         self.rewards[Int(_level)!] = Int(_stars)
                         self.timeToComplete[Int(_level)!] = Int(_time)
                         
+                        if Int(_level) > self.unlockedLevel {
+                            
+                            self.unlockedLevel = Int(_level)!
+ 
+                        }
+                        
                      
 
                         print("active \(_time) id \(_stars)")
@@ -210,6 +219,27 @@ public class UserModel {
                 
             }
             
+            if programs.count > 0 {
+                
+                
+                for program in programs {
+                    
+                    setProgramFlow(program.program, type: program.error, level: program.level)
+                    
+                }
+                
+                programs.removeAll()
+                
+            }
+            
+        }
+        
+        else {
+            
+            if unlockedLevel <= MAXLEVELS {
+                self.unlockedLevel++
+            }
+  
         }
         
     }
@@ -283,7 +313,9 @@ public class UserModel {
     }
     
     
-    func setProgramFlow(program: [Block], type: String?) {
+    func setProgramFlow(program: [Block], type: FeedbackType, level: Int = _LEVEL) {
+        
+        
         
         if active {
             
@@ -293,10 +325,10 @@ public class UserModel {
             let request = NSMutableURLRequest(URL: NSURL(string: URL + "setProgramFlow.php")!)
             request.HTTPMethod = "POST"
             
-            var postString = "id=\(id)&level=\(_LEVEL)&program=\(programflow)"
+            var postString = "id=\(id)&level=\(level)&program=\(programflow)"
             
-            if type != nil {
-                postString = "id=\(id)&level=\(_LEVEL)&program=\(programflow)&error=\(type!)"
+            if type != FeedbackType.LevelComplete {
+                postString = "id=\(id)&level=\(level)&program=\(programflow)&error=\(type.rawValue)"
             }
             
             
@@ -329,6 +361,14 @@ public class UserModel {
             
             task.resume()
             
+            
+        }
+        
+        else {
+            
+            
+            programs.append((level, program, type))
+            print(programs)
             
         }
         

@@ -9,12 +9,20 @@
 import Foundation
 import UIKit
 
+struct defaultKeys {
+    
+    static let User = "User"
+}
+
+
+
 //No class therefore globally accessable
 
 let SHADOW_COLOUR: CGFloat = 157.0/255.00
 let MENU_HEIGHT: CGFloat = 56
 
 
+let defaults = NSUserDefaults.standardUserDefaults()
 let USER: UserModel = UserModel()
 var _LEVEL = 1
 let MAXLEVELS = 5
@@ -52,9 +60,11 @@ public enum AnimationStatus {
 
 public enum FeedbackType: String {
     
-    case InvalidSyntax = "Invalid Syntax"
-    case InvalidProgram = "Invalid Program"
+    case InvalidSyntax = "Parse"
+    case InvalidProgram = "Code"
     case LevelComplete = "Level Complete"
     case LevelHelp = "Level Help"
     
 }
+
+

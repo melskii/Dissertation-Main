@@ -13,9 +13,13 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
     var parent: UIView!
     var scene: GameScene!
     var type: FeedbackType!
-    @IBOutlet var popUpView: UIView!
     
+    @IBOutlet var popUpView: UIView!
     @IBOutlet weak var lblMessage: UILabel!
+    @IBOutlet weak var btnNextLevel: UIButton!
+    @IBOutlet weak var btnOK: UIButton!
+    
+    var delegate: FeedbackDelegate?
     
     func setupView(parent: UIView, scene: GameScene, type: FeedbackType)
     {
@@ -36,6 +40,22 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("dismissFeedback"))
         tap.delegate = self
         self.addGestureRecognizer(tap)
+        
+        if type != FeedbackType.LevelComplete {
+            
+            btnNextLevel.hidden = true
+        }
+        else {
+            btnOK.hidden = true
+            
+            if MAXLEVELS == _LEVEL {
+                
+                lblMessage.text = "Final Level!"
+                btnNextLevel.setTitle("HOME", forState: UIControlState.Normal)
+                
+            }
+            
+        }
 
     }
     
@@ -71,15 +91,25 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
 
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         
-        print(touch.view?.isDescendantOfView(self))
-        
-        if (touch.view == popUpView)
-        {
-            return false
+        if type != FeedbackType.LevelComplete {
+      
+            if (touch.view == popUpView)
+            {
+                return false
+            }
+    
+            return true
         }
-
         
-        return true
+        return false
+    }
+    
+    @IBAction func presentNextLevel() {
+        
+        if delegate != nil {
+            self.delegate?.presentNextLevel()
+        }
+        
     }
     
     

@@ -20,7 +20,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         
-     
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        
+//        defaults.setObject(USER, forKey: defaultKeys.User)
+//        defaults.synchronize()
      
     }
     

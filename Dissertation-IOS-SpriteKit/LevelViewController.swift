@@ -107,7 +107,7 @@ class LevelViewController: UIViewController {
     
     @IBAction func btnLevelTouchDown(sender: AnyObject) {
         
-        print(sender.tag)
+        print("SENDER \(sender.tag)")
         _LEVEL = sender.tag
         LEVEL = Level(level: _LEVEL)
         performSegueWithIdentifier("showLevelSegue", sender: sender)

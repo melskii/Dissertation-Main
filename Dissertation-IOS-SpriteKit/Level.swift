@@ -146,7 +146,7 @@ public class Level {
     public func validProgram(prog: [Block]) -> Bool  {
         
         let compiled = compileProgram(prog)
-        
+
         
         return compiled
         
@@ -212,7 +212,7 @@ public class Level {
     
     private func compileProgram (prog: [Block]) -> Bool {
       
-        var program = prog
+        let program = prog
         var objectCell: (type: OutputType, cell: GameCell)? = nil //The Cell of the Current Object
         var valid = false
         

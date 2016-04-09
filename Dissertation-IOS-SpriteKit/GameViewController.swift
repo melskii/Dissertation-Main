@@ -11,7 +11,7 @@ import SpriteKit
 
 
 
-class GameViewController: UIViewController, UIGestureRecognizerDelegate, UICollectionViewDelegate, GameDelegate {
+class GameViewController: UIViewController, UIGestureRecognizerDelegate, UICollectionViewDelegate, GameDelegate, FeedbackDelegate {
     
     var scene: GameScene!
     var gameView: SKView!
@@ -34,6 +34,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     
     @IBOutlet weak var btnRedo: UIButton!
     @IBOutlet weak var btnUndo: UIButton!
+    
+    var animation: Bool = false
     
     
     private var program: [Block] = []
@@ -153,62 +155,118 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         LEVEL.stopAnimation()
         
+        self.animation = false
+        
     }
     
     @IBAction func playTouchDown(sender: AnyObject) {
         
-        USER.appendAttempts()
         
-
-        if (!program.isEmpty && self.validProgramFlow()) {
-
-            let valid = LEVEL.validProgram(program)
-   
-            if valid == true {
-                
-                USER.setProgramFlow(self.program, type: nil)
-                self.stopCount(true)
-                
-                print("valid")
-                
-            }
-            else
-            {
-                
-                USER.setProgramFlow(self.program, type: "Code")
-                
-                print("not valid")
-            }
-         
+        if !(animation) {
         
-            LEVEL.runAnimation(valid) {
-                (animationComplete: Bool) in
+            USER.appendAttempts()
             
-                if animationComplete == true {
+
+            if (!program.isEmpty && self.validProgramFlow()) {
+
+                let valid = LEVEL.validProgram(program)
+
+                if valid == true {
+                    
+                    self.stopCount(false)
+                    USER.setProgramFlow(self.program, type: FeedbackType.LevelComplete)
+                    self.stopCount(true)
+                    
+                    print("valid")
+                    
+                }
+                else
+                {
+                    
+                    USER.setProgramFlow(self.program, type: FeedbackType.InvalidProgram)
+                    
+                    print("not valid")
+                }
+             
                 
-                    if valid == true {
-            
-                        self.showFeedbackView(FeedbackType.LevelComplete)
+                
+                LEVEL.runAnimation(valid) {
+                    (animationComplete: Bool) in
+                    
+                    self.animation = true
+                
+                    if animationComplete == true {
+                    
+                        if valid == true {
+                
+                            
+                            self.showFeedbackView(FeedbackType.LevelComplete)
+                        }
+                        else {
+                
+                            self.showFeedbackView(FeedbackType.InvalidProgram)
+                
+                        }
+                        
+                        self.animation = false
+
                     }
-                    else {
-            
-                        self.showFeedbackView(FeedbackType.InvalidProgram)
-            
-                    }
-    
                 }
             }
+
+
+            else {
+                
+                    showFeedbackView(FeedbackType.InvalidSyntax)
+                    print("not valid")
+                
+            }
         }
+        
+        
+    }
     
-    
+    func presentNextLevel() {
+        
+        self.scene.removeAllChildren()
+        self.scene.removeAllActions()
+        self.scene = nil
+        self.gameView = nil
+        
+        if _LEVEL == MAXLEVELS
+        {
+            
+            
+            self.performSegueWithIdentifier("showHomeSegue", sender: nil)
+        }
+        
         else {
             
-                showFeedbackView(FeedbackType.InvalidSyntax)
-                print("not valid")
+            _LEVEL++
+            LEVEL = Level(level: _LEVEL)
+            
+            var next: GameViewController
+            
+            let controllerID = "GameViewController"
+            let storyboardName = "Main"
+            let storyboard = UIStoryboard(name: storyboardName, bundle:  NSBundle.mainBundle())
+            
+            next = ((storyboard.instantiateViewControllerWithIdentifier(controllerID) as! UIViewController!) as? GameViewController)!
+            
+            print(next)
+            
+            self.presentViewController(next, animated: true, completion: nil)
+            
             
         }
         
         
+        
+        
+  
+        
+        
+     
         
     }
     
@@ -300,7 +358,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         }
         
         if valid == false {
-            USER.setProgramFlow(program, type:  "Parse")
+            USER.setProgramFlow(program, type: FeedbackType.InvalidSyntax)
         }
         
         return valid
@@ -512,6 +570,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         feedback.showInView(self.view, scene: scene, type: type)
         
+        feedback.vw.delegate = self
+        
         
         
         
@@ -576,6 +636,9 @@ protocol GameDelegate {
     
 }
 
+protocol FeedbackDelegate {
+    func presentNextLevel()
+}
 
 
 

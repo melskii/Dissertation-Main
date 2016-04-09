@@ -20,7 +20,7 @@
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BV1-FR-VrT" customClass="GameViewController" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
@@ -416,24 +416,12 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="jjE-4Q-Npo" secondAttribute="bottom" id="EwG-jj-sel"/>
                                     <constraint firstAttribute="trailing" secondItem="ZEn-zK-Gtr" secondAttribute="trailing" id="Fhq-4J-xAq"/>
                                     <constraint firstItem="ZEn-zK-Gtr" firstAttribute="top" secondItem="5Gp-Rp-eFZ" secondAttribute="top" id="GAz-4g-Wi9"/>
-                                    <constraint firstItem="jjE-4Q-Npo" firstAttribute="leading" secondItem="5Gp-Rp-eFZ" secondAttribute="leading" id="Kon-bc-sie"/>
                                     <constraint firstItem="ZEn-zK-Gtr" firstAttribute="leading" secondItem="5Gp-Rp-eFZ" secondAttribute="leading" id="To0-vi-5pZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="jjE-4Q-Npo" secondAttribute="trailing" id="eJ2-5s-xxJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZEn-zK-Gtr" secondAttribute="trailing" id="fwy-EA-1le"/>
                                     <constraint firstItem="ZEn-zK-Gtr" firstAttribute="trailing" secondItem="jjE-4Q-Npo" secondAttribute="trailing" constant="50" id="h4a-qt-NS8"/>
-                                    <constraint firstItem="ZEn-zK-Gtr" firstAttribute="leading" secondItem="5Gp-Rp-eFZ" secondAttribute="leading" id="nbN-cj-zQd"/>
-                                    <constraint firstItem="jjE-4Q-Npo" firstAttribute="leading" secondItem="5Gp-Rp-eFZ" secondAttribute="leading" constant="50" id="s7e-RD-DP8"/>
                                     <constraint firstItem="ZEn-zK-Gtr" firstAttribute="leading" secondItem="jjE-4Q-Npo" secondAttribute="leading" constant="50" id="tRT-tn-hl8"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Kon-bc-sie"/>
-                                        <exclude reference="eJ2-5s-xxJ"/>
-                                    </mask>
-                                </variation>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -646,19 +634,28 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QmI-ap-hye">
                                 <rect key="frame" x="56" y="71" width="493" height="444"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9G-QH-43Z">
-                                        <rect key="frame" x="229" y="312" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="test" destination="wJy-wJ-HWV" eventType="touchDown" id="mbm-DP-3cv"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SUP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh1-U3-gGf">
                                         <rect key="frame" x="106" y="63" width="207" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rez-Ke-Qaa">
+                                        <rect key="frame" x="176" y="363" width="153" height="57"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <state key="normal" title="NEXT"/>
+                                        <connections>
+                                            <action selector="presentNextLevel" destination="wJy-wJ-HWV" eventType="touchDown" id="1lv-Uo-7Ad"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9G-QH-43Z">
+                                        <rect key="frame" x="192" y="307" width="109" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                        <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="test" destination="wJy-wJ-HWV" eventType="touchDown" id="mbm-DP-3cv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -669,6 +666,8 @@
                             <constraint firstItem="QmI-ap-hye" firstAttribute="centerX" secondItem="wJy-wJ-HWV" secondAttribute="centerX" id="lLC-zc-PGg"/>
                         </constraints>
                         <connections>
+                            <outlet property="btnNextLevel" destination="Rez-Ke-Qaa" id="vNT-J0-76A"/>
+                            <outlet property="btnOK" destination="m9G-QH-43Z" id="wqw-4P-JN2"/>
                             <outlet property="lblMessage" destination="mh1-U3-gGf" id="f2c-tg-1zF"/>
                             <outlet property="popUpView" destination="QmI-ap-hye" id="LNs-E4-8ck"/>
                         </connections>
