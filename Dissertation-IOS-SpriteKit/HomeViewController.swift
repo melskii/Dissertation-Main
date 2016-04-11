@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     
     
     @IBOutlet weak var btnExit: UIButton!
+    
+    @IBOutlet weak var lblName: UILabel!
    
     
     override func viewDidLoad() {
@@ -56,10 +58,6 @@ class HomeViewController: UIViewController {
                 USERDATA.setCurrentUser()
             }
             
-
-            print(USERDATA.name)
-            
-            
             
             let save: NSUserDefaults = NSUserDefaults.standardUserDefaults()
             
@@ -73,8 +71,24 @@ class HomeViewController: UIViewController {
             
         }
         
+        setUserName()
+        
         
 
+    }
+    
+    func setUserName() {
+        
+        lblName.hidden = true
+        
+        if USER.getUsersName() != "" {
+            
+            lblName.hidden = false
+            lblName.text = "Welcome Back \(USER.getUsersName()!)!"
+            
+        }
+        
+        
     }
 
    
@@ -98,12 +112,15 @@ class HomeViewController: UIViewController {
             
             USER = UserModel()
             USER.saveUserLocally()
+            self.setUserName()
             
             
             
         }
         alertController.addAction(OKAction)
         
+        
+        self
         self.presentViewController(alertController, animated: true, completion:nil)
 
         

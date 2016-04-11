@@ -197,7 +197,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         body.name = "outputBackground"
         
         body.zPosition = -1
-   
+        
         
         let background = LEVEL._background
         background.aspectFillToSize(body.size)
@@ -216,8 +216,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
             for object in cell.objects {
                 
                 let sprite = object.1
+                let type = object.0
                 
-                sprite.aspectFillToSize(_outSquare)
+                sprite.aspectFillToSize(_outSquare, type: type)
                 let point: CGPoint = CGPoint(x: start.x + (_outSquare.width * CGFloat(cell.x)), y: start.y + (_outSquare.height * CGFloat(cell.y)))
                 sprite.position = point
                 
@@ -296,9 +297,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         
         let touchedNode = node
         
-        print(touchedNode)
-        
-        if (touchedNode is BlockSprite && touch == nil) {
+               if (touchedNode is BlockSprite && touch == nil) {
             
             let block:Block? = blocks[node.name!]
             
@@ -366,7 +365,7 @@ extension SKSpriteNode {
     
     
     
-    func aspectFillToSize(fillSize: CGSize) {
+    func aspectFillToSize(fillSize: CGSize, type: OutputType = OutputType.End) {
         
         if texture != nil {
             self.size = texture!.size()
@@ -376,7 +375,16 @@ extension SKSpriteNode {
             
             let scaleRatio = horizontalRatio > verticalRatio ? horizontalRatio : verticalRatio
             
-            self.setScale(scaleRatio)
+            
+            
+            var scale = scaleRatio * (type != OutputType.End ? 0.5 : 1)
+            
+            if _LEVEL == 3 {
+                scale = scaleRatio
+            }
+            
+            self.setScale(scale)
+            
         }
     }
     

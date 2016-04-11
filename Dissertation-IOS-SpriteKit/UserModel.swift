@@ -128,7 +128,6 @@ public class UserModel: NSObject, NSCoding {
                     self.id = Int(_id)
                     self.unlockedLevel = Int(_level)!
                     
-                    print(self.unlockedLevel)
                     
                     if _active == "1" {
                         
@@ -190,7 +189,6 @@ public class UserModel: NSObject, NSCoding {
                 let postString = "filter=sync&id=\(id)&level=\(i)&time=\(time!)&stars=\(stars!)"
                 request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
                 
-                print(postString)
                 
                 let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
                     data, response, error in
@@ -329,7 +327,6 @@ public class UserModel: NSObject, NSCoding {
         
         self.saveUserLocally()
         
-        print("rewards: \(rewards)")
         
     }
     
@@ -342,8 +339,6 @@ public class UserModel: NSObject, NSCoding {
         
         attempts[_LEVEL] = (attempts[_LEVEL] == nil ? 1 : (attempts[_LEVEL]! + 1))
         
-        
-        print(attempts)
         
     }
     
@@ -409,8 +404,6 @@ public class UserModel: NSObject, NSCoding {
             
             
             programs.append((level, program, type))
-            print(programs)
-            
         }
         
         self.saveUserLocally()
@@ -436,7 +429,7 @@ public class UserModel: NSObject, NSCoding {
     
     func saveUserLocally() {
         
-        print(USERDATA.user)
+     
         
         USERDATA.appendUserModel(USER)
         
@@ -489,8 +482,7 @@ class NSUserData : NSObject, NSCoding {
             randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
         }
         
-        print(randomString)
-
+      
         self.name = randomString as String
         
     }
@@ -585,25 +577,6 @@ class NSUserData : NSObject, NSCoding {
     func setCurrentUser () {
         
         USER = user
-        
-//        for users in user {
-//            
-//            print(users)
-//        }
-//        
-//        
-//        if (user.count > 0)
-//        {
-//            let usr: UserModel = user[current]
-//            USER = usr
-//        }
-//        else {
-//            
-//            
-//            USER = UserModel()
-//            
-//            
-//        }
         
     }
     

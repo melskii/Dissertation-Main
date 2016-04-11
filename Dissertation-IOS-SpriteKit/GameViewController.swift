@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 
 
@@ -35,8 +36,13 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     @IBOutlet weak var btnRedo: UIButton!
     @IBOutlet weak var btnUndo: UIButton!
     
+    @IBOutlet weak var lblName: UILabel!
+    
     var animation: Bool = false
     
+    
+    var soundEffects: AVAudioPlayer!
+    var playTune: AVAudioPlayer!
     
     private var program: [Block] = []
     
@@ -84,6 +90,9 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         btnPlay.setImage(UIImage(named: "Play_Program_Invalid"), forState: UIControlState.Disabled)
         
         USER.resetAttempts() //Resets the attempts for the Rewards
+       
+        setUserName()
+        
         
     }
     
@@ -114,7 +123,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             
             USER.appendTimeToComplete(number)
             
-            print(number)
         }
         
         binaryCount = 0b0000
@@ -154,6 +162,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         if !(btnPlay.enabled){
             
+            playTune.stop()
             LEVEL.stopAnimation()
             btnPlay.enabled = true
             self.animation = false
@@ -168,7 +177,11 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
             USER.appendAttempts()
             
-
+            if let tune = self.setupAudioPlayerWithFile("tune", type:"wav") {
+                self.playTune = tune
+            }
+            
+            
             if (!program.isEmpty && self.validProgramFlow()) {
 
                 let valid = LEVEL.validProgram(program)
@@ -179,7 +192,10 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
                     USER.setProgramFlow(self.program, type: FeedbackType.LevelComplete)
                     self.stopCount(true)
                     
-                    print("valid")
+                    if playTune.playing {
+                        playTune.stop()
+                    }
+                
                     
                 }
                 else
@@ -187,11 +203,20 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
                     
                     USER.setProgramFlow(self.program, type: FeedbackType.InvalidProgram)
                     
-                    print("not valid")
+                   
+                 
                 }
              
                 
                 btnPlay.enabled = false
+//                playTune.playAtTime(0)
+                
+               
+                
+                playTune.numberOfLoops = -1
+                playTune.play()
+                
+
                 
                 LEVEL.runAnimation(valid) {
                     (animationComplete: Bool) in
@@ -202,15 +227,18 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
                     
                         if valid == true {
                 
-                            
+                            self.playTune.stop()
                             self.showFeedbackView(FeedbackType.LevelComplete)
+                            
                         }
                         else {
-                
+                          
+                            self.playTune.stop()
                             self.showFeedbackView(FeedbackType.InvalidProgram)
                 
                         }
                         
+                        self.playTune.stop()
                         self.btnPlay.enabled = true
                         
                         self.animation = false
@@ -225,8 +253,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
                 
                 
                     showFeedbackView(FeedbackType.InvalidSyntax)
-                    print("not valid")
-                
             }
         }
         
@@ -259,8 +285,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             let storyboard = UIStoryboard(name: storyboardName, bundle:  NSBundle.mainBundle())
             
             next = ((storyboard.instantiateViewControllerWithIdentifier(controllerID) as! UIViewController!) as? GameViewController)!
-            
-            print(next)
             
             self.presentViewController(next, animated: true, completion: nil)
             
@@ -425,8 +449,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
                 break
             }
 //            
-//            print("selectedPath: \(selectedIndexPath.item)")
-//            
             if selectedIndexPath.item >= LEVEL._lockedBlocks {
                 
                 collectionView.beginInteractiveMovementForItemAtIndexPath(selectedIndexPath)
@@ -440,12 +462,21 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             let location = gesture.locationInView(gesture.view!)
            
             
-            if (deleteCell != nil && (location.x >= 655 && location.y >= 285))
+            if (deleteCell != nil && (location.x >= 655 && location.y >= 283))
             {
-                print("out of bounds")
-                
-                deleteBlock = true
+                             deleteBlock = true
                 scene.animateBin()
+                
+                
+                if let crunch = self.setupAudioPlayerWithFile("crunch", type:"wav") {
+                    self.soundEffects = crunch
+                }
+                
+                
+                soundEffects?.volume = 1
+                soundEffects.rate = 2.0
+                soundEffects.play()
+                
                 
                 
             }
@@ -490,7 +521,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
     }
     
-    @IBAction func btnUndoTouchDown(sender: AnyObject) {
+    @IBAction func btnUndoTouchDown() {
         
         let i = LEVEL._lockedBlocks == 0 ? -1 : LEVEL._lockedBlocks
         
@@ -593,6 +624,20 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         
     }
+    
+    func setUserName() {
+        
+        lblName.hidden = true
+        
+        if USER.getUsersName() != "" {
+            
+            lblName.hidden = false
+            lblName.text = "Hi \(USER.getUsersName()!)!"
+            
+        }
+        
+        
+    }
 
 }
 
@@ -627,13 +672,18 @@ extension GameViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
     
-        if (sourceIndexPath.item <= LEVEL._lockedBlocks)
-        {
-            resetUndoFlag()
-            
-            let temp = program.removeAtIndex(sourceIndexPath.item)
-            program.insert(temp, atIndex: destinationIndexPath.item)
-        }
+        resetUndoFlag()
+        
+        let temp = program.removeAtIndex(sourceIndexPath.item)
+        program.insert(temp, atIndex: destinationIndexPath.item)
+
+        
+//        if (destinationIndexPath.item <= LEVEL._lockedBlocks){
+//      
+//            btnUndoTouchDown()
+//            self.collectionView?.reloadData()
+//            
+//        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -644,6 +694,22 @@ extension GameViewController: UICollectionViewDataSource {
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
+    }
+    
+    func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer?  {
+        
+        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
+        let url = NSURL.fileURLWithPath(path!)
+        
+        var audioPlayer:AVAudioPlayer?
+        
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOfURL: url)
+        } catch {
+            print("Player not available")
+        }
+        
+        return audioPlayer
     }
     
     

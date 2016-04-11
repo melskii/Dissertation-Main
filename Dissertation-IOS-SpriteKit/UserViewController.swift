@@ -16,6 +16,7 @@ protocol UserDelegate {
     
 }
 
+
 protocol KeyboardDelegate {
     
     func numberKeyboard(button: UIButton)
@@ -34,16 +35,15 @@ class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegat
     
     @IBOutlet var keyboardView: NumberView!
 
+
     override func loadView() {
         
         super.loadView()
         
         keyboardView.delegate = self
-//        keyboardView.hidden = true
+
     }
-  
-//    
-    override func viewDidLoad() {
+      override func viewDidLoad() {
         
         super.viewDidLoad()
         
@@ -210,6 +210,28 @@ class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegat
     
     func returnToPreviousController() {
         
+        
+        
+        let presenting = self.presentingViewController
+        
+        if presenting != nil {
+            
+            if presenting is GameViewController {
+                
+                let game = presenting as! GameViewController
+                game.setUserName()
+                
+            }
+            
+            if presenting is HomeViewController {
+                
+                let home = presenting as! HomeViewController
+                home.setUserName()
+                
+            }
+            
+        }
+       
         self.dismissViewControllerAnimated(true, completion: {});
         
 
@@ -256,7 +278,7 @@ class Regex {
 
             results.map { nsString.substringWithRange($0.range)} // Don't think this line is needed
             
-            print(results.count == 1 ? "valid regex \(self.regex)" : "invalid regex \(self.regex)")
+            
             return results.count == 1 ? true : false
             
         } catch let error as NSError {

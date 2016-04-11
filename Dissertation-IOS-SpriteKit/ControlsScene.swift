@@ -37,8 +37,7 @@ class ControlsScene: SKScene {
         super.didMoveToView(view)
         
         self.width = frame.size.width
-        
-        print("height: \(self.frame.height)")
+    
         
         view.showsPhysics = true
         
@@ -158,8 +157,6 @@ class ControlsScene: SKScene {
         let location = touch.first!.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
-        print(node.name)
-        
         if (node.name == "btnHome") {
             
             
@@ -173,8 +170,6 @@ class ControlsScene: SKScene {
             node.runAction(animation)
             
             if self.name != "HomeScene" {
-                
-                print("home button")
                 
                 self.controlsSceneDelegate?.homeScene()
             
@@ -193,7 +188,7 @@ class ControlsScene: SKScene {
             let animation = SKAction.animateWithTextures(texture, timePerFrame: 0.2)
             node.runAction(animation)
             
-            print("login button")
+           
             
             self.controlsSceneDelegate?.userScene()
             
@@ -204,7 +199,6 @@ class ControlsScene: SKScene {
             
         else if (node.name == "btnAudio") {
             
-            print("hit here")
             
             var texture = [SKTexture]()
             

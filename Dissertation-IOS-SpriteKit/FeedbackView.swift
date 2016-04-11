@@ -21,6 +21,7 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
     @IBOutlet weak var btnOK: UIButton!
     @IBOutlet weak var imgIcon: UIImageView!
     @IBOutlet weak var imgStars: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
     
     var soundEffects: AVAudioPlayer!
     
@@ -83,19 +84,31 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
             imgIcon.image = UIImage(named: "Info_Program")
             
             
-            if let secondBeep = self.setupAudioPlayerWithFile("SecondBeep", type:"wav") {
-                self.soundEffects = secondBeep
-            }
-            
-            
-            soundEffects?.volume = 1
-            soundEffects.play()
+           
             
         }
         
         else if type == FeedbackType.InvalidSyntax {
             
             imgIcon.image = UIImage(named: "Code_Error")
+            
+            if let secondBeep = self.setupAudioPlayerWithFile("error2", type:"wav") {
+                self.soundEffects = secondBeep
+            }
+            
+            
+            
+            
+            let feedback = CodeFeedbackString[Int(arc4random_uniform(3))]
+            lblTitle.text = "(\(feedback.feedback)\(feedback.name ? USER.getUsersName() : "")!"
+            
+            
+            
+            
+            
+            soundEffects?.volume = 3
+             soundEffects.rate = 2.0
+            soundEffects.play()
             
             
             
@@ -104,6 +117,16 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
         else if type == FeedbackType.InvalidProgram {
             
             imgIcon.image = UIImage(named: "Program_Error")
+            
+  
+            if let secondBeep = self.setupAudioPlayerWithFile("error2", type:"wav") {
+                self.soundEffects = secondBeep
+            }
+            
+            
+            soundEffects?.volume = 3
+             soundEffects.rate = 2.0
+            soundEffects.play()
         }
         
         else if type == FeedbackType.LevelComplete {
@@ -113,7 +136,60 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
             btnNextLevel.hidden = false
             
             imgStars.hidden = false
+            let stars = USER.getRewardsStar(_LEVEL)
             imgStars.image = UIImage(named: "star\(String(USER.getRewardsStar(_LEVEL)))")
+            
+            if (stars >= 1) {
+                
+                if let beep = self.setupAudioPlayerWithFile("level-up-03", type:"wav") {
+                    self.soundEffects = beep
+                }
+                
+                
+                soundEffects?.volume = 1
+                soundEffects.rate = 4.0
+                soundEffects.play()
+                
+                sleep(1)
+                
+                if (stars >= 2) {
+                    
+                    if let beep = self.setupAudioPlayerWithFile("level-up-01", type:"wav") {
+                        self.soundEffects = beep
+                    }
+                    
+                    
+                    soundEffects?.volume = 1
+                    soundEffects.rate = 4.0
+                    soundEffects.play()
+                    
+                    sleep(1)
+                    
+                    if (stars >= 3) {
+                        
+                        if let beep = self.setupAudioPlayerWithFile("level-up-02", type:"wav") {
+                            self.soundEffects = beep
+                        }
+                        
+                        
+                        soundEffects?.volume = 1
+                        soundEffects.rate = 4.0
+                        soundEffects.play()
+                        
+                        
+                        
+                        
+                    }
+                    
+                    
+                    
+                    
+                }
+                
+                
+                
+                
+            }
             
             
             if MAXLEVELS == _LEVEL {
@@ -129,8 +205,7 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
     
     
     @IBAction func test() {
-        
-        print("hit here")
+     
 //        lblMessage.text = "Changed"
         dismissFeedback()
         

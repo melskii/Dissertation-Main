@@ -114,25 +114,106 @@ public class Level {
             
             if _objects.count == 0 {
            
-                let End = GameCell (x: 7, y: 3)
+                let End = GameCell (x: 4, y: 2)
                 let A = GameCell(x: 1, y: 1)
                 
                 let house = TLSpriteNode(imageNamed: "house")
                 house.name = "house"
                 
-                let dog = TLSpriteNode(imageNamed: "dog")
-                dog.name = "dog"
+                let objecta = TLSpriteNode(imageNamed: "giraffe")
+                objecta.name = "giraffe"
                 
                 End.setOutputSprite(house, type: OutputType.End)
-                A.setOutputSprite(dog, type: OutputType.A)
+                A.setOutputSprite(objecta, type: OutputType.A)
     
                 _objects.append(End)
                 _objects.append(A)
                 
-                _background = SKSpriteNode(imageNamed: "homebackground")
+                _background = SKSpriteNode(imageNamed: "level1background")
             }
+            
+            
+        }
+        
+        if (self.level == 2) {
+            
+            if _objects.count == 0 {
+                
+                let End = GameCell (x: 7, y: 3)
+                let A = GameCell(x: 1, y: 1)
+                
+                let door = TLSpriteNode(imageNamed: "Door")
+                door.name = "door"
+                
+                let objecta = TLSpriteNode(imageNamed: "giraffe")
+                objecta.name = "giraffe"
+                
+                End.setOutputSprite(door, type: OutputType.End)
+                A.setOutputSprite(objecta, type: OutputType.A)
+                
+                _objects.append(End)
+                _objects.append(A)
+                
+                _background = SKSpriteNode(imageNamed: "level2background")
+            }
+            
         }
     
+        
+        if (self.level == 3) {
+            
+            if _objects.count == 0 {
+                
+                let End = GameCell (x: 2, y: 6)
+                let A = GameCell(x: 1, y: 1)
+                
+                let oven = TLSpriteNode(imageNamed: "oven")
+                oven.name = "oven"
+                
+                let objecta = TLSpriteNode(imageNamed: "pie")
+                objecta.name = "pie"
+                
+                End.setOutputSprite(oven, type: OutputType.End)
+                A.setOutputSprite(objecta, type: OutputType.A)
+                
+                _objects.append(End)
+                _objects.append(A)
+                
+                _background = SKSpriteNode(imageNamed: "level3background")
+            }
+            
+        }
+        
+        
+        if (self.level == 4) {
+            
+            if _objects.count == 0 {
+                
+                let End = GameCell (x: 5, y: 3)
+                let A = GameCell(x: 1, y: 1)
+                let B = GameCell(x: 7, y: 1)
+                
+                let oven = TLSpriteNode(imageNamed: "oven")
+                oven.name = "oven"
+                
+                let objecta = TLSpriteNode(imageNamed: "giraf")
+                objecta.name = "pie"
+                
+                let objectb = TLSpriteNode(imageNamed: "pie")
+                objectb.name = "pie"
+                
+                End.setOutputSprite(oven, type: OutputType.End)
+                A.setOutputSprite(objecta, type: OutputType.A)
+                
+                _objects.append(End)
+                _objects.append(A)
+                
+                _background = SKSpriteNode(imageNamed: "level1background")
+            }
+            
+        }
+        
+        
         
         for cell in _objects {
          
@@ -241,8 +322,6 @@ public class Level {
         var objectCell: (type: OutputType, cell: GameCell)? = nil //The Cell of the Current Object
         var valid = false
         
-        print(program)
-        
         for b in program {
             
             valid = false
@@ -257,14 +336,11 @@ public class Level {
                 }
                 
                 
-                //Debugging: print("object \(object.type)")
                 objectCell = (block.type, c)
                 
             }
             
             else if let block = b as? Action {
-                
-                //Debugging: print("object \(action.name)")
                 
                 if objectCell == nil {
                     
@@ -287,7 +363,7 @@ public class Level {
                     let currentCell = objectCell!.cell
                     let sprite = currentCell.getOutputSprite(type)
                     
-                    print("Sprite that's being changed: \(sprite)")
+                    
                     if sprite != nil {
                         
                         sprite?.appendActionSequence(block.spriteActionMove())
@@ -446,8 +522,6 @@ class TLSpriteNode: SKSpriteNode {
         
         //let animateAction = SKAction.animateWithTextures(SOMETEXTURE, timePerFrame: 0.20)
         
-        print("move by: \(location)")
-        
         
         let moveAction = SKAction.moveByX(location.x, y: location.y, duration: 0.5)
         
@@ -479,8 +553,6 @@ class TLSpriteNode: SKSpriteNode {
        
        let sequence = SKAction.sequence(actionSequence)
         
-        print(actionSequence.count)
-        
         self.runAction(sequence, completion: {
             
             self.actionSequence.removeAll()
@@ -501,8 +573,7 @@ class TLSpriteNode: SKSpriteNode {
                
         let sequence = SKAction.sequence(resetSequence())
         
-        print(actionSequence.count)
-        
+               
         self.runAction(sequence, completion: {
             
             self.actionSequence.removeAll()
