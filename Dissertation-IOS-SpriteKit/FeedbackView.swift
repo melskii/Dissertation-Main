@@ -23,9 +23,17 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
     @IBOutlet weak var imgStars: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     
+    @IBOutlet weak var lblDetail: UILabel!
+    @IBOutlet weak var imgDetail: UIImageView!
+    @IBOutlet weak var lblComplete: UILabel!
+    @IBOutlet weak var lblBest: UILabel!
+    
     var soundEffects: AVAudioPlayer!
     
     var delegate: FeedbackDelegate?
+    
+    var levelDescription: String!
+    var levelImage: [UIImage!] = []
     
     func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer?  {
         
@@ -54,7 +62,7 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("dismissFeedback"))
         tap.delegate = self
         self.addGestureRecognizer(tap)
-        
+  
         
         
         
@@ -71,6 +79,8 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
         self.scene = scene
         self.type = type
         
+        levelDescription = LEVEL.getLevelDescription()
+        levelImage = LEVEL.getLevelImage()
       
         setBasedOnFeedbackType()
 
@@ -82,6 +92,15 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
         if type == FeedbackType.LevelHelp {
             
             imgIcon.image = UIImage(named: "Info_Program")
+            
+            lblDetail.text = LEVEL.getLevelDescription()
+            imgDetail.animationImages = LEVEL.getLevelImage()
+            imgDetail.animationDuration = 5
+            imgDetail.animationRepeatCount = 3
+            imgDetail.startAnimating()
+
+            
+            lblTitle.text = "Level \(_LEVEL)"
             
             
            
@@ -98,10 +117,13 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
             
             
             
+            let feedback = SyntaxFeedbackString[Int(arc4random_uniform(3))]
+            let extra: String = (feedback.name ? " \(USER.getUsersName()!)" : "")
+            lblTitle.text = "\(feedback.feedback)\(extra)!"
             
-            let feedback = CodeFeedbackString[Int(arc4random_uniform(3))]
-            lblTitle.text = "(\(feedback.feedback)\(feedback.name ? USER.getUsersName() : "")!"
             
+            
+            lblDetail.text = "The giraffe won't move with the CODE in that order. \n\nTry and the change the order or add ACTION blocks"
             
             
             
@@ -123,6 +145,17 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
                 self.soundEffects = secondBeep
             }
             
+            let feedback = CodeFeedbackString[Int(arc4random_uniform(3))]
+            let extra: String = (feedback.name ? " \(USER.getUsersName()!)" : "")
+            lblTitle.text = "\(feedback.feedback)\(extra)!"
+            
+            
+            lblDetail.text = LEVEL.getLevelDescription()
+            imgDetail.animationImages = LEVEL.getLevelImage()
+            imgDetail.animationDuration = 5
+            imgDetail.animationRepeatCount = 3
+            imgDetail.startAnimating()
+
             
             soundEffects?.volume = 3
              soundEffects.rate = 2.0
@@ -131,9 +164,23 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
         
         else if type == FeedbackType.LevelComplete {
             
+            lblDetail.hidden = true
+            imgDetail.hidden = true
+            
+            lblComplete.hidden = false
+            lblBest.hidden = false
+            
+            lblTitle.text = "Level Complete"
+            
+            let name: String! = (USER.getUsersName() == "" ? "" : " \(USER.getUsersName()!)")
+            
+            lblBest.text = "\(name!)You're the best!"
+            
             imgIcon.image = UIImage(named: "Level_Complete")
             btnOK.hidden = true
             btnNextLevel.hidden = false
+            
+            
             
             imgStars.hidden = false
             let stars = USER.getRewardsStar(_LEVEL)
@@ -225,6 +272,9 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
     }
     
     func dismissFeedback () {
+        
+        self.imgDetail = nil
+        
         
         self.scene.view?.scene?.paused = false
         self.removeAnimate()

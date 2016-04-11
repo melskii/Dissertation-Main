@@ -164,7 +164,7 @@ public class Level {
             
             if _objects.count == 0 {
                 
-                let End = GameCell (x: 2, y: 6)
+                let End = GameCell (x: 8, y: 3)
                 let A = GameCell(x: 1, y: 1)
                 
                 let oven = TLSpriteNode(imageNamed: "oven")
@@ -255,6 +255,42 @@ public class Level {
 
         
         return compiled
+        
+    }
+    
+    public func getLevelDescription() -> String {
+        
+        if _LEVEL == 1 {
+            
+            return "Welcome to Tales!\n\nWe need to write the CODE to make the giraffe move.\nAdd a yellow ACTION block to our code to move\n\nCan you find the giraffe's house using the ACTIONS?"
+            
+        }
+        
+        else if _LEVEL == 2 {
+            return "To make the giraffe move now, we need to put an OBJECT in our code before any ACTION blocks. \nThe giraffe is an OBJECT!\n\nCan you get our hungry giraffe to the kitchen?"
+        }
+    
+        return ""
+        
+    }
+    
+    public func getLevelImage() -> [UIImage] {
+        
+        if _LEVEL == 1 {
+            
+            var array = [UIImage]()
+            
+            for var i = 0; i < 45; i++ {
+                
+                let image = UIImage(named: "tmp-\(i).gif")!
+                array.append(image)
+               
+            }
+            
+            return array
+            
+        }
+        return [UIImage(named: "outBckground")!]
         
     }
     

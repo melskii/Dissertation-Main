@@ -34,7 +34,7 @@ var DEFAULTS: Bool = false
 var OUTSQUARE: CGSize!
 
 
-let URL = "http://melbook.local/website/ipad/"
+let URL = "http://users.sussex.ac.uk/~ms660/dissertation/"
 
 public enum OutputType: String {
     case A = "ObjectA"
@@ -71,10 +71,16 @@ public enum FeedbackType: String {
 let CodeFeedbackString : [(feedback: String, name: Bool)] = [
         ("Nice Try", true),
         ("Whoops", false),
-        ("Nearly There", false),
+        ("Nearly There, Try Changing the CODE", false),
         ("Oops", false)
     ]
 
+let SyntaxFeedbackString : [(feedback: String, name: Bool)] = [
+    ("Nice Try", true),
+    ("Whoops", false),
+    ("Try Again", false),
+    ("Oops", false)
+]
 
 
 
