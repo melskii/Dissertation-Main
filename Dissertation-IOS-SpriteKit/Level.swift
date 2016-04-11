@@ -23,6 +23,8 @@ public class Level {
     
     //Items that will be sent to GameScene
     private var _inst: [Block]
+    private var _starting: [Block]
+    var _lockedBlocks: Int = 0
     var _objects: [GameCell]! = [GameCell]() //this is for the animations in Game Scene.
     var _background: SKSpriteNode! = SKSpriteNode(imageNamed: "outBckground") //use outBckground as the default.
     var x, y: Int!
@@ -37,6 +39,8 @@ public class Level {
         
         //Set up the instruction Blocks
         _inst = [Block]()
+        _starting = [Block]()
+        
         setLevelInstructions()
         
         //Set up the Level Grid
@@ -49,27 +53,55 @@ public class Level {
        
         return _inst
     }
+    
+    func startingBlocks() -> [Block] {
+        
+        return _starting
+    }
 
     private func setLevelInstructions() {
         
-        if (self.level >= 1) {
-            
+        
+        if (self.level >= 3){
             _inst.append(Play())
-            _inst.append(Object(type: OutputType.A))
-            _inst.append(Up())
-            _inst.append(Down())
-            _inst.append(Right())
-            _inst.append(Left())
-    
+            
         }
         
         if (self.level >= 2) {
             
-            _inst.append(Play())
+            
             _inst.append(Object(type: OutputType.A))
+            
             
         }
         
+        if self.level >= 4 {
+            _inst.append(Object(type: OutputType.B))
+            
+        }
+        
+        if (self.level >= 1) {
+            
+            
+            _inst.append(Up())
+            _inst.append(Down())
+            _inst.append(Right())
+            _inst.append(Left())
+            
+            
+    
+        }
+        
+        if self.level == 1 {
+            _starting.append(Play())
+            _starting.append(Object(type: OutputType.A))
+            _lockedBlocks = 2
+        }
+        else if self.level == 2 {
+            _starting.append(Play())
+            _lockedBlocks = 1
+            
+        }
     
     }
     
@@ -99,13 +131,6 @@ public class Level {
                 
                 _background = SKSpriteNode(imageNamed: "homebackground")
             }
-       
-           
-            
-          
-                
-            
-            
         }
     
         

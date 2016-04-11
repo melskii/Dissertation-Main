@@ -19,16 +19,17 @@ struct defaultKeys {
 //No class therefore globally accessable
 
 let SHADOW_COLOUR: CGFloat = 157.0/255.00
-let MENU_HEIGHT: CGFloat = 56
+let MENU_HEIGHT: CGFloat = 80
 
 
 let defaults = NSUserDefaults.standardUserDefaults()
-let USER: UserModel = UserModel()
+var USER: UserModel! = UserModel()
 var _LEVEL = 1
 let MAXLEVELS = 5
 var LEVEL: Level!
 var GAME_HEIGHT: CGFloat!
-
+var USERDATA: NSUserData! = NSUserData()
+var DEFAULTS: Bool = false
 
 var OUTSQUARE: CGSize!
 
@@ -66,5 +67,7 @@ public enum FeedbackType: String {
     case LevelHelp = "Level Help"
     
 }
+
+
 
 

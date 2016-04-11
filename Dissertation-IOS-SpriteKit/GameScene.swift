@@ -45,7 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         
         self.backgroundColor = UIColor.whiteColor()
         self.width = frame.size.width
-        self.height = frame.size.height - 54
+        self.height = frame.size.height - 80
         
         //Set up Instruction Blocks
         inst = setupInstructionBlocks()
@@ -171,6 +171,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         binSprite.position.x -= (binSprite.size.width * 0.7)
         binSprite.position.y += (binSprite.size.height * 0.7)
         
+        
+        //set up starting blocks
+        let startingProgram = LEVEL.startingBlocks()
+        
+        for block in startingProgram {
+            self.gameSceneDelegate?.appendProgramFlowBlock(block)
+        }
         
         body.addChild(binSprite)
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import Foundation
 
 protocol UserDelegate {
     
@@ -15,7 +16,13 @@ protocol UserDelegate {
     
 }
 
-class UserViewController: UIViewController {
+protocol KeyboardDelegate {
+    
+    func numberKeyboard(button: UIButton)
+    
+}
+
+class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegate {
     
 
     var userDelegate: UserDelegate?
@@ -24,11 +31,15 @@ class UserViewController: UIViewController {
     @IBOutlet var txtParticipant: UITextField!
     @IBOutlet var txtName: UITextField!
     @IBOutlet var lblError: UILabel!
+    
+    @IBOutlet var keyboardView: NumberView!
 
     override func loadView() {
         
         super.loadView()
         
+        keyboardView.delegate = self
+//        keyboardView.hidden = true
     }
   
 //    
@@ -38,7 +49,83 @@ class UserViewController: UIViewController {
         
         lblError.hidden = true
         txtName.text = USER.getUsersName()
-     
+        
+        txtParticipant.delegate = self
+        txtName.delegate = self
+    
+        
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if textField == txtParticipant {
+            view.endEditing(true)
+            keyboardView.hidden = false
+            return false
+        }
+        
+        return true
+        
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField == txtParticipant {
+            keyboardView.hidden = true
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        if textField == txtName {
+            self.view.endEditing(true)
+        }
+        
+        else {
+        
+        
+            textField.resignFirstResponder()
+        
+       
+        }
+        
+         return true
+    }
+    
+    func numberKeyboard(button: UIButton) {
+        
+        
+        var text = txtParticipant.text
+        
+        if button.tag >= 0 {
+           
+        
+            
+           txtParticipant.text = text! + String(button.tag)
+            
+            
+        }
+        
+        else {
+            
+            
+            if button.titleLabel?.text == "Del" {
+                
+                if txtParticipant.text != "" {
+                    
+                  
+                    text?.removeAtIndex((text?.endIndex.predecessor())!)
+                    
+                    txtParticipant.text = text
+                   
+                    
+                }
+            }
+            else {
+                
+                keyboardView.hidden = true
+                
+            }
+        }
+        
     }
 
     @IBAction func btnOKTouchDown(sender: AnyObject) {
@@ -96,7 +183,7 @@ class UserViewController: UIViewController {
             }
             
             
-            lblError.text = "Enter a Name"
+            lblError.text = "Enter a Name or Press Cancel"
             lblError.hidden = false
             
         }
@@ -126,6 +213,10 @@ class UserViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: {});
         
 
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        self.
     }
     
     

@@ -60,11 +60,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         lPG.delaysTouchesBegan = true
         lPG.delegate = self
         self.collectionView.addGestureRecognizer(lPG)
-    
-    
-//        GAME_HEIGHT = self.view!.frame.height - MENU_HEIGHT
-        
-      
+
         
         skview = view as! SKView
         skview.multipleTouchEnabled = false
@@ -83,6 +79,9 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         self.showLevelHelp()
         
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "countUp", userInfo: nil, repeats: true)
+        
+        
+        btnPlay.setImage(UIImage(named: "Play_Program_Invalid"), forState: UIControlState.Disabled)
         
         USER.resetAttempts() //Resets the attempts for the Rewards
         
@@ -153,9 +152,12 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     
     @IBAction func stopTouchDown(sender: AnyObject) {
         
-        LEVEL.stopAnimation()
-        
-        self.animation = false
+        if !(btnPlay.enabled){
+            
+            LEVEL.stopAnimation()
+            btnPlay.enabled = true
+            self.animation = false
+        }
         
     }
     
@@ -189,6 +191,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
                 }
              
                 
+                btnPlay.enabled = false
                 
                 LEVEL.runAnimation(valid) {
                     (animationComplete: Bool) in
@@ -208,6 +211,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
                 
                         }
                         
+                        self.btnPlay.enabled = true
+                        
                         self.animation = false
 
                     }
@@ -216,6 +221,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
 
 
             else {
+                
+                
                 
                     showFeedbackView(FeedbackType.InvalidSyntax)
                     print("not valid")
@@ -417,8 +424,14 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
                 
                 break
             }
-            collectionView.beginInteractiveMovementForItemAtIndexPath(selectedIndexPath)
-            deleteCell = collectionView.cellForItemAtIndexPath(selectedIndexPath)
+//            
+//            print("selectedPath: \(selectedIndexPath.item)")
+//            
+            if selectedIndexPath.item >= LEVEL._lockedBlocks {
+                
+                collectionView.beginInteractiveMovementForItemAtIndexPath(selectedIndexPath)
+                deleteCell = collectionView.cellForItemAtIndexPath(selectedIndexPath)
+            }
             
             
         case UIGestureRecognizerState.Changed:
@@ -479,18 +492,25 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     
     @IBAction func btnUndoTouchDown(sender: AnyObject) {
         
-        if undo && preliminary.count > 0 {
+        let i = LEVEL._lockedBlocks == 0 ? -1 : LEVEL._lockedBlocks
+        
+        if undo && program.count > i {
             
             let hold = program
-            program = self.preliminary
+            if preliminary.count > 0 {
+                program = self.preliminary
+            }
+            else {
+                program = []
+            }
+            
+            
             self.collectionView?.reloadData()
             
             undo = !undo
             
             self.preliminary = hold
-            
-            btnUndo.setTitle("Undo", forState: .Normal)
-            btnRedo.setTitle("Redo 1", forState: .Normal)
+         
         }
 
     }
@@ -507,8 +527,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             
             self.preliminary = hold
             
-            btnUndo.setTitle("Undo 1", forState: .Normal)
-            btnRedo.setTitle("Redo", forState: .Normal)
         }
 
 
@@ -549,8 +567,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         self.preliminary = program
         undo = true
-        btnRedo.setTitle("Redo", forState: .Normal)
-        btnUndo.setTitle("Undo 1", forState: .Normal)
+        
 
     }
     
@@ -610,11 +627,13 @@ extension GameViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, moveItemAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
     
-        
-        resetUndoFlag()
-        
-        let temp = program.removeAtIndex(sourceIndexPath.item)
-        program.insert(temp, atIndex: destinationIndexPath.item)
+        if (sourceIndexPath.item <= LEVEL._lockedBlocks)
+        {
+            resetUndoFlag()
+            
+            let temp = program.removeAtIndex(sourceIndexPath.item)
+            program.insert(temp, atIndex: destinationIndexPath.item)
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -633,6 +652,8 @@ extension GameViewController: UICollectionViewDataSource {
 protocol GameDelegate {
     
     func appendProgramFlowBlock (newblock: Block)
+    
+    
     
 }
 

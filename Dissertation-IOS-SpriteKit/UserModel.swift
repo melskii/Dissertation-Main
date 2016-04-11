@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class UserModel {
+public class UserModel: NSObject, NSCoding {
 
     
     private var id: Int! = -1
@@ -21,8 +21,43 @@ public class UserModel {
     private var programs: [(level: Int, program: [Block], error: FeedbackType)] = [] //only stores here if offline
     var unlockedLevel: Int = 0
     
-    public init() {
+    public override  init() {
+       
+        super.init()
+        
+    }
     
+    public func encodeWithCoder(aCoder: NSCoder) {
+        
+        aCoder.encodeObject(self, forKey: "user")
+        
+        aCoder.encodeObject(name, forKey: "name")
+        aCoder.encodeInteger(id, forKey: "id")
+        aCoder.encodeBool(active, forKey: "active")
+//        aCoder.encodeObject(attempts, forKey: "attempts")
+        aCoder.encodeObject(timeToComplete, forKey: "timeToComplete")
+        aCoder.encodeObject(rewards, forKey: "rewards")
+//        aCoder.encodeObject(programs, forKey: "programs")
+        aCoder.encodeInteger(unlockedLevel, forKey: "unlocked")
+        
+        
+    }
+    
+    required convenience public init(coder aDecoder: NSCoder) {
+        
+        self.init()
+        
+        self.name = aDecoder.decodeObjectForKey("name") as! String
+        self.id = aDecoder.decodeIntegerForKey("id")
+        self.active = aDecoder.decodeBoolForKey("active")
+//        self.attempts = aDecoder.decodeObjectForKey("attempts") as! [Int:Int]
+        self.timeToComplete = aDecoder.decodeObjectForKey("timeToComplete") as! [Int:Int]
+        self.rewards = aDecoder.decodeObjectForKey("rewards") as! [Int:Int]
+//        self.programs = aDecoder.decodeObjectForKey("programs") as! [(level: Int, program: [Block], error: FeedbackType)]
+        self.unlockedLevel = aDecoder.decodeIntegerForKey("unlocked")
+        
+        
+//        self = aDecoder.decodeObjectForKey("user") as! [AnyObject]
     }
     
     func setUsersName(name: String) {
@@ -236,11 +271,14 @@ public class UserModel {
         
         else {
             
-            if unlockedLevel <= MAXLEVELS {
-                self.unlockedLevel++
-            }
+            
+            self.unlockedLevel = _LEVEL
+//                self.unlockedLevel++
+         
   
         }
+        
+        
         
     }
     
@@ -253,6 +291,7 @@ public class UserModel {
         if active {
             
             syncProgress (_LEVEL)
+            self.saveUserLocally()
 
         }
         
@@ -287,6 +326,8 @@ public class UserModel {
         }
         
         syncProgress (_LEVEL)
+        
+        self.saveUserLocally()
         
         print("rewards: \(rewards)")
         
@@ -372,6 +413,8 @@ public class UserModel {
             
         }
         
+        self.saveUserLocally()
+        
     }
     
     private func programFlowToString (program: [Block]) -> String {
@@ -390,5 +433,205 @@ public class UserModel {
         return x
         
     }
+    
+    func saveUserLocally() {
+        
+        print(USERDATA.user)
+        
+        USERDATA.appendUserModel(USER)
+        
+        let save: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        let encodedData = NSKeyedArchiver.archivedDataWithRootObject(USERDATA)
+        
+        save.setObject(encodedData, forKey: "Users")
+        
+        
+        save.synchronize()
+        
+        
+        
+    }
+    
 
 }
+
+class NSUserData : NSObject, NSCoding {
+    
+    
+//    private var user: [UserModel]!
+    private var user: UserModel?
+    private var current: Int = -1
+    private var next: Int = 0
+    var name: String!
+    
+    override init() {
+        super.init()
+        
+        self.user = nil
+        self.current = -1
+        self.next = 0
+        self.name = ""
+        
+      
+    }
+    
+    func setRandomName()  {
+        
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        
+        var randomString : NSMutableString = NSMutableString(capacity: 10)
+        
+        for (var i=0; i < 10; i++){
+            var length = UInt32 (letters.length)
+            var rand = arc4random_uniform(length)
+            randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        }
+        
+        print(randomString)
+
+        self.name = randomString as String
+        
+    }
+    
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        
+        //self.init(coder: aDecoder)
+        self.init()
+     
+        
+        self.user = aDecoder.decodeObjectForKey("user") as! UserModel
+        self.current = aDecoder.decodeIntegerForKey("current")
+        self.next = aDecoder.decodeIntegerForKey("next")
+        self.name = aDecoder.decodeObjectForKey("name") as! String
+    }
+ 
+    func encodeWithCoder(aCoder: NSCoder) {
+        
+        aCoder.encodeObject(user, forKey: "user")
+        aCoder.encodeInteger(current, forKey: "current")
+        aCoder.encodeInteger(next, forKey: "next")
+        aCoder.encodeObject(name, forKey: "name")
+        
+      
+    }
+    
+    
+    
+
+
+  
+    
+    func appendUserModel (usr: UserModel) {
+        
+        user = usr
+//        
+//        if (user.count < 2) {
+//            
+//            user.append(usr)
+//            
+//            
+//        }
+//        
+//        else {
+//            
+//            
+//            user.insert(usr, atIndex: current)
+//            
+//        }
+//        
+//        current = next
+//        
+//        if (next == 2) {
+//            
+//            next = 0
+//            
+//        }
+//            
+//        else {
+//            
+//            next++
+//            
+//        }
+        
+    }
+    
+//    func getUsersName (i: Int) -> String {
+//        
+//        let u = user[i]
+//        
+//        return u.getUsersName() == nil ? "" : u.getUsersName()!
+//    }
+    
+    func usersIsEmpty() -> Bool {
+        
+        
+//        return user.count == 0 ? true : false
+        
+         return user == nil ? true : false
+    }
+    
+//    func setUser (i: Int) {
+//        
+//        let usr: UserModel = user[i]
+//        
+//        USER = usr
+//        current = i
+//        
+//    }
+//    
+    func setCurrentUser () {
+        
+        USER = user
+        
+//        for users in user {
+//            
+//            print(users)
+//        }
+//        
+//        
+//        if (user.count > 0)
+//        {
+//            let usr: UserModel = user[current]
+//            USER = usr
+//        }
+//        else {
+//            
+//            
+//            USER = UserModel()
+//            
+//            
+//        }
+        
+    }
+    
+    func getCurrentUser() -> UserModel {
+        
+//        if (user.count > 0)
+//        {
+//            let usr: UserModel = user[current]
+//            
+//            return usr
+//        }
+//        
+//        
+//        return UserModel()
+        
+        if (user == nil)
+        {
+            return UserModel()
+        }
+
+        
+        return user!
+        
+    }
+    
+    
+    
+    
+}
+
+
