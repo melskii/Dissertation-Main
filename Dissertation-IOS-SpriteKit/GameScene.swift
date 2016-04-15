@@ -379,7 +379,7 @@ extension SKSpriteNode {
             
             var scale = scaleRatio * (type != OutputType.End ? 0.5 : 1)
             
-            if _LEVEL == 3 {
+            if _LEVEL == 4 {
                 scale = scaleRatio
             }
             

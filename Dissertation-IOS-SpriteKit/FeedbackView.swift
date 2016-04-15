@@ -11,9 +11,9 @@ import AVFoundation
 
 class FeedbackView: UIView, UIGestureRecognizerDelegate {
     
-    var parent: UIView!
-    var scene: GameScene!
-    var type: FeedbackType!
+    private var parent: UIView!
+    private var scene: GameScene!
+    private var type: FeedbackType!
     
     @IBOutlet var popUpView: UIView!
  
@@ -23,17 +23,15 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
     @IBOutlet weak var imgStars: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     
-    @IBOutlet weak var lblDetail: UILabel!
     @IBOutlet weak var imgDetail: UIImageView!
     @IBOutlet weak var lblComplete: UILabel!
     @IBOutlet weak var lblBest: UILabel!
     
-    var soundEffects: AVAudioPlayer!
+    private var soundEffects: AVAudioPlayer!
+    private var counter: Int = 0
+    
     
     var delegate: FeedbackDelegate?
-    
-    var levelDescription: String!
-    var levelImage: [UIImage!] = []
     
     func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer?  {
         
@@ -59,7 +57,7 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
         self.popUpView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
         
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("dismissFeedback"))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FeedbackView.dismissFeedback))
         tap.delegate = self
         self.addGestureRecognizer(tap)
   
@@ -78,9 +76,6 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
         self.parent = parent
         self.scene = scene
         self.type = type
-        
-        levelDescription = LEVEL.getLevelDescription()
-        levelImage = LEVEL.getLevelImage()
       
         setBasedOnFeedbackType()
 
@@ -91,19 +86,9 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
         
         if type == FeedbackType.LevelHelp {
             
-            imgIcon.image = UIImage(named: "Info_Program")
             
-            lblDetail.text = LEVEL.getLevelDescription()
-            imgDetail.animationImages = LEVEL.getLevelImage()
-            imgDetail.animationDuration = 5
-            imgDetail.animationRepeatCount = 3
-            imgDetail.startAnimating()
-
-            
-            lblTitle.text = "Level \(_LEVEL)"
-            
-            
-           
+            levelHelp()
+ 
             
         }
         
@@ -121,9 +106,7 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
             let extra: String = (feedback.name ? " \(USER.getUsersName()!)" : "")
             lblTitle.text = "\(feedback.feedback)\(extra)!"
             
-            
-            
-            lblDetail.text = "The giraffe won't move with the CODE in that order. \n\nTry and the change the order or add ACTION blocks"
+            imgDetail.image = UIImage(named: "level3-1")
             
             
             
@@ -149,13 +132,9 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
             let extra: String = (feedback.name ? " \(USER.getUsersName()!)" : "")
             lblTitle.text = "\(feedback.feedback)\(extra)!"
             
-            
-            lblDetail.text = LEVEL.getLevelDescription()
-            imgDetail.animationImages = LEVEL.getLevelImage()
-            imgDetail.animationDuration = 5
-            imgDetail.animationRepeatCount = 3
-            imgDetail.startAnimating()
-
+            if LEVEL._mainimg != nil {
+                imgDetail.image = LEVEL._mainimg!
+            }
             
             soundEffects?.volume = 3
              soundEffects.rate = 2.0
@@ -164,31 +143,92 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
         
         else if type == FeedbackType.LevelComplete {
             
-            lblDetail.hidden = true
-            imgDetail.hidden = true
+            levelComplete()
+        }
+        
+        
+    }
+    
+    func levelHelp () {
+        
+        btnOK.setImage(UIImage(named: "Next_Button"), forState: UIControlState.Normal)
+        
+        imgIcon.image = UIImage(named: "Info_Program")
+
+        lblTitle.text = "Level \(_LEVEL)"
+        
+        
+        updateImageDetail()
+    }
+    
+    @IBAction func updateImageDetail () {
+        
+        if type == FeedbackType.LevelHelp {
             
-            lblComplete.hidden = false
-            lblBest.hidden = false
-            
-            lblTitle.text = "Level Complete"
-            
-            let name: String! = (USER.getUsersName() == "" ? "" : " \(USER.getUsersName()!)")
-            
-            lblBest.text = "\(name!)You're the best!"
-            
-            imgIcon.image = UIImage(named: "Level_Complete")
-            btnOK.hidden = true
-            btnNextLevel.hidden = false
-            
-            
-            
-            imgStars.hidden = false
-            let stars = USER.getRewardsStar(_LEVEL)
-            imgStars.image = UIImage(named: "star\(String(USER.getRewardsStar(_LEVEL)))")
-            
-            if (stars >= 1) {
+            if counter < LEVEL._description {
                 
-                if let beep = self.setupAudioPlayerWithFile("level-up-03", type:"wav") {
+                imgDetail.image = UIImage(named: "level\(_LEVEL)-\(counter)")
+                counter += 1
+                
+                if counter == LEVEL._description {
+                    
+                    btnOK.setImage(UIImage(named: "btnOK"), forState: UIControlState.Normal)
+                    
+                }
+            }
+            else {
+                
+                dismissFeedback()
+
+                
+            }
+        }
+        else {
+            
+            dismissFeedback()
+        }
+        
+    }
+    
+    func levelComplete() {
+        
+        imgDetail.hidden = true
+        
+        lblComplete.hidden = false
+        lblBest.hidden = false
+        
+        lblTitle.text = "Level Complete"
+        
+        let name: String! = (USER.getUsersName() == "" ? "" : "\(USER.getUsersName()!) ")
+        
+        lblBest.text = "\(name!)You're the best!"
+        
+        imgIcon.image = UIImage(named: "Level_Complete")
+        btnOK.hidden = true
+        btnNextLevel.hidden = false
+        
+        
+        
+        imgStars.hidden = false
+        let stars = USER.getRewardsStar(_LEVEL)
+        imgStars.image = UIImage(named: "star\(String(USER.getRewardsStar(_LEVEL)))")
+        
+        if (stars >= 1) {
+            
+            if let beep = self.setupAudioPlayerWithFile("level-up-03", type:"wav") {
+                self.soundEffects = beep
+            }
+            
+            
+            soundEffects?.volume = 1
+            soundEffects.rate = 4.0
+            soundEffects.play()
+            
+            sleep(1)
+            
+            if (stars >= 2) {
+                
+                if let beep = self.setupAudioPlayerWithFile("level-up-01", type:"wav") {
                     self.soundEffects = beep
                 }
                 
@@ -199,9 +239,9 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
                 
                 sleep(1)
                 
-                if (stars >= 2) {
+                if (stars >= 3) {
                     
-                    if let beep = self.setupAudioPlayerWithFile("level-up-01", type:"wav") {
+                    if let beep = self.setupAudioPlayerWithFile("level-up-02", type:"wav") {
                         self.soundEffects = beep
                     }
                     
@@ -209,24 +249,6 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
                     soundEffects?.volume = 1
                     soundEffects.rate = 4.0
                     soundEffects.play()
-                    
-                    sleep(1)
-                    
-                    if (stars >= 3) {
-                        
-                        if let beep = self.setupAudioPlayerWithFile("level-up-02", type:"wav") {
-                            self.soundEffects = beep
-                        }
-                        
-                        
-                        soundEffects?.volume = 1
-                        soundEffects.rate = 4.0
-                        soundEffects.play()
-                        
-                        
-                        
-                        
-                    }
                     
                     
                     
@@ -239,15 +261,17 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
             }
             
             
-            if MAXLEVELS == _LEVEL {
-                
-                
-                btnNextLevel.setTitle("HOME", forState: UIControlState.Normal)
-                
-            }
+            
+            
         }
         
         
+        if MAXLEVELS == _LEVEL {
+            
+            
+            btnNextLevel.setTitle("HOME", forState: UIControlState.Normal)
+            
+        }
     }
     
     
@@ -272,12 +296,10 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
     }
     
     func dismissFeedback () {
-        
-        self.imgDetail = nil
-        
-        
+
         self.scene.view?.scene?.paused = false
         self.removeAnimate()
+        self.imgDetail = nil
         
         
     }

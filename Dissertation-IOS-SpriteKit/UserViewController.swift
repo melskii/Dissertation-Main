@@ -10,11 +10,6 @@ import UIKit
 import SpriteKit
 import Foundation
 
-protocol UserDelegate {
-    
-    func setUserDetals ()
-    
-}
 
 
 protocol KeyboardDelegate {
@@ -26,8 +21,6 @@ protocol KeyboardDelegate {
 class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegate {
     
 
-    var userDelegate: UserDelegate?
-    
     @IBOutlet weak var skview: SKView!
     @IBOutlet var txtParticipant: UITextField!
     @IBOutlet var txtName: UITextField!
@@ -43,7 +36,8 @@ class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegat
         keyboardView.delegate = self
 
     }
-      override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         
         super.viewDidLoad()
         
@@ -56,40 +50,7 @@ class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegat
         
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        if textField == txtParticipant {
-            view.endEditing(true)
-            keyboardView.hidden = false
-            return false
-        }
-        
-        return true
-        
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        if textField == txtParticipant {
-            keyboardView.hidden = true
-        }
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
-        if textField == txtName {
-            self.view.endEditing(true)
-        }
-        
-        else {
-        
-        
-            textField.resignFirstResponder()
-        
-       
-        }
-        
-         return true
-    }
-    
+    //Is Executing everytime a button in the custom keyboard is pressed and returns the value to txtParticipant
     func numberKeyboard(button: UIButton) {
         
         
@@ -128,6 +89,7 @@ class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegat
         
     }
 
+    //Validates the participant and name field and calls the UserModel
     @IBAction func btnOKTouchDown(sender: AnyObject) {
         
         lblError.text = ""
@@ -143,6 +105,9 @@ class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegat
             USER.setUsersName(name!)
             
             if Regex(regex: "(\\d+)", text: id).match() {
+                
+                self.lblError.hidden = false
+                self.lblError.text = "Connecting..."
             
                 USER.setUserDetails(id!) {
                     (status: UserStatus) in
@@ -190,24 +155,14 @@ class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegat
         
     }
     
-    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
-        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
-            do {
-                return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
-            } catch let error as NSError {
-                print(error)
-            }
-        }
-        return nil
-    }
-    
   
-    
+    //Returns to the previous controller without destroying anything
     @IBAction func btCancelTouchDown(sender: AnyObject) {
         
         returnToPreviousController()
     }
     
+    //Updates Labels in the previous controller
     func returnToPreviousController() {
         
         
@@ -219,14 +174,14 @@ class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegat
             if presenting is GameViewController {
                 
                 let game = presenting as! GameViewController
-                game.setUserName()
+                game.setUserLabel()
                 
             }
             
             if presenting is HomeViewController {
                 
                 let home = presenting as! HomeViewController
-                home.setUserName()
+                home.setUserLabel()
                 
             }
             
@@ -237,16 +192,55 @@ class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegat
 
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        self.
-    }
-    
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
 }
 
+
+//Additional Functionality for the TextBox's and the Keyboard
+extension UserViewController {
+    
+    //Shows the custom Keyboard
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        
+        if textField == txtParticipant {
+            view.endEditing(true)
+            keyboardView.hidden = false
+            return false
+        }
+        
+        return true
+        
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField == txtParticipant {
+            keyboardView.hidden = true
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        if textField == txtName {
+            self.view.endEditing(true)
+        }
+            
+        else {
+            
+            
+            textField.resignFirstResponder()
+            
+            
+        }
+        
+        return true
+    }
+
+}
+
+//Additional Class is used to check the Participant and Name TextFields.
 class Regex {
     
     let regex: String!
@@ -274,10 +268,6 @@ class Regex {
             
             let results = regex.matchesInString(text,
                 options: [], range: NSMakeRange(0, nsString.length))
-            
-
-            results.map { nsString.substringWithRange($0.range)} // Don't think this line is needed
-            
             
             return results.count == 1 ? true : false
             

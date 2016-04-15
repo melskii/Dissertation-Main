@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
@@ -16,8 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="levelBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="hTA-NK-mEx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pP7-zf-4W9">
-                                <rect key="frame" x="93" y="81" width="389" height="372"/>
+                                <rect key="frame" x="100" y="28" width="389" height="582"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grey Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hAW-Oa-Zvh">
                                         <rect key="frame" x="0.0" y="0.0" width="389" height="200"/>
@@ -32,23 +35,23 @@
                                             </mask>
                                         </variation>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Giraffe.png" translatesAutoresizingMaskIntoConstraints="NO" id="flk-kd-beB">
+                                        <rect key="frame" x="153" y="200" width="84" height="210"/>
+                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Program Flow - Main Screen" translatesAutoresizingMaskIntoConstraints="NO" id="ucg-vl-3Wn">
-                                        <rect key="frame" x="45" y="200" width="300" height="146"/>
+                                        <rect key="frame" x="45" y="410" width="300" height="146"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="sy3-xT-DVD"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tech And Learning for the Early Years" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPB-uy-NmN">
-                                        <rect key="frame" x="20" y="346" width="350" height="26"/>
+                                        <rect key="frame" x="20" y="556" width="350" height="26"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="outBckground.png" translatesAutoresizingMaskIntoConstraints="NO" id="hTA-NK-mEx">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -67,8 +70,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Giraffe.png" width="84" height="210"/>
         <image name="Grey Logo" width="220" height="80"/>
         <image name="Program Flow - Main Screen" width="415" height="146"/>
-        <image name="outBckground.png" width="2048" height="886"/>
+        <image name="levelBackground.png" width="2048" height="886"/>
     </resources>
 </document>

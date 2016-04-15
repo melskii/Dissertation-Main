@@ -71,7 +71,7 @@ public enum FeedbackType: String {
 let CodeFeedbackString : [(feedback: String, name: Bool)] = [
         ("Nice Try", true),
         ("Whoops", false),
-        ("Nearly There, Try Changing the CODE", false),
+        ("Nearly There!", false),
         ("Oops", false)
     ]
 

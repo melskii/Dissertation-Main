@@ -40,8 +40,6 @@ class LevelViewController: UIViewController {
         
         super.viewDidLoad()
         
-        
-        
         let unlockedLevel = (USER.unlockedLevel + 1)
         
         btnLevel1.enabled = false

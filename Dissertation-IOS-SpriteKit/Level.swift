@@ -28,6 +28,8 @@ public class Level {
     var _objects: [GameCell]! = [GameCell]() //this is for the animations in Game Scene.
     var _background: SKSpriteNode! = SKSpriteNode(imageNamed: "outBckground") //use outBckground as the default.
     var x, y: Int!
+    var _description: Int = 0
+    var _mainimg: UIImage?
     
     //The Level Game Grid!!!!
     private var _grid: [[GameCell]]! //do 10 by 5
@@ -130,7 +132,13 @@ public class Level {
                 _objects.append(A)
                 
                 _background = SKSpriteNode(imageNamed: "level1background")
+                
+                _description = 6
+                
+                _mainimg = UIImage(named: "level1-4")
             }
+            
+            
             
             
         }
@@ -155,6 +163,10 @@ public class Level {
                 _objects.append(A)
                 
                 _background = SKSpriteNode(imageNamed: "level2background")
+                
+                 _description = 4
+                
+                _mainimg = UIImage(named: "level2-3")!
             }
             
         }
@@ -167,19 +179,23 @@ public class Level {
                 let End = GameCell (x: 8, y: 3)
                 let A = GameCell(x: 1, y: 1)
                 
-                let oven = TLSpriteNode(imageNamed: "oven")
-                oven.name = "oven"
+                let leaf = TLSpriteNode(imageNamed: "leaf")
+                leaf.name = "leaf"
                 
-                let objecta = TLSpriteNode(imageNamed: "pie")
-                objecta.name = "pie"
+                let objecta = TLSpriteNode(imageNamed: "giraffe")
+                objecta.name = "giraffe"
                 
-                End.setOutputSprite(oven, type: OutputType.End)
+                End.setOutputSprite(leaf, type: OutputType.End)
                 A.setOutputSprite(objecta, type: OutputType.A)
                 
                 _objects.append(End)
                 _objects.append(A)
                 
                 _background = SKSpriteNode(imageNamed: "level3background")
+                
+                _description = 5
+                
+                _mainimg = UIImage(named: "level3-3")
             }
             
         }
@@ -193,22 +209,27 @@ public class Level {
                 let A = GameCell(x: 1, y: 1)
                 let B = GameCell(x: 7, y: 1)
                 
-                let oven = TLSpriteNode(imageNamed: "oven")
-                oven.name = "oven"
+                let bowl = TLSpriteNode(imageNamed: "bowl")
+                bowl.name = "bowl"
                 
-                let objecta = TLSpriteNode(imageNamed: "giraf")
-                objecta.name = "pie"
+                let objecta = TLSpriteNode(imageNamed: "milk")
+                objecta.name = "milk"
                 
-                let objectb = TLSpriteNode(imageNamed: "pie")
-                objectb.name = "pie"
+                let objectb = TLSpriteNode(imageNamed: "eggs")
+                objectb.name = "eggs"
                 
-                End.setOutputSprite(oven, type: OutputType.End)
+                End.setOutputSprite(bowl, type: OutputType.End)
                 A.setOutputSprite(objecta, type: OutputType.A)
+                B.setOutputSprite(objectb, type: OutputType.B)
                 
                 _objects.append(End)
                 _objects.append(A)
+                _objects.append(B)
                 
-                _background = SKSpriteNode(imageNamed: "level1background")
+                _background = SKSpriteNode(imageNamed: "levelBackground")
+                
+                 _description = 5
+                _mainimg = UIImage(named: "level4-3")
             }
             
         }
@@ -258,43 +279,11 @@ public class Level {
         
     }
     
-    public func getLevelDescription() -> String {
-        
-        if _LEVEL == 1 {
-            
-            return "Welcome to Tales!\n\nWe need to write the CODE to make the giraffe move.\nAdd a yellow ACTION block to our code to move\n\nCan you find the giraffe's house using the ACTIONS?"
-            
-        }
-        
-        else if _LEVEL == 2 {
-            return "To make the giraffe move now, we need to put an OBJECT in our code before any ACTION blocks. \nThe giraffe is an OBJECT!\n\nCan you get our hungry giraffe to the kitchen?"
-        }
     
-        return ""
-        
-    }
-    
-    public func getLevelImage() -> [UIImage] {
-        
-        if _LEVEL == 1 {
-            
-            var array = [UIImage]()
-            
-            for var i = 0; i < 45; i++ {
-                
-                let image = UIImage(named: "tmp-\(i).gif")!
-                array.append(image)
-               
-            }
-            
-            return array
-            
-        }
-        return [UIImage(named: "outBckground")!]
-        
-    }
-    
+
     public func runAnimation (compiled: Bool, completion: (animationComplete: Bool) -> Void) {
+        
+        var count = _objects.count-1
         
         for cell in _objects {
             
@@ -305,7 +294,9 @@ public class Level {
                     sprite.1.animateWithActionSquence(!compiled) {
                         (status: Bool) in
                         
-                        if status == true {
+                        count--
+                        
+                        if count == 0 && status == true {
                             
                             completion(animationComplete: true)
                             
@@ -357,10 +348,13 @@ public class Level {
         let program = prog
         var objectCell: (type: OutputType, cell: GameCell)? = nil //The Cell of the Current Object
         var valid = false
+        var count = _objects.count-1
         
         for b in program {
             
             valid = false
+            
+           
             
             //Play is ignored!
             if let block = b as? Object {
@@ -424,7 +418,12 @@ public class Level {
                             
                             if (newCell.getOutputSprite(OutputType.End) != nil) {
                                 
-                                valid = true
+                                count = count - 1
+                                
+                                if count == 0 {
+                                    valid = true
+                                }
+                                
                                 
                             }
                             

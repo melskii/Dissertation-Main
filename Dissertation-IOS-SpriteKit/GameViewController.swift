@@ -12,7 +12,15 @@ import AVFoundation
 
 
 
-class GameViewController: UIViewController, UIGestureRecognizerDelegate, UICollectionViewDelegate, GameDelegate, FeedbackDelegate {
+class GameViewController: UIViewController, GameDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegate, FeedbackDelegate {
+    
+    @IBOutlet weak var skview: SKView!
+    @IBOutlet weak var gameContainer: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnRedo: UIButton!
+    @IBOutlet weak var btnUndo: UIButton!
+    @IBOutlet weak var lblName: UILabel!
     
     var scene: GameScene!
     var gameView: SKView!
@@ -25,18 +33,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     
     var timer = NSTimer()
     var binaryCount = 0b0000
-
-    
-    
-    @IBOutlet weak var skview: SKView!
-    @IBOutlet weak var gameContainer: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var btnPlay: UIButton!
-    
-    @IBOutlet weak var btnRedo: UIButton!
-    @IBOutlet weak var btnUndo: UIButton!
-    
-    @IBOutlet weak var lblName: UILabel!
     
     var animation: Bool = false
     
@@ -50,22 +46,23 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     private var preliminary: [Block] = []
     
     
-    private var lPG: UILongPressGestureRecognizer!
+    private var gesture: UILongPressGestureRecognizer!
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
+     
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
         
-        lPG = UILongPressGestureRecognizer(target: self, action: "handleLongGesture:")
+        gesture = UILongPressGestureRecognizer(target: self, action: "handleLongGesture:")
         
-        lPG.minimumPressDuration = 0.0
-        lPG.delaysTouchesBegan = true
-        lPG.delegate = self
-        self.collectionView.addGestureRecognizer(lPG)
+        gesture.minimumPressDuration = 0.0
+        gesture.delaysTouchesBegan = true
+        gesture.delegate = self
+        self.collectionView.addGestureRecognizer(gesture)
 
         
         skview = view as! SKView
@@ -91,7 +88,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         USER.resetAttempts() //Resets the attempts for the Rewards
        
-        setUserName()
+        setUserLabel()
         
         
     }
@@ -216,7 +213,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
                 playTune.numberOfLoops = -1
                 playTune.play()
                 
-
                 
                 LEVEL.runAnimation(valid) {
                     (animationComplete: Bool) in
@@ -226,6 +222,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
                     if animationComplete == true {
                     
                         if valid == true {
+                            
+                          
                 
                             self.playTune.stop()
                             self.showFeedbackView(FeedbackType.LevelComplete)
@@ -284,7 +282,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
             let storyboardName = "Main"
             let storyboard = UIStoryboard(name: storyboardName, bundle:  NSBundle.mainBundle())
             
-            next = ((storyboard.instantiateViewControllerWithIdentifier(controllerID) as! UIViewController!) as? GameViewController)!
+            next = ((storyboard.instantiateViewControllerWithIdentifier(controllerID) as UIViewController!) as? GameViewController)!
             
             self.presentViewController(next, animated: true, completion: nil)
             
@@ -303,7 +301,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
     
     func validProgramFlow() -> Bool {
         
-//        var array = [Block]()
         var valid = true
         var prev:Block = Block()
         var object:Object? = nil
@@ -397,29 +394,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
     }
     
-    /*
-        Variables within the Scenes
-    */
-    
-    //To be used for the audio feedback
-    func setAudioFeedback (audio: Bool)
-    {
-        self.audio = audio
-    }
-    
-    func getAudioFeedback () -> Bool {
-        
-        
-        return audio
-    }
-    
-    //User information
-    func getParticipantName () -> String? {
-        
-        return USER.getUsersName()
-        
-    }
-    
+
     /*
         Change default IOS preferences 
     */
@@ -618,14 +593,14 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate, UIColle
         
         feedback.showInView(self.view, scene: scene, type: type)
         
-        feedback.vw.delegate = self
+        feedback.feedbackView.delegate = self
         
         
         
         
     }
     
-    func setUserName() {
+    func setUserLabel() {
         
         lblName.hidden = true
         
@@ -718,8 +693,7 @@ extension GameViewController: UICollectionViewDataSource {
 protocol GameDelegate {
     
     func appendProgramFlowBlock (newblock: Block)
-    
-    
+
     
 }
 

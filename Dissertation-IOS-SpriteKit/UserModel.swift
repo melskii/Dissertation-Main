@@ -16,8 +16,8 @@ public class UserModel: NSObject, NSCoding {
     private var name: String! = ""
     private var active: Bool = false
     private var attempts: [Int:Int] = [:]
-    private var timeToComplete: [Int:Int] = [:]
-    private var rewards: [Int: Int] = [:]
+    public var timeToComplete: [Int:Int] = [:]
+    public var rewards: [Int: Int] = [:]
     private var programs: [(level: Int, program: [Block], error: FeedbackType)] = [] //only stores here if offline
     var unlockedLevel: Int = 0
     
@@ -111,10 +111,8 @@ public class UserModel: NSObject, NSCoding {
                         print(json)
                         print(error)
                     }
-              
-                    /* https://www.raywenderlich.com/120442/swift-json-tutorial */
                     
-                    //Extract the User ID and Active Status
+                    //Extract the User Data
                     guard !(json.isEmpty),
                     let item = json[0] as? [String: AnyObject] ,
                         let _active = item["active"] as? String,

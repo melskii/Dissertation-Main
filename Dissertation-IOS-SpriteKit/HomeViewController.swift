@@ -22,6 +22,15 @@ class HomeViewController: UIViewController {
         
         super.viewDidLoad()
         
+        for p in USER.rewards {
+            print(p)
+        }
+        
+        for p in USER.timeToComplete {
+            print(p)
+        }
+
+        
   
         if DEFAULTS == false {
             
@@ -71,13 +80,13 @@ class HomeViewController: UIViewController {
             
         }
         
-        setUserName()
+        setUserLabel()
         
         
 
     }
     
-    func setUserName() {
+    func setUserLabel() {
         
         lblName.hidden = true
         
@@ -92,14 +101,8 @@ class HomeViewController: UIViewController {
     }
 
    
-    /*
-    Change default IOS preferences
-    */
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-    @IBAction func resetUser() {
+   
+    @IBAction func resetLocalUser() {
         
         let alertController = UIAlertController(title: "Admin", message: "Are you sure you want to reset the User Data?", preferredStyle: .Alert)
         
@@ -112,7 +115,7 @@ class HomeViewController: UIViewController {
             
             USER = UserModel()
             USER.saveUserLocally()
-            self.setUserName()
+            self.setUserLabel()
             
             
             
@@ -132,5 +135,13 @@ class HomeViewController: UIViewController {
         exit(0)
         
     }
+    
+    /*
+     Change default IOS preferences
+     */
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     
 }
