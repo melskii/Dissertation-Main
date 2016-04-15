@@ -13,7 +13,6 @@ import SpriteKit
 class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate {
     
     var blocks : [String: Block] = [:]
-    var programs :[Program] = []
     
     var inst, prog, out : SKSpriteNode!
     var _outSquare: CGSize!
@@ -173,7 +172,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         
         
         //set up starting blocks
-        let startingProgram = LEVEL.startingBlocks()
+        let startingProgram = LEVEL.getFixedBlocks()
         
         for block in startingProgram {
             self.gameSceneDelegate?.appendProgramFlowBlock(block)
@@ -340,7 +339,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, UIGestureRecognizerDelegate 
         
         var textures: [SKTexture] = []
         
-        for (var i = images; i >= 1; i--) {
+        for (var i = images; i >= 1; i -= 1) {
             
             let texture = binAnimateAtlas.textureNamed(String(format:"bin%d", i))
             
@@ -392,14 +391,14 @@ extension SKSpriteNode {
     
 }
 
-class TalesSpriteNode: SKSpriteNode {
-    
-    var outputPoint: CGPoint?
-    
-    func positionInOutput(position: CGPoint) {
-        
-        self.outputPoint = position
-    }
-    
-}
+//class TalesSpriteNode: SKSpriteNode {
+//    
+//    var outputPoint: CGPoint?
+//    
+//    func positionInOutput(position: CGPoint) {
+//        
+//        self.outputPoint = position
+//    }
+//    
+//}
 

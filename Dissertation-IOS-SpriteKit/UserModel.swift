@@ -15,10 +15,13 @@ public class UserModel: NSObject, NSCoding {
     private var id: Int! = -1
     private var name: String! = ""
     private var active: Bool = false
+    
     private var attempts: [Int:Int] = [:]
     public var timeToComplete: [Int:Int] = [:]
     public var rewards: [Int: Int] = [:]
-    private var programs: [(level: Int, program: [Block], error: FeedbackType)] = [] //only stores here if offline
+    //only stores here if offline
+    private var programs: [(level: Int, program: [Block], error: FeedbackType)] = []
+    
     var unlockedLevel: Int = 0
     
     public override  init() {
@@ -26,51 +29,7 @@ public class UserModel: NSObject, NSCoding {
         super.init()
         
     }
-    
-    public func encodeWithCoder(aCoder: NSCoder) {
-        
-        aCoder.encodeObject(self, forKey: "user")
-        
-        aCoder.encodeObject(name, forKey: "name")
-        aCoder.encodeInteger(id, forKey: "id")
-        aCoder.encodeBool(active, forKey: "active")
-//        aCoder.encodeObject(attempts, forKey: "attempts")
-        aCoder.encodeObject(timeToComplete, forKey: "timeToComplete")
-        aCoder.encodeObject(rewards, forKey: "rewards")
-//        aCoder.encodeObject(programs, forKey: "programs")
-        aCoder.encodeInteger(unlockedLevel, forKey: "unlocked")
-        
-        
-    }
-    
-    required convenience public init(coder aDecoder: NSCoder) {
-        
-        self.init()
-        
-        self.name = aDecoder.decodeObjectForKey("name") as! String
-        self.id = aDecoder.decodeIntegerForKey("id")
-        self.active = aDecoder.decodeBoolForKey("active")
-//        self.attempts = aDecoder.decodeObjectForKey("attempts") as! [Int:Int]
-        self.timeToComplete = aDecoder.decodeObjectForKey("timeToComplete") as! [Int:Int]
-        self.rewards = aDecoder.decodeObjectForKey("rewards") as! [Int:Int]
-//        self.programs = aDecoder.decodeObjectForKey("programs") as! [(level: Int, program: [Block], error: FeedbackType)]
-        self.unlockedLevel = aDecoder.decodeIntegerForKey("unlocked")
-        
-        
-//        self = aDecoder.decodeObjectForKey("user") as! [AnyObject]
-    }
-    
-    func setUsersName(name: String) {
-        
-        self.name = name
-    }
-    
-    func getUsersName() -> String?{
-        
-        
-        return name
-    }
-    
+
     public func setUserDetails (tag: String, completion: (status: UserStatus) -> Void) {
         
         if let id = Int(tag) {
@@ -444,8 +403,54 @@ public class UserModel: NSObject, NSCoding {
         
     }
     
+    func setUsersName(name: String) {
+        
+        self.name = name
+    }
+    
+    func getUsersName() -> String?{
+        
+        
+        return name
+    }
+    
+    //The next two models enable the User to be loaded from local Data
+    public func encodeWithCoder(aCoder: NSCoder) {
+        
+        aCoder.encodeObject(self, forKey: "user")
+        
+        aCoder.encodeObject(name, forKey: "name")
+        aCoder.encodeInteger(id, forKey: "id")
+        aCoder.encodeBool(active, forKey: "active")
+        //        aCoder.encodeObject(attempts, forKey: "attempts")
+        aCoder.encodeObject(timeToComplete, forKey: "timeToComplete")
+        aCoder.encodeObject(rewards, forKey: "rewards")
+        //        aCoder.encodeObject(programs, forKey: "programs")
+        aCoder.encodeInteger(unlockedLevel, forKey: "unlocked")
+        
+        
+    }
+    
+    required convenience public init(coder aDecoder: NSCoder) {
+        
+        self.init()
+        
+        self.name = aDecoder.decodeObjectForKey("name") as! String
+        self.id = aDecoder.decodeIntegerForKey("id")
+        self.active = aDecoder.decodeBoolForKey("active")
+        //        self.attempts = aDecoder.decodeObjectForKey("attempts") as! [Int:Int]
+        self.timeToComplete = aDecoder.decodeObjectForKey("timeToComplete") as! [Int:Int]
+        self.rewards = aDecoder.decodeObjectForKey("rewards") as! [Int:Int]
+        //        self.programs = aDecoder.decodeObjectForKey("programs") as! [(level: Int, program: [Block], error: FeedbackType)]
+        self.unlockedLevel = aDecoder.decodeIntegerForKey("unlocked")
+        
+        
+        
+    }
+    
 
 }
+
 
 class NSUserData : NSObject, NSCoding {
     
@@ -507,71 +512,22 @@ class NSUserData : NSObject, NSCoding {
         
       
     }
-    
-    
-    
 
-
-  
     
     func appendUserModel (usr: UserModel) {
         
         user = usr
-//        
-//        if (user.count < 2) {
-//            
-//            user.append(usr)
-//            
-//            
-//        }
-//        
-//        else {
-//            
-//            
-//            user.insert(usr, atIndex: current)
-//            
-//        }
-//        
-//        current = next
-//        
-//        if (next == 2) {
-//            
-//            next = 0
-//            
-//        }
-//            
-//        else {
-//            
-//            next++
-//            
-//        }
-        
     }
     
-//    func getUsersName (i: Int) -> String {
-//        
-//        let u = user[i]
-//        
-//        return u.getUsersName() == nil ? "" : u.getUsersName()!
-//    }
+
     
     func usersIsEmpty() -> Bool {
-        
-        
-//        return user.count == 0 ? true : false
+
         
          return user == nil ? true : false
     }
     
-//    func setUser (i: Int) {
-//        
-//        let usr: UserModel = user[i]
-//        
-//        USER = usr
-//        current = i
-//        
-//    }
-//    
+  
     func setCurrentUser () {
         
         USER = user
@@ -580,15 +536,6 @@ class NSUserData : NSObject, NSCoding {
     
     func getCurrentUser() -> UserModel {
         
-//        if (user.count > 0)
-//        {
-//            let usr: UserModel = user[current]
-//            
-//            return usr
-//        }
-//        
-//        
-//        return UserModel()
         
         if (user == nil)
         {
@@ -599,8 +546,7 @@ class NSUserData : NSObject, NSCoding {
         return user!
         
     }
-    
-    
+
     
     
 }

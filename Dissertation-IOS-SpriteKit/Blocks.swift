@@ -43,34 +43,6 @@ public class Block {
       
     }
     
-    /*
-    public func press() -> [Any] {
-    
-        var press = [Any]()
-        
-        press.append(highlight)
-        
-        return press
-    
-    }*/
-    
-    public func press(scale: CGFloat, id: Int) -> Program {
-        
-        let p = Program(img: program, scale: scale, id: id)
-
-        return p
-        
-    }
-    
-    public func pressAndHold() -> [Any] {
-    
-        return [Any]()
-    
-    }
-    
-   
-    
-    
   
 }
 

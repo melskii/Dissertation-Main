@@ -23,7 +23,7 @@ public class Level {
     
     //Items that will be sent to GameScene
     private var _inst: [Block]
-    private var _starting: [Block]
+    private var _fixed: [Block]
     var _lockedBlocks: Int = 0
     var _objects: [GameCell]! = [GameCell]() //this is for the animations in Game Scene.
     var _background: SKSpriteNode! = SKSpriteNode(imageNamed: "outBckground") //use outBckground as the default.
@@ -41,7 +41,7 @@ public class Level {
         
         //Set up the instruction Blocks
         _inst = [Block]()
-        _starting = [Block]()
+        _fixed = [Block]()
         
         setLevelInstructions()
         
@@ -56,9 +56,9 @@ public class Level {
         return _inst
     }
     
-    func startingBlocks() -> [Block] {
+    func getFixedBlocks() -> [Block] {
         
-        return _starting
+        return _fixed
     }
 
     private func setLevelInstructions() {
@@ -95,12 +95,12 @@ public class Level {
         }
         
         if self.level == 1 {
-            _starting.append(Play())
-            _starting.append(Object(type: OutputType.A))
+            _fixed.append(Play())
+            _fixed.append(Object(type: OutputType.A))
             _lockedBlocks = 2
         }
         else if self.level == 2 {
-            _starting.append(Play())
+            _fixed.append(Play())
             _lockedBlocks = 1
             
         }

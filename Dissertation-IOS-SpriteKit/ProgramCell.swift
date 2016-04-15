@@ -10,7 +10,7 @@ import UIKit
 
 class ProgramCell: UICollectionViewCell {
     
-    @IBOutlet weak var thumbImg: UIImageView!
+    @IBOutlet weak var imgThumbnail: UIImageView!
     
     
     var block: Block!
@@ -19,7 +19,7 @@ class ProgramCell: UICollectionViewCell {
         
         self.block = block
         
-        thumbImg.image = UIImage(named: "\(self.block.program)")
+        imgThumbnail.image = UIImage(named: "\(self.block.program)")
     }
 
 }

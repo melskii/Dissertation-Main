@@ -168,7 +168,7 @@
                                             <constraint firstAttribute="trailing" secondItem="foX-xF-mc4" secondAttribute="trailing" id="jbv-WJ-kdn"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="thumbImg" destination="foX-xF-mc4" id="GD7-9w-7An"/>
+                                            <outlet property="imgThumbnail" destination="foX-xF-mc4" id="4fK-0H-xOc"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -647,13 +647,13 @@
                                         <rect key="frame" x="20" y="20" width="584" height="340"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your Name" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sF5-xB-wce">
-                                                <rect key="frame" x="0.0" y="0.0" width="584" height="72"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="584" height="74"/>
                                                 <fontDescription key="fontDescription" name="SiKancil" family="Si Kancil" pointSize="57"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="ugM-2u-NnO" userLabel="txtName" customClass="MaterialTextField" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="87" width="584" height="38"/>
+                                                <rect key="frame" x="0.0" y="89" width="584" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="ELs-jj-GJp"/>
                                                 </constraints>
@@ -661,21 +661,21 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" keyboardAppearance="light" returnKeyType="done"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Participant Number" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzZ-BV-Hc1" userLabel="Enter Number">
-                                                <rect key="frame" x="0.0" y="140" width="584" height="71"/>
-                                                <fontDescription key="fontDescription" name="SiKancil" family="Si Kancil" pointSize="57"/>
+                                                <rect key="frame" x="0.0" y="142" width="584" height="61"/>
+                                                <fontDescription key="fontDescription" name="SiKancil" family="Si Kancil" pointSize="47"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0TL-8r-M8t" userLabel="txtParticipant" customClass="MaterialTextField" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="226" width="584" height="38"/>
+                                                <rect key="frame" x="0.0" y="218" width="584" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="CUs-u9-PPk"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" keyboardAppearance="light" returnKeyType="done"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the participant number you have been provided at the beginning of the study. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfN-rb-yAN">
-                                                <rect key="frame" x="0.0" y="279" width="584" height="62"/>
+                                                <rect key="frame" x="0.0" y="271" width="584" height="69"/>
                                                 <fontDescription key="fontDescription" name="SiKancil" family="Si Kancil" pointSize="19"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -718,12 +718,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter a Name or Press Cancel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzF-et-3jT" userLabel="lblError">
-                                <rect key="frame" x="199" y="97" width="675" height="63"/>
-                                <fontDescription key="fontDescription" name="SiKancil" family="Si Kancil" pointSize="26"/>
-                                <color key="textColor" red="0.76470588235294112" green="0.0" blue="0.086274509803921567" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
                             <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Qt-W0-352" customClass="NumberView" customModule="Dissertation_IOS_SpriteKit" customModuleProvider="target">
                                 <rect key="frame" x="284" y="488" width="458" height="240"/>
                                 <subviews>
@@ -925,28 +919,34 @@
                                     <outlet property="btnDone" destination="JMr-Lx-xTN" id="Iqi-l6-tQP"/>
                                 </connections>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Connecting..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydu-Ns-LR5">
+                                <rect key="frame" x="200" y="128" width="713" height="39"/>
+                                <fontDescription key="fontDescription" name="SiKancil" family="Si Kancil" pointSize="37"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Srq-uF-L7A" firstAttribute="top" secondItem="k8T-Cc-c3L" secondAttribute="bottom" id="0M2-ke-mkp"/>
                             <constraint firstItem="8Qt-W0-352" firstAttribute="centerX" secondItem="Y1f-Sg-g2S" secondAttribute="centerX" id="3Bg-7V-Psz"/>
                             <constraint firstItem="Mbp-GI-ahT" firstAttribute="top" secondItem="rfi-f0-aka" secondAttribute="bottom" constant="140" id="7UC-ZZ-laj"/>
+                            <constraint firstItem="Mbp-GI-ahT" firstAttribute="centerX" secondItem="Ydu-Ns-LR5" secondAttribute="centerX" id="AAz-bf-QT0"/>
                             <constraint firstAttribute="trailing" secondItem="k8T-Cc-c3L" secondAttribute="trailing" id="Nlh-sj-Vkn"/>
                             <constraint firstItem="rfi-f0-aka" firstAttribute="top" secondItem="Y1f-Sg-g2S" secondAttribute="top" id="PYr-24-ftd"/>
                             <constraint firstItem="hYh-v0-WAp" firstAttribute="top" secondItem="Y1f-Sg-g2S" secondAttribute="top" constant="2" id="TAb-QD-hIQ"/>
+                            <constraint firstItem="Mbp-GI-ahT" firstAttribute="top" secondItem="Ydu-Ns-LR5" secondAttribute="bottom" constant="26" id="V8R-Fr-nKF"/>
                             <constraint firstItem="lQY-Tw-bio" firstAttribute="top" secondItem="Mbp-GI-ahT" secondAttribute="bottom" constant="34" id="VZm-4B-eHV"/>
                             <constraint firstItem="Mbp-GI-ahT" firstAttribute="centerY" secondItem="Y1f-Sg-g2S" secondAttribute="centerY" constant="-50" id="XNX-w7-xef"/>
                             <constraint firstItem="Mbp-GI-ahT" firstAttribute="centerX" secondItem="Y1f-Sg-g2S" secondAttribute="centerX" id="Xtd-z7-qVt"/>
                             <constraint firstItem="Mbp-GI-ahT" firstAttribute="leading" secondItem="Y1f-Sg-g2S" secondAttribute="leading" constant="200" id="YHM-oy-kNW"/>
                             <constraint firstItem="lQY-Tw-bio" firstAttribute="topMargin" secondItem="8Qt-W0-352" secondAttribute="bottom" constant="20" id="al2-6n-zfz"/>
                             <constraint firstItem="k8T-Cc-c3L" firstAttribute="top" secondItem="hYh-v0-WAp" secondAttribute="bottom" id="eZN-r6-igq"/>
-                            <constraint firstItem="Mbp-GI-ahT" firstAttribute="top" secondItem="pzF-et-3jT" secondAttribute="bottom" constant="10" id="h82-NM-UM8"/>
                             <constraint firstItem="Mbp-GI-ahT" firstAttribute="centerX" secondItem="Y1f-Sg-g2S" secondAttribute="centerX" id="h89-Qr-7nn"/>
                             <constraint firstItem="lQY-Tw-bio" firstAttribute="centerX" secondItem="Y1f-Sg-g2S" secondAttribute="centerX" id="liW-cu-AvC"/>
                             <constraint firstItem="hYh-v0-WAp" firstAttribute="leading" secondItem="rfi-f0-aka" secondAttribute="leading" id="ms3-Ug-glX"/>
                             <constraint firstItem="rfi-f0-aka" firstAttribute="leading" secondItem="Y1f-Sg-g2S" secondAttribute="leading" id="opL-dG-gbn"/>
                             <constraint firstItem="Srq-uF-L7A" firstAttribute="top" secondItem="8Qt-W0-352" secondAttribute="bottom" constant="40" id="ovL-xz-F9Z"/>
-                            <constraint firstItem="pzF-et-3jT" firstAttribute="centerX" secondItem="Y1f-Sg-g2S" secondAttribute="centerX" id="q63-w7-qCN"/>
                             <constraint firstItem="k8T-Cc-c3L" firstAttribute="leading" secondItem="Y1f-Sg-g2S" secondAttribute="leading" id="vK9-L5-gcS"/>
                             <constraint firstAttribute="trailing" secondItem="rfi-f0-aka" secondAttribute="trailing" id="wKC-yF-Pd2"/>
                         </constraints>
@@ -960,7 +960,7 @@
                     </view>
                     <connections>
                         <outlet property="keyboardView" destination="8Qt-W0-352" id="5wX-oW-Dlg"/>
-                        <outlet property="lblError" destination="pzF-et-3jT" id="E11-HS-Obf"/>
+                        <outlet property="lblError" destination="Ydu-Ns-LR5" id="e9P-yI-SHJ"/>
                         <outlet property="txtName" destination="ugM-2u-NnO" id="elX-He-FG9"/>
                         <outlet property="txtParticipant" destination="0TL-8r-M8t" id="y2X-mb-3ZG"/>
                     </connections>

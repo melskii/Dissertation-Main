@@ -10,11 +10,7 @@ import UIKit
 import AVFoundation
 
 class FeedbackView: UIView, UIGestureRecognizerDelegate {
-    
-    private var parent: UIView!
-    private var scene: GameScene!
-    private var type: FeedbackType!
-    
+ 
     @IBOutlet var popUpView: UIView!
  
     @IBOutlet weak var btnNextLevel: UIButton!
@@ -26,6 +22,10 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
     @IBOutlet weak var imgDetail: UIImageView!
     @IBOutlet weak var lblComplete: UILabel!
     @IBOutlet weak var lblBest: UILabel!
+    
+    private var parent: UIView!
+    private var scene: GameScene!
+    private var type: FeedbackType!
     
     private var soundEffects: AVAudioPlayer!
     private var counter: Int = 0

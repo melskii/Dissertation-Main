@@ -26,29 +26,40 @@ class HomeViewController: UIViewController {
             print(p)
         }
         
+        print("time to complete")
         for p in USER.timeToComplete {
             print(p)
         }
 
         
   
+        loadUser()
+        
+        setUserLabel()
+        
+        
+
+    }
+    
+    func loadUser() {
+        
         if DEFAULTS == false {
             
             DEFAULTS = true
             
             let load: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-         
-           
+            
+            
             let encodedUser = load.objectForKey("Users")
             
             if encodedUser != nil {
-            
+                
                 if let user = NSKeyedUnarchiver.unarchiveObjectWithData(encodedUser as! NSData) as? NSUserData {
                     
                     USERDATA = user
                     
                     if USERDATA.usersIsEmpty() {
-        
+                        
                         USERDATA.appendUserModel(UserModel())
                         USERDATA.setCurrentUser()
                         
@@ -74,16 +85,11 @@ class HomeViewController: UIViewController {
             
             save.setObject(encodedData, forKey: "Users")
             
-        
+            
             save.synchronize()
-
+            
             
         }
-        
-        setUserLabel()
-        
-        
-
     }
     
     func setUserLabel() {
