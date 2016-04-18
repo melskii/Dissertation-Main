@@ -81,7 +81,7 @@ class GameViewController: UIViewController, GameDelegate, UIGestureRecognizerDel
         
         self.showLevelHelp()
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "countUp", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(GameViewController.countUp), userInfo: nil, repeats: true)
         
         
         btnPlay.setImage(UIImage(named: "Play_Program_Invalid"), forState: UIControlState.Disabled)
@@ -185,9 +185,9 @@ class GameViewController: UIViewController, GameDelegate, UIGestureRecognizerDel
 
                 if valid == true {
                     
-                    self.stopCount(false)
-                    USER.setProgramFlow(self.program, type: FeedbackType.LevelComplete)
                     self.stopCount(true)
+                    USER.setProgramFlow(self.program, type: FeedbackType.LevelComplete)
+//                    self.stopCount(true)
                     
                     if playTune.playing {
                         playTune.stop()

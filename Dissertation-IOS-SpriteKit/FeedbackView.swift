@@ -108,6 +108,7 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
             
             imgDetail.image = UIImage(named: "level3-1")
             
+            btnOK.setImage(UIImage(named: "try_again"), forState: UIControlState.Normal)
             
             
             
@@ -122,6 +123,7 @@ class FeedbackView: UIView, UIGestureRecognizerDelegate {
         else if type == FeedbackType.InvalidProgram {
             
             imgIcon.image = UIImage(named: "Program_Error")
+            btnOK.setImage(UIImage(named: "try_again"), forState: UIControlState.Normal)
             
   
             if let secondBeep = self.setupAudioPlayerWithFile("error2", type:"wav") {

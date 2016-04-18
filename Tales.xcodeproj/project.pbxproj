@@ -54,6 +54,7 @@
 		A040067C1CA1AE4D00B6916E /* mute.png in Resources */ = {isa = PBXBuildFile; fileRef = A040067B1CA1AE4D00B6916E /* mute.png */; };
 		A040067E1CA1AE6100B6916E /* audio.png in Resources */ = {isa = PBXBuildFile; fileRef = A040067D1CA1AE6100B6916E /* audio.png */; };
 		A04006821CA1C38F00B6916E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04006811CA1C38E00B6916E /* UserViewController.swift */; };
+		A043CD651CC4CE8400F2C50C /* try_again.png in Resources */ = {isa = PBXBuildFile; fileRef = A043CD641CC4CE8400F2C50C /* try_again.png */; };
 		A056A1831CB546210027E530 /* monkey.png in Resources */ = {isa = PBXBuildFile; fileRef = A056A1821CB546210027E530 /* monkey.png */; };
 		A056A1851CB5481F0027E530 /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = A056A1841CB5481F0027E530 /* house.png */; };
 		A056A1871CB6AFC10027E530 /* dog.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A056A1861CB6AFC10027E530 /* dog.atlas */; };
@@ -90,9 +91,7 @@
 		A07E76361CBBD22900864878 /* Door.png in Resources */ = {isa = PBXBuildFile; fileRef = A07E76351CBBD22900864878 /* Door.png */; };
 		A07E76381CBBDD4700864878 /* pie.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A07E76371CBBDD4700864878 /* pie.atlas */; };
 		A07E763A1CBBDE2600864878 /* level3background.png in Resources */ = {isa = PBXBuildFile; fileRef = A07E76391CBBDE2600864878 /* level3background.png */; };
-		A07E763C1CBBE00200864878 /* oven.png in Resources */ = {isa = PBXBuildFile; fileRef = A07E763B1CBBE00200864878 /* oven.png */; };
 		A07E763E1CBC159200864878 /* NumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07E763D1CBC159200864878 /* NumberView.swift */; };
-		A07E76421CBC295E00864878 /* level1.gif in Resources */ = {isa = PBXBuildFile; fileRef = A07E76411CBC295E00864878 /* level1.gif */; };
 		A08CFF301CAC057800D3B7AD /* btnQuit.png in Resources */ = {isa = PBXBuildFile; fileRef = A08CFF2F1CAC057800D3B7AD /* btnQuit.png */; };
 		A08EA5FF1CB934DB005E1C81 /* star0.png in Resources */ = {isa = PBXBuildFile; fileRef = A08EA5FE1CB934DB005E1C81 /* star0.png */; };
 		A08EA6031CB93520005E1C81 /* star1.png in Resources */ = {isa = PBXBuildFile; fileRef = A08EA6001CB93520005E1C81 /* star1.png */; };
@@ -224,6 +223,7 @@
 		A040067B1CA1AE4D00B6916E /* mute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mute.png; sourceTree = "<group>"; };
 		A040067D1CA1AE6100B6916E /* audio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audio.png; sourceTree = "<group>"; };
 		A04006811CA1C38E00B6916E /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		A043CD641CC4CE8400F2C50C /* try_again.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = try_again.png; path = ../../../../../../../Desktop/try_again.png; sourceTree = "<group>"; };
 		A056A1821CB546210027E530 /* monkey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monkey.png; sourceTree = "<group>"; };
 		A056A1841CB5481F0027E530 /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
 		A056A1861CB6AFC10027E530 /* dog.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = dog.atlas; sourceTree = "<group>"; };
@@ -260,9 +260,7 @@
 		A07E76351CBBD22900864878 /* Door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Door.png; sourceTree = "<group>"; };
 		A07E76371CBBDD4700864878 /* pie.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = pie.atlas; sourceTree = "<group>"; };
 		A07E76391CBBDE2600864878 /* level3background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level3background.png; sourceTree = "<group>"; };
-		A07E763B1CBBE00200864878 /* oven.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oven.png; sourceTree = "<group>"; };
 		A07E763D1CBC159200864878 /* NumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberView.swift; sourceTree = "<group>"; };
-		A07E76411CBC295E00864878 /* level1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = level1.gif; sourceTree = "<group>"; };
 		A08CFF2F1CAC057800D3B7AD /* btnQuit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnQuit.png; sourceTree = "<group>"; };
 		A08EA5FE1CB934DB005E1C81 /* star0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star0.png; sourceTree = "<group>"; };
 		A08EA6001CB93520005E1C81 /* star1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star1.png; sourceTree = "<group>"; };
@@ -447,8 +445,6 @@
 			isa = PBXGroup;
 			children = (
 				A07E76431CBC2BD800864878 /* Level Descriptions */,
-				A07E76411CBC295E00864878 /* level1.gif */,
-				A07E763B1CBBE00200864878 /* oven.png */,
 				A0C604EB1CBF127F0055AD45 /* bowl.png */,
 				A07E762E1CBBCC0200864878 /* Backgrounds */,
 				A0C604E71CBF126A0055AD45 /* eggs.atlas */,
@@ -628,6 +624,7 @@
 				A031D46A1CA3268F00CC24E7 /* home_disabled.png */,
 				A0FD092A1CA97B2A00267669 /* btnCancel.png */,
 				A0FD09281CA97B2300267669 /* btnOK.png */,
+				A043CD641CC4CE8400F2C50C /* try_again.png */,
 				A040067D1CA1AE6100B6916E /* audio.png */,
 				A040067B1CA1AE4D00B6916E /* mute.png */,
 				A04006791CA1A68E00B6916E /* home.png */,
@@ -641,7 +638,7 @@
 		A0E87C4C1C7A358E0098BEE2 = {
 			isa = PBXGroup;
 			children = (
-				A0E87C571C7A358E0098BEE2 /* Dissertation-IOS-SpriteKit */,
+				A0E87C571C7A358E0098BEE2 /* Tales */,
 				A0E87C701C7A358E0098BEE2 /* Dissertation-IOS-SpriteKitTests */,
 				A0E87C561C7A358E0098BEE2 /* Products */,
 			);
@@ -656,7 +653,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A0E87C571C7A358E0098BEE2 /* Dissertation-IOS-SpriteKit */ = {
+		A0E87C571C7A358E0098BEE2 /* Tales */ = {
 			isa = PBXGroup;
 			children = (
 				A05814441CAC1C23001627B8 /* Util */,
@@ -673,6 +670,7 @@
 				A0E87C801C7A3BBE0098BEE2 /* Supporting Files */,
 				A0F3B7871C7DCAB3000A686A /* TestScene.sks */,
 			);
+			name = Tales;
 			path = "Dissertation-IOS-SpriteKit";
 			sourceTree = "<group>";
 		};
@@ -914,7 +912,6 @@
 				A0FD09291CA97B2300267669 /* btnOK.png in Resources */,
 				A0151AEC1C834B350078D3EF /* objecta_highlight.png in Resources */,
 				A07E76301CBBCC1600864878 /* level1background.png in Resources */,
-				A07E76421CBC295E00864878 /* level1.gif in Resources */,
 				A07A883C1CBFB4EA00E25421 /* level4-2.png in Resources */,
 				A08EA6071CB956BE005E1C81 /* padlock.png in Resources */,
 				A0C604B91CBEE5130055AD45 /* level1-0.png in Resources */,
@@ -932,6 +929,7 @@
 				A08EA6051CB93520005E1C81 /* star3.png in Resources */,
 				A0063E571CBAE87700090564 /* Level_2.png in Resources */,
 				A0151B021C834D150078D3EF /* program_down.png in Resources */,
+				A043CD651CC4CE8400F2C50C /* try_again.png in Resources */,
 				A08CFF301CAC057800D3B7AD /* btnQuit.png in Resources */,
 				A018485B1CBC38D80083C0F5 /* hard_reset.png in Resources */,
 				A0C604BB1CBEE5130055AD45 /* level1-2.png in Resources */,
@@ -969,7 +967,6 @@
 				A07E76361CBBD22900864878 /* Door.png in Resources */,
 				A0063E4C1CBAE4FF00090564 /* Level_1_Inactive.png in Resources */,
 				A056A1831CB546210027E530 /* monkey.png in Resources */,
-				A07E763C1CBBE00200864878 /* oven.png in Resources */,
 				A0C604EC1CBF127F0055AD45 /* bowl.png in Resources */,
 				A0C604BA1CBEE5130055AD45 /* level1-1.png in Resources */,
 				A031D46B1CA3268F00CC24E7 /* home_disabled.png in Resources */,
@@ -1155,7 +1152,7 @@
 				INFOPLIST_FILE = "Dissertation-IOS-SpriteKit/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.melenie-Dissertation-IOS-SpriteKit";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.melenie-Tales";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1171,7 +1168,7 @@
 				INFOPLIST_FILE = "Dissertation-IOS-SpriteKit/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.melenie-Dissertation-IOS-SpriteKit";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.melenie-Tales";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
