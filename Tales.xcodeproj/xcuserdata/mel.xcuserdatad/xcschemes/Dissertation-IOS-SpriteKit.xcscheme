@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0720"
-   wasCreatedForAppExtension = "YES"
-   version = "2.0">
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -15,24 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A0063E361CBAD10F00090564"
-               BuildableName = "NumberKeyboard.appex"
-               BlueprintName = "NumberKeyboard"
-               ReferencedContainer = "container:Dissertation-IOS-SpriteKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "A0E87C541C7A358E0098BEE2"
                BuildableName = "Dissertation-IOS-SpriteKit.app"
                BlueprintName = "Dissertation-IOS-SpriteKit"
-               ReferencedContainer = "container:Dissertation-IOS-SpriteKit.xcodeproj">
+               ReferencedContainer = "container:Tales.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -43,14 +28,24 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A0E87C6C1C7A358E0098BEE2"
+               BuildableName = "Dissertation-IOS-SpriteKitTests.xctest"
+               BlueprintName = "Dissertation-IOS-SpriteKitTests"
+               ReferencedContainer = "container:Tales.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A0063E361CBAD10F00090564"
-            BuildableName = "NumberKeyboard.appex"
-            BlueprintName = "NumberKeyboard"
-            ReferencedContainer = "container:Dissertation-IOS-SpriteKit.xcodeproj">
+            BlueprintIdentifier = "A0E87C541C7A358E0098BEE2"
+            BuildableName = "Dissertation-IOS-SpriteKit.app"
+            BlueprintName = "Dissertation-IOS-SpriteKit"
+            ReferencedContainer = "container:Tales.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,15 +53,14 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "2">
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -74,7 +68,7 @@
             BlueprintIdentifier = "A0E87C541C7A358E0098BEE2"
             BuildableName = "Dissertation-IOS-SpriteKit.app"
             BlueprintName = "Dissertation-IOS-SpriteKit"
-            ReferencedContainer = "container:Dissertation-IOS-SpriteKit.xcodeproj">
+            ReferencedContainer = "container:Tales.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,8 +79,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES"
-      launchAutomaticallySubstyle = "2">
+      debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -94,7 +87,7 @@
             BlueprintIdentifier = "A0E87C541C7A358E0098BEE2"
             BuildableName = "Dissertation-IOS-SpriteKit.app"
             BlueprintName = "Dissertation-IOS-SpriteKit"
-            ReferencedContainer = "container:Dissertation-IOS-SpriteKit.xcodeproj">
+            ReferencedContainer = "container:Tales.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

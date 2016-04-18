@@ -21,17 +21,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        for p in USER.rewards {
-            print(p)
-        }
-        
-        print("time to complete")
-        for p in USER.timeToComplete {
-            print(p)
-        }
-
-        
+   
   
         loadUser()
         

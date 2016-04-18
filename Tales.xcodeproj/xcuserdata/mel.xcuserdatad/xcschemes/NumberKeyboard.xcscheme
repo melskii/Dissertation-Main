@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A056A1911CB7DB6D0027E530"
-               BuildableName = "Numbers.appex"
-               BlueprintName = "Numbers"
-               ReferencedContainer = "container:Dissertation-IOS-SpriteKit.xcodeproj">
+               BlueprintIdentifier = "A0063E361CBAD10F00090564"
+               BuildableName = "NumberKeyboard.appex"
+               BlueprintName = "NumberKeyboard"
+               ReferencedContainer = "container:Tales.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -32,7 +32,7 @@
                BlueprintIdentifier = "A0E87C541C7A358E0098BEE2"
                BuildableName = "Dissertation-IOS-SpriteKit.app"
                BlueprintName = "Dissertation-IOS-SpriteKit"
-               ReferencedContainer = "container:Dissertation-IOS-SpriteKit.xcodeproj">
+               ReferencedContainer = "container:Tales.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,10 +47,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A056A1911CB7DB6D0027E530"
-            BuildableName = "Numbers.appex"
-            BlueprintName = "Numbers"
-            ReferencedContainer = "container:Dissertation-IOS-SpriteKit.xcodeproj">
+            BlueprintIdentifier = "A0063E361CBAD10F00090564"
+            BuildableName = "NumberKeyboard.appex"
+            BlueprintName = "NumberKeyboard"
+            ReferencedContainer = "container:Tales.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -74,7 +74,7 @@
             BlueprintIdentifier = "A0E87C541C7A358E0098BEE2"
             BuildableName = "Dissertation-IOS-SpriteKit.app"
             BlueprintName = "Dissertation-IOS-SpriteKit"
-            ReferencedContainer = "container:Dissertation-IOS-SpriteKit.xcodeproj">
+            ReferencedContainer = "container:Tales.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,7 +94,7 @@
             BlueprintIdentifier = "A0E87C541C7A358E0098BEE2"
             BuildableName = "Dissertation-IOS-SpriteKit.app"
             BlueprintName = "Dissertation-IOS-SpriteKit"
-            ReferencedContainer = "container:Dissertation-IOS-SpriteKit.xcodeproj">
+            ReferencedContainer = "container:Tales.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

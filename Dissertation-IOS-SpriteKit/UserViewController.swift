@@ -124,8 +124,6 @@ class UserViewController: UIViewController, KeyboardDelegate, UITextFieldDelegat
                         self.lblError.hidden = false
                         self.lblError.text = "Participant Error: \(status.rawValue)"
                         
-                        print ("got back: \(status.rawValue)")
-                        
                     }
                     
                 }

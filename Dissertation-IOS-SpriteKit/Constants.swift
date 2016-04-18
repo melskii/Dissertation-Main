@@ -25,7 +25,7 @@ let MENU_HEIGHT: CGFloat = 80
 let defaults = NSUserDefaults.standardUserDefaults()
 var USER: UserModel! = UserModel()
 var _LEVEL = 1
-let MAXLEVELS = 5
+let MAXLEVELS = 4
 var LEVEL: Level!
 var GAME_HEIGHT: CGFloat!
 var USERDATA: NSUserData! = NSUserData()

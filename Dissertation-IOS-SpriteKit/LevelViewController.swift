@@ -119,18 +119,6 @@ class LevelViewController: UIViewController {
                         btnLevel4.setImage(imgBtnLvl4, forState: UIControlState.Normal)
                         btnLevel4.imageView?.contentMode = .ScaleAspectFit
                         
-                        if unlockedLevel >= 5 {
-                            
-                            imgLock5.hidden = true
-                            btnLevel5.enabled = true
-                            
-                            imgLevel5.image = UIImage(named: "star\(String(USER.getRewardsStar(5)))")
-                            
-                            imgBtnLvl5 = UIImage(named: "Level_5")
-                            btnLevel5.setImage(imgBtnLvl5, forState: UIControlState.Normal)
-                            btnLevel5.imageView?.contentMode = .ScaleAspectFit
-                            
-                        }
                         
                     }
                     

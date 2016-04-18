@@ -173,8 +173,6 @@ public class UserModel: NSObject, NSCoding {
                         print(error)
                     }
                     
-                    /* https://www.raywenderlich.com/120442/swift-json-tutorial */
-                    
                     if json != nil {
                     
                         //Extract the Time To Complete and Rewards

@@ -431,8 +431,7 @@ public class Level {
                         
                         else {
                             
-                            //animate off the screen but don't move in the grid
-                            //Debugging: print ("out of bounds")
+                            //add to animation sequence but don't move in the grid
                             break
                             
                         }
