@@ -271,7 +271,7 @@
                                         </constraints>
                                         <state key="normal" image="btnHelp.png"/>
                                         <connections>
-                                            <segue destination="nfA-3u-zoz" kind="show" id="y7K-Pm-ZrU"/>
+                                            <segue destination="nfA-3u-zoz" kind="show" id="Y8c-rN-vRw"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1102,7 +1102,7 @@
         <image name="user.png" width="168" height="144"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="DdU-6o-vGn"/>
         <segue reference="xap-0R-8mL"/>
-        <segue reference="Rf5-qP-lUv"/>
     </inferredMetricsTieBreakers>
 </document>

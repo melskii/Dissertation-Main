@@ -51,13 +51,9 @@
 		A04006751CA19A4900B6916E /* user_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = A04006741CA19A4900B6916E /* user_pressed.png */; };
 		A04006781CA1A67600B6916E /* home_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = A04006771CA1A67600B6916E /* home_pressed.png */; };
 		A040067A1CA1A68E00B6916E /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = A04006791CA1A68E00B6916E /* home.png */; };
-		A040067C1CA1AE4D00B6916E /* mute.png in Resources */ = {isa = PBXBuildFile; fileRef = A040067B1CA1AE4D00B6916E /* mute.png */; };
-		A040067E1CA1AE6100B6916E /* audio.png in Resources */ = {isa = PBXBuildFile; fileRef = A040067D1CA1AE6100B6916E /* audio.png */; };
 		A04006821CA1C38F00B6916E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04006811CA1C38E00B6916E /* UserViewController.swift */; };
 		A043CD651CC4CE8400F2C50C /* try_again.png in Resources */ = {isa = PBXBuildFile; fileRef = A043CD641CC4CE8400F2C50C /* try_again.png */; };
-		A056A1831CB546210027E530 /* monkey.png in Resources */ = {isa = PBXBuildFile; fileRef = A056A1821CB546210027E530 /* monkey.png */; };
 		A056A1851CB5481F0027E530 /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = A056A1841CB5481F0027E530 /* house.png */; };
-		A056A1871CB6AFC10027E530 /* dog.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A056A1861CB6AFC10027E530 /* dog.atlas */; };
 		A056A1891CB705600027E530 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056A1881CB705600027E530 /* LevelViewController.swift */; };
 		A056A1C71CB81C820027E530 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056A1C51CB81C820027E530 /* FirstViewController.swift */; };
 		A056A1C81CB81C820027E530 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056A1C61CB81C820027E530 /* PopUpViewController.swift */; };
@@ -220,13 +216,9 @@
 		A04006741CA19A4900B6916E /* user_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_pressed.png; sourceTree = "<group>"; };
 		A04006771CA1A67600B6916E /* home_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_pressed.png; sourceTree = "<group>"; };
 		A04006791CA1A68E00B6916E /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
-		A040067B1CA1AE4D00B6916E /* mute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mute.png; sourceTree = "<group>"; };
-		A040067D1CA1AE6100B6916E /* audio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audio.png; sourceTree = "<group>"; };
 		A04006811CA1C38E00B6916E /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		A043CD641CC4CE8400F2C50C /* try_again.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = try_again.png; path = ../../../../../../../Desktop/try_again.png; sourceTree = "<group>"; };
-		A056A1821CB546210027E530 /* monkey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monkey.png; sourceTree = "<group>"; };
 		A056A1841CB5481F0027E530 /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
-		A056A1861CB6AFC10027E530 /* dog.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = dog.atlas; sourceTree = "<group>"; };
 		A056A1881CB705600027E530 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		A056A1C51CB81C820027E530 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		A056A1C61CB81C820027E530 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
@@ -458,9 +450,7 @@
 				A0063E621CBAF4BF00090564 /* Stop_Program.png */,
 				A0063E631CBAF4BF00090564 /* Undo_Program.png */,
 				A0063E5E1CBAF4A300090564 /* buttons */,
-				A056A1861CB6AFC10027E530 /* dog.atlas */,
 				A056A1841CB5481F0027E530 /* house.png */,
-				A056A1821CB546210027E530 /* monkey.png */,
 			);
 			name = "Output Objects";
 			sourceTree = "<group>";
@@ -625,8 +615,6 @@
 				A0FD092A1CA97B2A00267669 /* btnCancel.png */,
 				A0FD09281CA97B2300267669 /* btnOK.png */,
 				A043CD641CC4CE8400F2C50C /* try_again.png */,
-				A040067D1CA1AE6100B6916E /* audio.png */,
-				A040067B1CA1AE4D00B6916E /* mute.png */,
 				A04006791CA1A68E00B6916E /* home.png */,
 				A04006771CA1A67600B6916E /* home_pressed.png */,
 				A04006761CA1A12900B6916E /* Login.atlas */,
@@ -898,7 +886,6 @@
 				A07A883E1CBFB4EA00E25421 /* level4-4.png in Resources */,
 				A0063E661CBAF4BF00090564 /* Redo_Program.png in Resources */,
 				A07E760A1CBB02AD00864878 /* Code_Error.png in Resources */,
-				A040067C1CA1AE4D00B6916E /* mute.png in Resources */,
 				A0C604C91CBEF1A50055AD45 /* level2-1.png in Resources */,
 				A04006731CA199E600B6916E /* user.png in Resources */,
 				A031D46D1CA3277800CC24E7 /* user_disabled.png in Resources */,
@@ -936,7 +923,6 @@
 				A04006781CA1A67600B6916E /* home_pressed.png in Resources */,
 				A0151AF81C834BA00078D3EF /* objecta.png in Resources */,
 				A0063E4D1CBAE4FF00090564 /* Level_2_Inactive.png in Resources */,
-				A040067E1CA1AE6100B6916E /* audio.png in Resources */,
 				A0151B041C834D150078D3EF /* program_objecta.png in Resources */,
 				A0151AEA1C834B350078D3EF /* down_highlight.png in Resources */,
 				A0151AED1C834B350078D3EF /* objectb_highlight.png in Resources */,
@@ -966,14 +952,12 @@
 				A0F1BE501C7F5D3F00C62870 /* program_play.png in Resources */,
 				A07E76361CBBD22900864878 /* Door.png in Resources */,
 				A0063E4C1CBAE4FF00090564 /* Level_1_Inactive.png in Resources */,
-				A056A1831CB546210027E530 /* monkey.png in Resources */,
 				A0C604EC1CBF127F0055AD45 /* bowl.png in Resources */,
 				A0C604BA1CBEE5130055AD45 /* level1-1.png in Resources */,
 				A031D46B1CA3268F00CC24E7 /* home_disabled.png in Resources */,
 				A0FD09351CAADBF700267669 /* menuBackgroundwithText.png in Resources */,
 				A0063E681CBAF4BF00090564 /* Undo_Program.png in Resources */,
 				A0C604C81CBEF1A50055AD45 /* level2-0.png in Resources */,
-				A056A1871CB6AFC10027E530 /* dog.atlas in Resources */,
 				A0F3B7881C7DCAB3000A686A /* TestScene.sks in Resources */,
 				A07E76321CBBCD6500864878 /* levelBackground.png in Resources */,
 				A0F3B78D1C7DEFF0000A686A /* outBckground.png in Resources */,
