@@ -1,7 +1,7 @@
 # Dissertation-Main
 Computer Science Bsc Undergraduate Final Year Project: TALES
 
-TALES (Technology and Learning for Early Stages) was created over a few month as part of my final year project at the University of Sussex.
+TALES (Technology and Learning for Early Stages) was created over a few month as part of my final year project at the University of Sussex for which I was awarded 85%.
 
 My main objective was to teach programming concepts to the Early Years/KS1. You can read the full [dissertation here](http://melenie.co.uk/TALES.pdf). 
 
